@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="部署架构：GPU 离线向量化、处理机生成结论、部署服务器只读提供在线服务，底部为工程底座">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0B1220"/><stop offset="0.55" stop-color="#0C1526"/><stop offset="1" stop-color="#0A1020"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.45" r="0.6">
+    <stop offset="0" stop-color="#38BDF8" stop-opacity="0.10"/><stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#15274A"/><stop offset="1" stop-color="#0F1B33"/>
+  </linearGradient>
+  <linearGradient id="cardStar" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3A2A0E"/><stop offset="1" stop-color="#1A1610"/>
+  </linearGradient>
+  <linearGradient id="bandHead" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#16274A"/><stop offset="1" stop-color="#0F1729"/>
+  </linearGradient>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#1C2A45"/>
+  </pattern>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#38BDF8"/>
+  </marker>
+  <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#F59E0B"/>
+  </marker>
+  <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#34D399"/>
+  </marker>
+</defs>
+<g font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','WenQuanYi Zen Hei',sans-serif">
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<rect width="1920" height="1080" fill="url(#dots)"/>
+<rect width="1920" height="1080" fill="url(#glow)"/>
+<rect x="40" y="44" width="6" height="48" rx="3" fill="#38BDF8"/>
+<text x="62" y="78" font-size="38" fill="#E2E8F0" font-weight="bold" text-anchor="start">技术栈与部署架构</text>
+<text x="64" y="112" font-size="18" fill="#94A3B8" font-weight="normal" text-anchor="start">离线算力 · 数据处理 · 在线服务三区分离：重计算放 GPU，结论随发布包上线，线上只读</text>
+<rect x="40" y="168" width="470" height="690" rx="18" fill="#0F1729" stroke="#34D399" stroke-width="1.4" stroke-opacity="0.55"/>
+<rect x="60" y="152" width="355" height="32" rx="16" fill="#0B1220" stroke="#34D399" stroke-width="1.4" />
+<text x="80" y="175" font-size="18" fill="#34D399" font-weight="bold" text-anchor="start">离线算力区 · GPU 服务器</text>
+<text x="488" y="202" font-size="13" fill="#64748B" font-weight="bold" text-anchor="end" letter-spacing="2">OFFLINE GPU</text>
+<rect x="550" y="168" width="640" height="690" rx="18" fill="#0F1729" stroke="#38BDF8" stroke-width="1.4" stroke-opacity="0.55"/>
+<rect x="570" y="152" width="271" height="32" rx="16" fill="#0B1220" stroke="#38BDF8" stroke-width="1.4" />
+<text x="590" y="175" font-size="18" fill="#38BDF8" font-weight="bold" text-anchor="start">数据处理区 · 处理机</text>
+<text x="1168" y="202" font-size="13" fill="#64748B" font-weight="bold" text-anchor="end" letter-spacing="2">PIPELINE</text>
+<rect x="1230" y="168" width="650" height="690" rx="18" fill="#0F1729" stroke="#F59E0B" stroke-width="1.4" stroke-opacity="0.55"/>
+<rect x="1250" y="152" width="313" height="32" rx="16" fill="#0B1220" stroke="#F59E0B" stroke-width="1.4" />
+<text x="1270" y="175" font-size="18" fill="#F59E0B" font-weight="bold" text-anchor="start">在线服务区 · 部署服务器</text>
+<text x="1858" y="202" font-size="13" fill="#64748B" font-weight="bold" text-anchor="end" letter-spacing="2">ONLINE</text>
+<rect x="80" y="230" width="390" height="150" rx="14" fill="url(#card)" stroke="#34D399" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="275.0" y="266" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">Tesla V100 · 32GB</text>
+<text x="275.0" y="298" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">PyTorch CUDA · fp16 推理</text>
+<text x="275.0" y="320" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">构建期余 10.8GB 显存</text>
+<line x1="98" y1="338" x2="452" y2="338" stroke="#1E2A44" stroke-width="1"/>
+<text x="275.0" y="364" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">161.6 秒完成全量向量化</text>
+<rect x="80" y="420" width="390" height="150" rx="14" fill="url(#card)" stroke="#34D399" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="275.0" y="456" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">BGE-M3 多语言向量</text>
+<text x="275.0" y="488" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">1,024 维 · 中英繁跨语言</text>
+<text x="275.0" y="510" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">93,209 段 + 3,922 条主张</text>
+<line x1="98" y1="528" x2="452" y2="528" stroke="#1E2A44" stroke-width="1"/>
+<text x="275.0" y="554" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">每条主张 Top-20 近邻</text>
+<rect x="80" y="640" width="390" height="180" rx="14" fill="url(#card)" stroke="#34D399" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="275.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">近邻文件 1.7MB</text>
+<text x="275.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">只含编号、不含文本</text>
+<text x="275.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">段落指纹 + SHA-256 校验</text>
+<text x="275.0" y="752" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">不符即拒绝导入</text>
+<line x1="98" y1="778" x2="452" y2="778" stroke="#1E2A44" stroke-width="1"/>
+<text x="275.0" y="804" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">保密：模型与向量不出 GPU 机</text>
+<path d="M 275 384 L 275 416" fill="none" stroke="#34D399" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<path d="M 275 574 L 275 636" fill="none" stroke="#34D399" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<rect x="590" y="230" width="270" height="150" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="725.0" y="266" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">合规采集调度器</text>
+<text x="725.0" y="298" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">25 个站点适配器</text>
+<text x="725.0" y="320" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">robots · 限速 · 熔断</text>
+<line x1="608" y1="338" x2="842" y2="338" stroke="#1E2A44" stroke-width="1"/>
+<text x="725.0" y="364" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">55 信源 · 4,339 版本</text>
+<rect x="890" y="230" width="270" height="150" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="1025.0" y="266" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">研判处理器</text>
+<text x="1025.0" y="298" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">Python 3.12</text>
+<text x="1025.0" y="320" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">抽取 · 核验 · 聚合 · 预警</text>
+<line x1="908" y1="338" x2="1142" y2="338" stroke="#1E2A44" stroke-width="1"/>
+<text x="1025.0" y="364" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">3,922 条主张逐条核验</text>
+<rect x="590" y="420" width="570" height="150" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="875.0" y="456" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">OpenAI 兼容模型网关</text>
+<text x="875.0" y="488" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">DeepSeek-V3.2（长文档）· 通义千问 qwen-plus（核验）</text>
+<text x="875.0" y="510" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">DeepSeek-V4-Pro（盲判预标注）· Kimi-K3（研判助手）</text>
+<line x1="608" y1="528" x2="1142" y2="528" stroke="#1E2A44" stroke-width="1"/>
+<text x="875.0" y="554" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">JSON Schema 约束 · 提示词版本化</text>
+<rect x="590" y="640" width="570" height="180" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="875.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">SQLite 分析库 + FTS5 索引</text>
+<text x="875.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">处理层结论 · 93,209 段证据 · 向量近邻</text>
+<text x="875.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">一致性快照（sqlite backup API）</text>
+<line x1="608" y1="778" x2="1142" y2="778" stroke="#1E2A44" stroke-width="1"/>
+<text x="875.0" y="804" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">286MB · processor.verify 0 错误</text>
+<path d="M 864 305 L 886 305" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1025 384 L 1025 416" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1047.5" y="388" width="85" height="24" rx="12" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="1090" y="404.32" font-size="12" fill="#38BDF8" font-weight="normal" text-anchor="middle">结构化调用</text>
+<path d="M 725 574 L 725 636" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="688.5" y="593" width="73" height="24" rx="12" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="725" y="609.32" font-size="12" fill="#38BDF8" font-weight="normal" text-anchor="middle">结论写入</text>
+<path d="M 586 690 L 530 690 L 530 495 L 474 495" fill="none" stroke="#34D399" stroke-width="2" stroke-dasharray="9 7" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<rect x="476.5" y="588" width="107" height="24" rx="12" fill="#0B1220" stroke="#34D399" stroke-width="1.2" /><text x="530" y="604.32" font-size="12" fill="#34D399" font-weight="normal" text-anchor="middle">导出 39MB</text>
+<path d="M 474 760 L 586 760" fill="none" stroke="#34D399" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<rect x="493.5" y="716" width="73" height="24" rx="12" fill="#0B1220" stroke="#34D399" stroke-width="1.2" /><text x="530" y="732.32" font-size="12" fill="#34D399" font-weight="normal" text-anchor="middle">导入校验</text>
+<rect x="1270" y="230" width="280" height="150" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="1410.0" y="266" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">浏览器</text>
+<text x="1410.0" y="298" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">Vue 3 · Naive UI</text>
+<text x="1410.0" y="320" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">ECharts 6 · Vite 6</text>
+<line x1="1288" y1="338" x2="1532" y2="338" stroke="#1E2A44" stroke-width="1"/>
+<text x="1410.0" y="364" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">31 页面 · 三主题 · 窄屏</text>
+<rect x="1570" y="230" width="270" height="150" rx="14" fill="url(#card)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="1705.0" y="266" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">公网 HTTPS</text>
+<text x="1705.0" y="298" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">域名访问 · TLS</text>
+<text x="1705.0" y="320" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">反向代理接入应用</text>
+<line x1="1588" y1="338" x2="1822" y2="338" stroke="#1E2A44" stroke-width="1"/>
+<text x="1705.0" y="364" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">TLS 加密传输</text>
+<rect x="1270" y="420" width="570" height="150" rx="14" fill="url(#card)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="1555.0" y="456" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">FastAPI · Uvicorn</text>
+<text x="1555.0" y="488" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">95 个接口 · 默认全量鉴权 · 四级 RBAC · 只追加审计</text>
+<text x="1555.0" y="510" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">GZip · SSE 流式 · 错误不泄露堆栈</text>
+<line x1="1288" y1="528" x2="1822" y2="528" stroke="#1E2A44" stroke-width="1"/>
+<text x="1555.0" y="554" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">页面接口 P95 57.6ms</text>
+<rect x="1270" y="640" width="570" height="180" rx="14" fill="url(#card)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="1555.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">SQLite 只读挂载 + 人工决策库</text>
+<text x="1555.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">分析库 mode=ro：应用层物理上改不了证据</text>
+<text x="1555.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">复核 · 处置 · 账号 · 审计独立成表，重跑不覆盖</text>
+<line x1="1288" y1="778" x2="1822" y2="778" stroke="#1E2A44" stroke-width="1"/>
+<text x="1555.0" y="804" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">账号与处置记录随库保留</text>
+<path d="M 1554 305 L 1566 305" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<path d="M 1705 384 L 1705 416" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<rect x="1717.5" y="388" width="85" height="24" rx="12" fill="#0B1220" stroke="#F59E0B" stroke-width="1.2" /><text x="1760" y="404.32" font-size="12" fill="#F59E0B" font-weight="normal" text-anchor="middle">HTTPS</text>
+<path d="M 1555 574 L 1555 636" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<rect x="1593.5" y="593" width="73" height="24" rx="12" fill="#0B1220" stroke="#F59E0B" stroke-width="1.2" /><text x="1630" y="609.32" font-size="12" fill="#F59E0B" font-weight="normal" text-anchor="middle">只读查询</text>
+<path d="M 1164 760 L 1266 760" fill="none" stroke="#38BDF8" stroke-width="2.4" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1184.0" y="716" width="62" height="24" rx="12" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="1215" y="732.32" font-size="12" fill="#38BDF8" font-weight="normal" text-anchor="middle">发布包</text>
+<path d="M 1266 495 L 1164 495" fill="none" stroke="#34D399" stroke-width="2" stroke-dasharray="9 7" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<rect x="1178.5" y="516" width="73" height="24" rx="12" fill="#0B1220" stroke="#34D399" stroke-width="1.2" /><text x="1215" y="532.32" font-size="12" fill="#34D399" font-weight="normal" text-anchor="middle">助手查证</text>
+<rect x="40" y="892" width="1840" height="132" rx="18" fill="#0F1729" stroke="#1E2A44" stroke-width="1.2" />
+<text x="68" y="928" font-size="20" fill="#E2E8F0" font-weight="bold" text-anchor="start">工程底座</text>
+<text x="68" y="952" font-size="12" fill="#64748B" font-weight="bold" text-anchor="start" letter-spacing="2">ENGINEERING</text>
+<rect x="240.0" y="912" width="312.8" height="92" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="396.4" y="954.5" font-size="18" fill="#E2E8F0" font-weight="bold" text-anchor="middle">Docker 多阶段构建</text>
+<text x="396.4" y="980.5" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">minimal / full 两档 · 非 root · 健康检查</text>
+<rect x="566.8" y="912" width="312.8" height="92" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="723.1999999999999" y="954.5" font-size="18" fill="#E2E8F0" font-weight="bold" text-anchor="middle">一键发布</text>
+<text x="723.1999999999999" y="980.5" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">部署包 + git bundle + SHA256SUMS</text>
+<rect x="893.6" y="912" width="312.8" height="92" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1050.0" y="954.5" font-size="18" fill="#E2E8F0" font-weight="bold" text-anchor="middle">自动化测试</text>
+<text x="1050.0" y="980.5" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">后端 1,797 · 前端 403 全绿</text>
+<rect x="1220.4" y="912" width="312.8" height="92" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1376.8000000000002" y="954.5" font-size="18" fill="#E2E8F0" font-weight="bold" text-anchor="middle">性能</text>
+<text x="1376.8000000000002" y="980.5" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">页面 P95 57.6ms · 检索 P95 159.7ms</text>
+<rect x="1547.2" y="912" width="312.8" height="92" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1703.6000000000001" y="954.5" font-size="18" fill="#E2E8F0" font-weight="bold" text-anchor="middle">可回滚</text>
+<text x="1703.6000000000001" y="980.5" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">旧版前后端保留 · 库备份</text>
+</g>
+</svg>

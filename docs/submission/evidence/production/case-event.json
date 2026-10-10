@@ -1,0 +1,225 @@
+{
+  "event_id": "aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341",
+  "version_id": "673ada2a3b17c560c3df0b1aaf2254693ae11310b1de61923c5e446b2bf5fc66",
+  "company_id": "cxmt",
+  "summary": "长鑫科技集团股份有限公司公告将于2026年9月7日召开2026年半年度业绩说明会，就半年度经营成果、财务状况与投资者进行交流。",
+  "event_time": "2026-09-07",
+  "event_time_precision": "day",
+  "published_at": "2026-08-29",
+  "time_basis": "published_at",
+  "event_time_role": "scheduled",
+  "target_time": "2026-09-07",
+  "event_types": [
+    "RESPONSE_CLARIFICATION"
+  ],
+  "issue_codes": [
+    "DISCLOSURE"
+  ],
+  "event_subjects": [
+    "长鑫科技集团股份有限公司"
+  ],
+  "affected_objects": [],
+  "impact_direction": "neutral",
+  "impact_magnitude": "minor",
+  "production_mode": "BRIEF",
+  "risk_score": 25.0,
+  "risk_level": "low",
+  "needs_review": false,
+  "review_reasons": [],
+  "title": "关于召开2026年半年度业绩说明会的公告",
+  "source_id": "cninfo_announcements",
+  "source_name": "巨潮资讯网上市公司公告",
+  "canonical_url": "https://static.cninfo.com.cn/finalpage/2026-08-29/1225529578.PDF",
+  "amounts": [],
+  "ratios": [],
+  "persons": [
+    "赵纶（总经理）",
+    "袁园（副总裁、董事会秘书）",
+    "黄丹阳（高级副总裁、财务负责人）",
+    "陈武朝（独立董事）"
+  ],
+  "organizations": [
+    "上海证券交易所上证路演中心",
+    "长鑫科技集团股份有限公司董事会"
+  ],
+  "products": [],
+  "article_sentiment": "neutral",
+  "recommended_action": "archive",
+  "extraction_confidence": 1.0,
+  "dropped_claims": [],
+  "label_source": "system",
+  "risk_breakdown": [
+    {
+      "key": "base",
+      "points": 15.0,
+      "detail": ""
+    },
+    {
+      "key": "eventhood",
+      "points": 20.0,
+      "detail": "EVENT"
+    },
+    {
+      "key": "secondhand",
+      "points": -10.0,
+      "detail": "BRIEF"
+    }
+  ],
+  "basis": {
+    "event_type": {
+      "reason": "全文为公司主动召开2026年半年度业绩说明会的公告，核心内容是组织一次面向投资者的公开交流活动，属于公司对市场关注（如半年报披露后可能产生的疑问）所作的正式回应安排；但公告本身未澄清具体传闻、未辟谣、未更正或补充披露任何事实，仅预告说明会形式与时间，无法判断其回应的具体事件类型，故仅单列RESPONSE_CLARIFICATION。",
+      "confidence": 0.95,
+      "basis": "system"
+    },
+    "event_impact": {
+      "reason": "该公告仅为按监管要求召开半年度业绩说明会的程序性通知，未披露新经营变化、财务数据变动或实质性决策，不改变公司经营、财务、治理等任何实际状态，亦不涉及投资者权益的实质调整（如分红、增发、回购等）。",
+      "confidence": 1.0,
+      "basis": "system",
+      "magnitude_basis": "routine_procedural"
+    },
+    "production_mode": null,
+    "article_sentiment": {
+      "reason": "全文采用标准公告体，使用'本公司董事会及全体董事保证……'、'重要内容提示'、'会议召开时间/地点/方式'等程式化表述，所有信息均为事实性陈述（如日期、网址、人员职务、参与方式），无任何评价性、情感性或倾向性措辞，未出现褒义词（如'优异''强劲''突破'）或贬义词（如'承压''下滑''风险'），符合中性语气判据。",
+      "confidence": 0.99,
+      "basis": "system"
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "682e816495e8944277ba4844a3676f71122ca7d39d91a0567f3b5515a2be7b33",
+      "text": "公司计划于2026 年9 月7 日（星期一）15:00-16:00\n举行2026 年半年度业绩说明会，就投资者关心的问题进行交流。",
+      "issue_code": "DISCLOSURE",
+      "claim_type": "fact",
+      "confidence": 1.0,
+      "verdict": "SUPPORTED",
+      "partial_subtype": null,
+      "evidence_page": 1,
+      "evidence_section": "(前言)",
+      "evidence_text": "长鑫科技集团股份有限公司（以下简称“公司”）已于2026 年8 月29 日发布公司2026 年半年度报告，为便于广大投资者更全面深入地了解公司2026 年半年度经营成果、财务状况，公司计划于2026 年9 月7 日（星期一）15:00-16:00 举行2026 年半年度业绩说明会，就投资者关心的问题进行交流。",
+      "evidence_version_id": "673ada2a3b17c560c3df0b1aaf2254693ae11310b1de61923c5e446b2bf5fc66",
+      "evidence_title": "关于召开2026年半年度业绩说明会的公告",
+      "evidence_url": "https://static.cninfo.com.cn/finalpage/2026-08-29/1225529578.PDF",
+      "verdict_reason": "披露原文[1]明确写道：'公司计划于2026年9月7日（星期一）15:00-16:00举行2026年半年度业绩说明会，就投资者关心的问题进行交流。'与媒体主张在时间、日期、事件名称及目的上完全一致。",
+      "verdict_method": "system_review",
+      "verdict_confidence": 1.0,
+      "inquiry": null
+    }
+  ],
+  "elements": [
+    {
+      "element_type": "organization",
+      "ordinal": 1,
+      "raw_text": "上海证券交易所上证路演中心",
+      "normalized_value": "上海证券交易所上证路演中心",
+      "unit": null,
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "organization",
+      "ordinal": 2,
+      "raw_text": "长鑫科技集团股份有限公司董事会",
+      "normalized_value": "长鑫科技集团股份有限公司董事会",
+      "unit": null,
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "person",
+      "ordinal": 1,
+      "raw_text": "赵纶（总经理）",
+      "normalized_value": "赵纶",
+      "unit": "name",
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "person",
+      "ordinal": 2,
+      "raw_text": "袁园（副总裁、董事会秘书）",
+      "normalized_value": "袁园",
+      "unit": "name",
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "person",
+      "ordinal": 3,
+      "raw_text": "黄丹阳（高级副总裁、财务负责人）",
+      "normalized_value": "黄丹阳",
+      "unit": "name",
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "person",
+      "ordinal": 4,
+      "raw_text": "陈武朝（独立董事）",
+      "normalized_value": "陈武朝",
+      "unit": "name",
+      "basis": null,
+      "status": "normalized"
+    },
+    {
+      "element_type": "subject",
+      "ordinal": 1,
+      "raw_text": "长鑫科技集团股份有限公司",
+      "normalized_value": "cxmt",
+      "unit": "company_id",
+      "basis": "alias",
+      "status": "normalized"
+    },
+    {
+      "element_type": "time",
+      "ordinal": 1,
+      "raw_text": "2026年9月7日（星期一）15:00-16:00",
+      "normalized_value": "2026-09-07",
+      "unit": "day",
+      "basis": "explicit",
+      "status": "normalized"
+    }
+  ],
+  "timeline": {
+    "event_id": "aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341",
+    "company_id": "cxmt",
+    "version_id": "673ada2a3b17c560c3df0b1aaf2254693ae11310b1de61923c5e446b2bf5fc66",
+    "timeline_at": "2026-08-29",
+    "time_basis": "published_at",
+    "time_precision": "day",
+    "phase": "LISTED",
+    "phase_label": "上市后",
+    "phase_coefficient": 1.0,
+    "base_risk_score": 25.0,
+    "adjusted_risk_score": 25.0,
+    "adjusted_risk_level": "low",
+    "claim_count": 1,
+    "new_fact_count": 1,
+    "novelty": 1.0
+  },
+  "market_reaction": {
+    "symbol": "sh688825",
+    "benchmark_symbol": "sh000300",
+    "anchor_date": "2026-08-31",
+    "anchor_basis": "published_at",
+    "baseline_date": "2026-08-28",
+    "car_1": -0.013520066431604194,
+    "car_3": -0.0614170729951683,
+    "car_5": -0.052295629504232055,
+    "sigma": 0.03694114395362565,
+    "observed_direction": "none",
+    "significant": 0,
+    "agrees": null
+  },
+  "alerts": [],
+  "propagation": [
+    {
+      "component_id": "96002a83b32d1f35d750bc88",
+      "member_count": 1,
+      "source_count": 1,
+      "first_published_at": "2026-08-29",
+      "last_published_at": "2026-08-29"
+    }
+  ],
+  "duplicate_cluster": null,
+  "causal_edges": []
+}

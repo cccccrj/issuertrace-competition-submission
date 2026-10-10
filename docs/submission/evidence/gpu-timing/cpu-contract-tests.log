@@ -1,0 +1,62 @@
+test_a_claim_without_neighbours_gets_plain_bm25 (tests.test_dense_index.BundleTests) ... /opt/projects/issuertrace-competition-submission/.venv/lib/python3.10/site-packages/zhconv/zhconv.py:76: ResourceWarning: unclosed file <_io.BufferedReader name='/opt/projects/issuertrace-competition-submission/.venv/lib/python3.10/site-packages/zhconv/zhcdict.json'>
+  zhcdicts = json.loads(get_module_res(filename).read().decode('utf-8'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_an_installed_file_goes_quiet_once_paragraphs_change (tests.test_dense_index.BundleTests) ... ok
+test_appended_candidates_are_marked (tests.test_dense_index.BundleTests) ... ok
+test_changed_lists_only_claims_whose_evidence_moves (tests.test_dense_index.BundleTests) ... ok
+test_claim_verdict_hybrid_mode_without_vectors_is_bm25 (tests.test_dense_index.BundleTests) ... ok
+test_export_writes_ids_company_and_text_only (tests.test_dense_index.BundleTests) ... ok
+test_fallback_keeps_bm25_five_and_only_appends (tests.test_dense_index.BundleTests) ... ok
+test_fallback_only_accepts_supported_resting_on_dense_evidence (tests.test_dense_index.BundleTests) ... ok
+test_fallback_targets_are_unverifiable_claims_with_new_evidence (tests.test_dense_index.BundleTests) ... ok
+test_fallback_without_vectors_is_exactly_bm25 (tests.test_dense_index.BundleTests) ... ok
+test_hybrid_brings_in_a_paragraph_only_the_vectors_found (tests.test_dense_index.BundleTests) ... ok
+test_hybrid_never_crosses_companies (tests.test_dense_index.BundleTests) ... ok
+test_install_refuses_a_bundle_built_before_the_paragraphs_changed (tests.test_dense_index.BundleTests) ... ok
+test_install_refuses_a_partial_run (tests.test_dense_index.BundleTests) ... ok
+test_the_gpu_script_refuses_an_altered_bundle (tests.test_dense_index.BundleTests) ... queries.jsonl does not match export.json -- the bundle was altered or copied incompletely
+ok
+test_the_gpu_script_round_trips_with_the_fake_encoder (tests.test_dense_index.BundleTests) ... [wuxi_apptec] embedding 2 paragraphs, 1 claims
+ok
+test_the_schema_lets_the_model_cite_an_appended_candidate (tests.test_dense_index.BundleTests) ... ok
+test_an_item_both_lists_rank_high_wins (tests.test_dense_index.FusionTests) ... ok
+test_items_only_one_list_has_are_kept (tests.test_dense_index.FusionTests) ... ok
+test_ties_keep_first_seen_order (tests.test_dense_index.FusionTests) ... ok
+test_distinctive_figures_only (tests.test_dense_index.GoldTests) ... ok
+test_gold_sets_from_figures_and_wording (tests.test_dense_index.GoldTests) ... ok
+test_language (tests.test_dense_index.GoldTests) ... ok
+test_score (tests.test_dense_index.GoldTests) ... ok
+test_the_adoption_rule (tests.test_dense_index.GoldTests) ... ok
+test_the_claims_own_source_is_never_gold (tests.test_dense_index.GoldTests) ... ok
+test_cross_company_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_duplicate_candidate_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_fp16_rounding_tolerance (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_full_company_scoped_neighbors (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_linear_percentile_and_std (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_missing_query_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_nonfinite_scores_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_outside_fp16_tolerance_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+test_unsorted_scores_rejected (tests.test_submission_gpu.GpuSubmissionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.178s
+
+OK
+{
+  "model": "fake-hashed-bow",
+  "fake": true,
+  "dimensions": 512,
+  "top_k": 20,
+  "max_length": 512,
+  "limit": null,
+  "paragraphs": 2,
+  "queries": 1,
+  "seconds": 0.0,
+  "built_at": "2026-10-09T12:52:36Z",
+  "input_sha256": {
+    "paragraphs.jsonl": "d106aacb0050acc9caa712380ec0406ea66cc52941e65c53161f54c2dfbce66a",
+    "queries.jsonl": "e2c0f8d6c799fcd41c88230ee61f67626a848d24e333228666a7d68bd619638d"
+  },
+  "neighbors_sha256": "51a99950a6e2b738ea517d25630e02ee926f8b162d4c000996187dd3c1eea188"
+}

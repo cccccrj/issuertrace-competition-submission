@@ -1,0 +1,116 @@
+
+> listed-company-event-intelligence-web@1.0.0 build
+> vite build
+
+vite v6.4.3 building for production...
+transforming...
+✓ 3394 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                0.95 kB │ gzip:   0.63 kB
+dist/assets/EvidenceCite-1gB-QFN6.css          0.06 kB │ gzip:   0.08 kB
+dist/assets/FilterBar-Ca2LxFin.css             0.09 kB │ gzip:   0.09 kB
+dist/assets/SearchView-CojUDeyj.css            0.16 kB │ gzip:   0.14 kB
+dist/assets/Loading-DfMWpv4z.css               0.25 kB │ gzip:   0.18 kB
+dist/assets/VerdictBadge-DjBEfAO_.css          0.30 kB │ gzip:   0.18 kB
+dist/assets/NotificationsView-Bhp8HpQy.css     0.35 kB │ gzip:   0.21 kB
+dist/assets/LevelBadge-BsJgr3ao.css            0.38 kB │ gzip:   0.23 kB
+dist/assets/IssuesView-CbHxe1xS.css            0.48 kB │ gzip:   0.25 kB
+dist/assets/StatTile-f6riF5cL.css              0.54 kB │ gzip:   0.28 kB
+dist/assets/Callout-BjcOrs2_.css               0.55 kB │ gzip:   0.26 kB
+dist/assets/DuplicatesView-CzBqkyN4.css        0.60 kB │ gzip:   0.30 kB
+dist/assets/index-b4mYEh4l.css                 0.60 kB │ gzip:   0.31 kB
+dist/assets/DataTable-BBsNVVrO.css             0.61 kB │ gzip:   0.32 kB
+dist/assets/NumericCheck-CFCO6aby.css          0.63 kB │ gzip:   0.32 kB
+dist/assets/EventsView-Wd5a-NY6.css            0.67 kB │ gzip:   0.30 kB
+dist/assets/InvestigationsView-CUxmPulm.css    0.70 kB │ gzip:   0.31 kB
+dist/assets/ElementsView-DYOgPPcq.css          0.75 kB │ gzip:   0.35 kB
+dist/assets/PageHeader-BGT_IMHa.css            0.81 kB │ gzip:   0.35 kB
+dist/assets/DiffsView-lRo05F3X.css             0.83 kB │ gzip:   0.34 kB
+dist/assets/VerdictBar-D5GIcccq.css            0.85 kB │ gzip:   0.41 kB
+dist/assets/TechDetails-BW0nMoy3.css           0.87 kB │ gzip:   0.38 kB
+dist/assets/AuditView-DErbI-CJ.css             0.88 kB │ gzip:   0.40 kB
+dist/assets/MasterDataView-DLT_Ug03.css        0.89 kB │ gzip:   0.36 kB
+dist/assets/ProfilingView-CtWQp5z_.css         0.90 kB │ gzip:   0.37 kB
+dist/assets/UsersView-C0Lhn26O.css             0.94 kB │ gzip:   0.39 kB
+dist/assets/CompanyView-BnqurVC1.css           0.95 kB │ gzip:   0.36 kB
+dist/assets/SubscriptionsView-DPK3_HbK.css     1.03 kB │ gzip:   0.39 kB
+dist/assets/RisksView-BPqnyLrW.css             1.04 kB │ gzip:   0.40 kB
+dist/assets/TimelineView-Beea2Zpl.css          1.17 kB │ gzip:   0.47 kB
+dist/assets/TasksView-CVAAVqMg.css             1.18 kB │ gzip:   0.43 kB
+dist/assets/ClaimsView-Ch-vbnXj.css            1.25 kB │ gzip:   0.44 kB
+dist/assets/InquiryChain-3tdw2nqN.css          1.28 kB │ gzip:   0.51 kB
+dist/assets/OutboxView-bzUSRKVj.css            1.40 kB │ gzip:   0.49 kB
+dist/assets/ReportView-l-BNTGhn.css            1.41 kB │ gzip:   0.53 kB
+dist/assets/IngestionView-CpWlNRIR.css         1.50 kB │ gzip:   0.57 kB
+dist/assets/PropagationView-o86wMbis.css       1.55 kB │ gzip:   0.60 kB
+dist/assets/RiskCenterView-D8KsFxOc.css        1.67 kB │ gzip:   0.56 kB
+dist/assets/BenchmarkView-B1ZL_QgS.css         2.14 kB │ gzip:   0.65 kB
+dist/assets/GuideView-C3He_wAd.css             2.46 kB │ gzip:   0.68 kB
+dist/assets/AssistantPanel-CLdEKlpe.css        2.51 kB │ gzip:   0.80 kB
+dist/assets/IssueDetailView-D1cMNEdy.css       2.78 kB │ gzip:   0.76 kB
+dist/assets/ReviewView-ivvTDJX7.css            4.11 kB │ gzip:   1.10 kB
+dist/assets/EventDetailView-hmBcNy-C.css       4.20 kB │ gzip:   1.14 kB
+dist/assets/RiskDossierView-D4OI9Sse.css       4.61 kB │ gzip:   1.16 kB
+dist/assets/OverviewView-DXPKoOMP.css          6.69 kB │ gzip:   1.78 kB
+dist/assets/LoginView-DfjaVCJN.css            10.30 kB │ gzip:   2.58 kB
+dist/assets/index-DunfS02Y.css                16.75 kB │ gzip:   4.09 kB
+dist/assets/deeplink-2qzOEcHD.js               0.27 kB │ gzip:   0.22 kB
+dist/assets/Loading-CQNAoj22.js                0.34 kB │ gzip:   0.30 kB
+dist/assets/Callout-BOQXVU1c.js                0.48 kB │ gzip:   0.32 kB
+dist/assets/CompanySelect-BBWf8fHN.js          0.55 kB │ gzip:   0.36 kB
+dist/assets/FilterBar-CZ6mnVmY.js              0.55 kB │ gzip:   0.41 kB
+dist/assets/EnumSelect-Bu5eLBfS.js             0.67 kB │ gzip:   0.40 kB
+dist/assets/StatTile-CWgchWsf.js               0.70 kB │ gzip:   0.44 kB
+dist/assets/LevelBadge-DeO10Jwd.js             0.76 kB │ gzip:   0.50 kB
+dist/assets/Pager-Bvo87Beu.js                  0.76 kB │ gzip:   0.46 kB
+dist/assets/VerdictBadge-Db6L6sjt.js           0.81 kB │ gzip:   0.52 kB
+dist/assets/TechDetails-Dl087TJI.js            0.83 kB │ gzip:   0.51 kB
+dist/assets/EvidenceCite-T21A_x-R.js           1.11 kB │ gzip:   0.57 kB
+dist/assets/VerdictBar-CtaDjr8U.js             1.44 kB │ gzip:   0.83 kB
+dist/assets/PageHeader-_41kyNZx.js             1.68 kB │ gzip:   0.88 kB
+dist/assets/SearchView--sFQ5e5D.js             1.94 kB │ gzip:   1.24 kB
+dist/assets/DataTable-Bj9WWyzx.js              1.97 kB │ gzip:   0.95 kB
+dist/assets/NumericCheck-DrBugqQY.js           2.09 kB │ gzip:   1.21 kB
+dist/assets/InquiryChain-56RRDTC8.js           2.49 kB │ gzip:   1.29 kB
+dist/assets/glossary-CebNTfpO.js               3.30 kB │ gzip:   2.10 kB
+dist/assets/NotificationsView-DwInd-vS.js      3.32 kB │ gzip:   1.79 kB
+dist/assets/TasksView-CRRiFD7S.js              3.75 kB │ gzip:   1.99 kB
+dist/assets/InvestigationsView-Dg-So4LY.js     4.51 kB │ gzip:   2.28 kB
+dist/assets/DiffsView-7AyZcUb-.js              4.70 kB │ gzip:   2.18 kB
+dist/assets/AssistantPanel-CAqQNKTs.js         4.95 kB │ gzip:   2.55 kB
+dist/assets/LoginView-COjShHEd.js              5.05 kB │ gzip:   2.52 kB
+dist/assets/IssuesView-BCzlne-j.js             5.52 kB │ gzip:   2.66 kB
+dist/assets/ElementsView-pZDfy-ff.js           5.78 kB │ gzip:   2.65 kB
+dist/assets/TimelineView-o8FzAOFu.js           5.92 kB │ gzip:   2.76 kB
+dist/assets/CompanyView-rzB80umX.js            6.40 kB │ gzip:   2.93 kB
+dist/assets/EventsView-D0V80-Yh.js             6.60 kB │ gzip:   2.97 kB
+dist/assets/RiskCenterView-CBqc7kd6.js         7.08 kB │ gzip:   3.31 kB
+dist/assets/BenchmarkView-BMiHx1it.js          7.16 kB │ gzip:   3.27 kB
+dist/assets/index-BaAum75e.js                  7.17 kB │ gzip:   3.15 kB
+dist/assets/ProfilingView-ogc8OqxA.js          7.20 kB │ gzip:   3.17 kB
+dist/assets/MasterDataView-D6Ie3ERr.js         7.40 kB │ gzip:   3.40 kB
+dist/assets/UsersView-17lt72n2.js              7.42 kB │ gzip:   2.79 kB
+dist/assets/DuplicatesView-BX3BBu9M.js         7.68 kB │ gzip:   3.48 kB
+dist/assets/SubscriptionsView-QzmqwS7H.js      7.85 kB │ gzip:   3.40 kB
+dist/assets/ReportView-CwSgbSc6.js             8.47 kB │ gzip:   3.46 kB
+dist/assets/RisksView-C1Kzxjge.js              8.96 kB │ gzip:   3.96 kB
+dist/assets/OutboxView-BOxDxyRu.js             8.97 kB │ gzip:   3.98 kB
+dist/assets/IngestionView-SUYwXSPv.js          9.09 kB │ gzip:   3.74 kB
+dist/assets/GuideView-DQcfZqkO.js              9.12 kB │ gzip:   4.57 kB
+dist/assets/IssueDetailView-BE91k4_4.js        9.77 kB │ gzip:   4.29 kB
+dist/assets/ClaimsView-CqbIPBA5.js             9.88 kB │ gzip:   4.03 kB
+dist/assets/PropagationView-XgBYXrFv.js       11.22 kB │ gzip:   4.94 kB
+dist/assets/AuditView-B8bfWG9o.js             11.44 kB │ gzip:   3.96 kB
+dist/assets/OverviewView-CTswje1V.js          13.22 kB │ gzip:   5.73 kB
+dist/assets/EventDetailView-1RmKOFYZ.js       19.22 kB │ gzip:   7.68 kB
+dist/assets/ReviewView-BrtDoLjW.js            23.44 kB │ gzip:   9.23 kB
+dist/assets/RiskDossierView-msL5TZDV.js       24.96 kB │ gzip:   9.67 kB
+dist/assets/index-DIGYcWL4.js                254.03 kB │ gzip:  86.35 kB
+dist/assets/echarts-D3YSR4fk.js              657.45 kB │ gzip: 223.79 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 18.17s

@@ -1,0 +1,14 @@
+{
+  "project": "IssuerTrace / 上市公司事件智识",
+  "release": "v1.0",
+  "application_baseline": "58c47073c5cf3ab943c91900d8bf23cc133c59c7",
+  "snapshot_date_utc": "2026-10-08",
+  "submission_repository": "cccccrj/issuertrace-competition-submission",
+  "private": true,
+  "source_policy": "Single frozen v1.0 submission snapshot; main branch only; retain measured baseline provenance",
+  "runtime_policy": "Sanitized analytical SQLite snapshot and frontend in the V1.0 Release; live credentials provided separately",
+  "delivered_data": "Complete sanitized processed business and organizer benchmark databases, matching precomputed retrieval neighbors",
+  "gpu": "Three completed 4090D BGE-M3 timing runs with integration evidence",
+  "video": "Required 3-5 minutes; file and entry pending",
+  "excluded": ["production credentials", "LLM API keys", "instance signing keys", "nonpublic personal records"]
+}

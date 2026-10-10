@@ -1,0 +1,9 @@
+{
+  "paragraphs": 93209,
+  "queries": 3922,
+  "paragraph_fingerprint": "e131aea74bede795b702cc29eb548745fc98690a213ed3c1b88b529077f202f0",
+  "sha256": {
+    "paragraphs.jsonl": "94497cac311765d5ac647819f732459022d2539a3a18d75c263f1716c856bcc6",
+    "queries.jsonl": "0dc7ecc864ab7cb0d524766a6b82afd72410eb56e15bde958cdda4a4f012da6c"
+  }
+}

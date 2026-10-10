@@ -1,0 +1,36 @@
+{
+  "version": "v1.0",
+  "assets": [
+    {
+      "filename": "IssuerTrace-V1.0-presentation.pptx",
+      "kind": "presentation",
+      "bytes": 14347955,
+      "sha256": "5feb83a35a26e4a679e39338a13081274d37c68864df181849da7f9412d8dda9",
+      "content_unchanged": true,
+      "delivery_scope": "private competition submission",
+      "slides": 30,
+      "owner_confirmed_final": true
+    },
+    {
+      "filename": "IssuerTrace-V1.0-demo.mp4",
+      "kind": "demo_video",
+      "bytes": 17964514,
+      "sha256": "9db437bc3d78aea7d23c63b08dbc20e963f523f13e70557a6039978f36979329",
+      "content_unchanged": true,
+      "delivery_scope": "private competition submission",
+      "duration_seconds": 193.577,
+      "full_decode_passed": true,
+      "owner_confirmed_final": true
+    }
+  ],
+  "approved_visible_information": {
+    "presentation": [
+      "platform URL"
+    ],
+    "demo_video": [
+      "browser address bar and platform URL"
+    ]
+  },
+  "publication_authorized": false,
+  "review_scope": "Owner-selected final attachments kept byte-identical; PPT structure/text, video duration/full decoding and sampled frames checked. Display addresses retained by owner confirmation; credentials and API keys separately managed. Not a new application test or exhaustive frame/audio review."
+}

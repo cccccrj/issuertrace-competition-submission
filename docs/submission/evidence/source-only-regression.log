@@ -1,0 +1,72 @@
+/home/demo/lcei-submission-repro-20261009/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_a_deactivated_account_cannot_sign_in (tests.test_auth.CredentialTests.test_a_deactivated_account_cannot_sign_in) ... /home/demo/lcei-submission-repro-20261009/.venv/lib/python3.12/site-packages/zhconv/zhconv.py:76: ResourceWarning: unclosed file <_io.BufferedReader name='/home/demo/lcei-submission-repro-20261009/.venv/lib/python3.12/site-packages/zhconv/zhcdict.json'>
+  zhcdicts = json.loads(get_module_res(filename).read().decode('utf-8'))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_a_wrong_password_neither_signs_in_nor_sets_a_cookie (tests.test_auth.CredentialTests.test_a_wrong_password_neither_signs_in_nor_sets_a_cookie) ... ok
+test_no_accounts_means_nobody_gets_in_and_the_log_says_how_to_fix_it (tests.test_auth.CredentialTests.test_no_accounts_means_nobody_gets_in_and_the_log_says_how_to_fix_it) ... ok
+test_repeated_failures_are_throttled (tests.test_auth.CredentialTests.test_repeated_failures_are_throttled) ... ok
+test_the_message_does_not_say_which_half_was_wrong (tests.test_auth.CredentialTests.test_the_message_does_not_say_which_half_was_wrong) ... ok
+test_a_new_endpoint_is_protected_without_being_listed (tests.test_auth.GateTests.test_a_new_endpoint_is_protected_without_being_listed) ... ok
+test_data_endpoints_refuse_an_anonymous_caller (tests.test_auth.GateTests.test_data_endpoints_refuse_an_anonymous_caller) ... ok
+test_liveness_and_the_app_shell_stay_public (tests.test_auth.GateTests.test_liveness_and_the_app_shell_stay_public) ... ok
+test_signing_in_opens_the_data_endpoints (tests.test_auth.GateTests.test_signing_in_opens_the_data_endpoints) ... ok
+test_signing_out_closes_them_again (tests.test_auth.GateTests.test_signing_out_closes_them_again) ... ok
+test_a_failure_to_record_never_fails_the_action_it_records (tests.test_auth.PlatformAuditTests.test_a_failure_to_record_never_fails_the_action_it_records)
+留痕写不进去的代价是少一行；写崩了的代价是这个动作从此不能用。 ... （平台动作未能留痕：login / disk gone）
+ok
+test_a_refused_permission_change_is_recorded_as_refused (tests.test_auth.PlatformAuditTests.test_a_refused_permission_change_is_recorded_as_refused) ... ok
+test_a_refused_sign_in_leaves_one_too (tests.test_auth.PlatformAuditTests.test_a_refused_sign_in_leaves_one_too) ... ok
+test_a_role_change_says_what_it_changed_from (tests.test_auth.PlatformAuditTests.test_a_role_change_says_what_it_changed_from) ... ok
+test_a_successful_sign_in_leaves_one_line (tests.test_auth.PlatformAuditTests.test_a_successful_sign_in_leaves_one_line) ... ok
+test_being_throttled_is_itself_recorded (tests.test_auth.PlatformAuditTests.test_being_throttled_is_itself_recorded) ... ok
+test_deactivating_an_account_is_recorded (tests.test_auth.PlatformAuditTests.test_deactivating_an_account_is_recorded) ... ok
+test_the_password_never_reaches_the_log (tests.test_auth.PlatformAuditTests.test_the_password_never_reaches_the_log) ... ok
+test_the_trail_only_grows (tests.test_auth.PlatformAuditTests.test_the_trail_only_grows)
+这个模块没有 UPDATE 也没有 DELETE——一份能被改的审计记录不是审计记录。 ... ok
+test_an_unknown_role_carries_no_authority (tests.test_auth.RoleTests.test_an_unknown_role_carries_no_authority) ... ok
+test_authority_accumulates_up_the_ladder (tests.test_auth.RoleTests.test_authority_accumulates_up_the_ladder) ... ok
+test_a_tampered_payload_is_rejected (tests.test_auth.TokenTests.test_a_tampered_payload_is_rejected) ... ok
+test_a_token_names_the_user_and_role_it_was_issued_to (tests.test_auth.TokenTests.test_a_token_names_the_user_and_role_it_was_issued_to) ... ok
+test_a_token_naming_an_unknown_role_is_refused (tests.test_auth.TokenTests.test_a_token_naming_an_unknown_role_is_refused) ... ok
+test_a_token_signed_with_another_secret_is_rejected (tests.test_auth.TokenTests.test_a_token_signed_with_another_secret_is_rejected) ... ok
+test_a_username_containing_the_delimiter_stays_one_username (tests.test_auth.TokenTests.test_a_username_containing_the_delimiter_stays_one_username) ... ok
+test_an_expired_token_proves_nothing (tests.test_auth.TokenTests.test_an_expired_token_proves_nothing) ... ok
+test_the_cookie_is_not_readable_by_scripts (tests.test_auth.TokenTests.test_the_cookie_is_not_readable_by_scripts) ... ok
+test_a_reset_password_is_stored_hashed_not_in_the_clear (tests.test_auth.UserManagementTests.test_a_reset_password_is_stored_hashed_not_in_the_clear) ... ok
+test_a_short_password_is_refused_with_a_reason (tests.test_auth.UserManagementTests.test_a_short_password_is_refused_with_a_reason) ... ok
+test_an_admin_can_create_an_account_that_then_signs_in (tests.test_auth.UserManagementTests.test_an_admin_can_create_an_account_that_then_signs_in) ... ok
+test_an_analyst_cannot_reset_someone_elses_password (tests.test_auth.UserManagementTests.test_an_analyst_cannot_reset_someone_elses_password) ... ok
+test_anyone_can_change_their_own_password_but_must_prove_the_old_one (tests.test_auth.UserManagementTests.test_anyone_can_change_their_own_password_but_must_prove_the_old_one) ... ok
+test_only_an_admin_sees_the_account_list (tests.test_auth.UserManagementTests.test_only_an_admin_sees_the_account_list) ... ok
+test_the_last_admin_cannot_lock_everyone_out (tests.test_auth.UserManagementTests.test_the_last_admin_cannot_lock_everyone_out) ... ok
+test_a_role_change_takes_effect_without_signing_in_again (tests.test_auth.UserTableTests.test_a_role_change_takes_effect_without_signing_in_again) ... ok
+test_a_stored_password_is_not_recoverable_from_the_file (tests.test_auth.UserTableTests.test_a_stored_password_is_not_recoverable_from_the_file) ... ok
+test_an_account_signs_in_with_its_own_role (tests.test_auth.UserTableTests.test_an_account_signs_in_with_its_own_role) ... ok
+test_an_unknown_role_is_refused_rather_than_downgraded (tests.test_auth.UserTableTests.test_an_unknown_role_is_refused_rather_than_downgraded) ... ok
+test_an_unknown_username_costs_what_a_wrong_password_costs (tests.test_auth.UserTableTests.test_an_unknown_username_costs_what_a_wrong_password_costs) ... ok
+test_deactivating_an_account_ends_its_live_session (tests.test_auth.UserTableTests.test_deactivating_an_account_ends_its_live_session) ... ok
+test_the_legacy_accounts_file_is_imported_once_and_only_when_empty (tests.test_auth.UserTableTests.test_the_legacy_accounts_file_is_imported_once_and_only_when_empty) ... ok
+test_two_accounts_with_one_password_do_not_share_a_hash (tests.test_auth.UserTableTests.test_two_accounts_with_one_password_do_not_share_a_hash) ... ok
+test_the_error_says_password_not_passphrase (tests.test_auth.WordingTests.test_the_error_says_password_not_passphrase) ... ok
+test_the_password_rules_say_password_too (tests.test_auth.WordingTests.test_the_password_rules_say_password_too) ... ok
+test_api_documentation_is_not_published (tests.test_exposure.AnonymousSurfaceTests.test_api_documentation_is_not_published) ... ok
+test_every_response_carries_a_request_id (tests.test_exposure.AnonymousSurfaceTests.test_every_response_carries_a_request_id) ... ok
+test_health_says_only_that_the_platform_is_up (tests.test_exposure.AnonymousSurfaceTests.test_health_says_only_that_the_platform_is_up) ... ok
+test_system_status_needs_a_session (tests.test_exposure.AnonymousSurfaceTests.test_system_status_needs_a_session) ... ok
+test_an_unexpected_failure_hides_the_exception (tests.test_exposure.ErrorShapeTests.test_an_unexpected_failure_hides_the_exception) ... ok
+test_an_unknown_api_route_answers_in_chinese (tests.test_exposure.ErrorShapeTests.test_an_unknown_api_route_answers_in_chinese) ... ok
+test_an_absolute_path_is_not_served (tests.test_exposure.TraversalTests.test_an_absolute_path_is_not_served) ... ok
+test_encoded_dot_segments_cannot_leave_the_client_directory (tests.test_exposure.TraversalTests.test_encoded_dot_segments_cannot_leave_the_client_directory) ... ok
+test_the_built_client_is_still_served (tests.test_exposure.TraversalTests.test_the_built_client_is_still_served) ... ok
+test_a_human_judgement_is_not_cascaded_away_with_its_event (tests.test_processing_pipeline.EventCascadeTests.test_a_human_judgement_is_not_cascaded_away_with_its_event) ... ok
+test_a_table_that_does_not_exist_yet_is_a_state_not_a_crash (tests.test_processing_pipeline.EventCascadeTests.test_a_table_that_does_not_exist_yet_is_a_state_not_a_crash) ... ok
+test_children_go_even_when_their_table_arrived_after_the_pipeline (tests.test_processing_pipeline.EventCascadeTests.test_children_go_even_when_their_table_arrived_after_the_pipeline) ... ok
+test_the_cascade_list_covers_every_table_keyed_on_an_event (tests.test_processing_pipeline.EventCascadeTests.test_the_cascade_list_covers_every_table_keyed_on_an_event) ... ok
+test_the_fda_recall_table_is_not_treated_as_a_child (tests.test_processing_pipeline.EventCascadeTests.test_the_fda_recall_table_is_not_treated_as_a_child) ... ok
+
+----------------------------------------------------------------------
+Ran 59 tests in 37.212s
+
+OK

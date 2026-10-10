@@ -1,0 +1,192 @@
+# 机构主数据：出现在事件主体里、但不是被监控上市公司的组织。
+#
+# 存在的理由，从数据里读出来：`event_elements` 有 1,151 个互不相同的未解析主体，
+# 其中 610 个是机构名。同一家机构最多有过四种写法——「中金公司」「中国国际金融
+# 股份有限公司」「中金财富」「中国国际金融股份有限公司北京建国门外大街证券营业部」
+# 各自成一行，谁也不知道它们是一家。
+#
+# 这**不是** `sources.yaml` 的 `entities` 的补充名单。两者的命名空间刻意分开：
+# `entities` 归一到 `company_id`，是被监控主体；本文件归一到 `org_id`，是**其他人**。
+# 药明生物、药明合联、WuXi Biologics 在 `sources.yaml` 里被 `exclude_or_review`
+# 明确挡在药明康德之外，因为它们是独立上市主体；把它们收进本文件**不会**改变这一点，
+# 只是让它们从「未解析」变成「有名字的第三方」。
+#
+# 收录门槛：语料中出现 ≥8 次。低于这个数的尾巴很长（1,151 个取值里绝大多数只出现
+# 一两次），逐个编名字是在发明词表而不是整理已有事实——与 `root_document_type`
+# 保持原样是同一条理由。
+#
+# `aliases` 只写**整体等同**的写法。分支机构不必列举：证券营业部、总部、分公司这类
+# 后缀由 `resolve_organization` 的前缀规则处理，见 `processor/normalize.py`。
+
+version: 1
+last_reviewed: "2026-09-04"
+
+organizations:
+  # —— 交易所与监管 ——
+  sse:
+    canonical_name: "上海证券交易所"
+    kind: exchange
+    aliases: ["上交所", "Shanghai Stock Exchange", "SSE", "上交所上市委", "上海证券交易所上市审核委员会"]
+  csrc:
+    canonical_name: "中国证券监督管理委员会"
+    kind: regulator
+    aliases: ["证监会", "中国证监会", "CSRC", "China Securities Regulatory Commission"]
+  anhui_eeb:
+    canonical_name: "安徽省生态环境厅"
+    kind: regulator
+
+  # —— 中介机构：券商与会计师事务所 ——
+  cicc:
+    canonical_name: "中国国际金融股份有限公司"
+    kind: broker
+    aliases: ["中金公司", "中金", "中金财富", "CICC", "China International Capital Corporation"]
+  csc:
+    canonical_name: "中信建投证券股份有限公司"
+    kind: broker
+    aliases: ["中信建投", "中信建投证券"]
+  citic_securities:
+    canonical_name: "中信证券股份有限公司"
+    kind: broker
+    aliases: ["中信证券"]
+  huatai_united:
+    canonical_name: "华泰联合证券有限责任公司"
+    kind: broker
+    aliases: ["华泰联合证券", "华泰联合"]
+  guotai_haitong:
+    canonical_name: "国泰海通证券股份有限公司"
+    kind: broker
+    aliases: ["国泰海通", "国泰海通证券"]
+  guoyuan_securities:
+    canonical_name: "国元证券股份有限公司"
+    kind: broker
+    aliases: ["国元证券"]
+  cmschina:
+    canonical_name: "招商证券股份有限公司"
+    kind: broker
+    aliases: ["招商证券"]
+  ubs_securities:
+    canonical_name: "瑞银证券有限责任公司"
+    kind: broker
+    aliases: ["瑞银证券", "UBS Securities"]
+  citigroup_gm:
+    canonical_name: "Citigroup Global Markets Limited"
+    kind: broker
+    aliases: ["花旗环球金融有限公司"]
+  deloitte_cn:
+    # 全角与半角括号各出现过一次，两种都收：折叠只做繁简，不动标点。
+    canonical_name: "德勤华永会计师事务所（特殊普通合伙）"
+    kind: auditor
+    aliases: ["德勤华永会计师事务所(特殊普通合伙)", "德勤华永", "德勤"]
+
+  # —— 长鑫的关联主体与股东 ——
+  cxmt_integrated:
+    canonical_name: "长鑫集成电路有限责任公司"
+    kind: affiliate
+    aliases: ["长鑫集成", "长鑫集电", "长鑫新桥"]
+  qinghui_jidian:
+    canonical_name: "清辉集电（合肥）科技有限公司"
+    kind: affiliate
+    aliases: ["清辉集电"]
+  hefei_jixin:
+    canonical_name: "合肥集鑫集成电路有限公司"
+    kind: shareholder
+    aliases: ["合肥集鑫"]
+  big_fund_ii:
+    canonical_name: "国家集成电路产业投资基金二期股份有限公司"
+    kind: shareholder
+    aliases: ["大基金二期", "国家大基金二期"]
+  anhui_provincial_investment:
+    canonical_name: "安徽省投资集团控股有限公司"
+    kind: shareholder
+    aliases: ["安徽省投"]
+  hefei_chantou_1:
+    canonical_name: "合肥产投壹号股权投资合伙企业（有限合伙）"
+    kind: shareholder
+    aliases: ["合肥产投壹号"]
+  hebai_group:
+    canonical_name: "合肥百货大楼集团股份有限公司"
+    kind: shareholder
+    aliases: ["合百集团"]
+
+  # —— 药明的关联主体 ——
+  wuxi_biologics:
+    # `sources.yaml` 把它挡在药明康德之外，因为它是独立上市主体。收进这里只是给它
+    # 一个名字，归一到 org_id 而非 company_id，隔离没有被削弱。
+    canonical_name: "药明生物技术有限公司"
+    kind: affiliate
+    aliases: ["药明生物", "WuXi Biologics"]
+  wuxi_xdc:
+    canonical_name: "药明合联生物技术有限公司"
+    kind: affiliate
+    aliases: ["药明合联", "WuXi XDC", "WuXi XDC Cayman Inc."]
+  shanghai_jinshi:
+    canonical_name: "上海药明津石医药科技有限公司"
+    kind: subsidiary
+  shanghai_kangde_hongyi:
+    canonical_name: "上海康德弘翼医学临床研究有限公司"
+    kind: subsidiary
+
+  # —— 同业与产业对手 ——
+  gigadevice:
+    canonical_name: "兆易创新科技集团股份有限公司"
+    kind: peer
+    aliases: ["兆易创新", "GigaDevice"]
+  sk_hynix:
+    canonical_name: "SK海力士"
+    kind: peer
+    aliases: ["SK Hynix", "海力士"]
+  samsung:
+    canonical_name: "三星电子"
+    kind: peer
+    aliases: ["三星", "Samsung", "Samsung Electronics"]
+  micron:
+    canonical_name: "美光科技"
+    kind: peer
+    aliases: ["美光", "Micron", "Micron Technology"]
+  xiaomi:
+    canonical_name: "小米集团"
+    kind: peer
+    aliases: ["小米", "Xiaomi"]
+  bgi_group:
+    canonical_name: "BGI Group"
+    kind: peer
+    aliases: ["华大基因集团"]
+  mgi_tech:
+    canonical_name: "MGI Tech Co., Ltd."
+    kind: peer
+    aliases: ["MGI", "华大智造"]
+  complete_genomics:
+    canonical_name: "Complete Genomics"
+    kind: peer
+
+  # —— 美国政府、立法与司法 ——
+  us_dod:
+    canonical_name: "美国国防部"
+    kind: foreign_government
+    aliases: ["U.S. Department of Defense", "US Department of Defense", "Department of Defense",
+              "the Pentagon", "五角大楼"]
+  us_house:
+    canonical_name: "美国众议院"
+    kind: legislature
+    aliases: ["U.S. House of Representatives", "House of Representatives"]
+  us_senate:
+    canonical_name: "美国参议院"
+    kind: legislature
+    aliases: ["U.S. Senate", "the Senate"]
+  us_ddc:
+    canonical_name: "美国哥伦比亚特区联邦地区法院"
+    kind: court
+    aliases: ["U.S. District Court for the District of Columbia"]
+
+  # —— 其他 ——
+  icbc:
+    canonical_name: "中国工商银行股份有限公司"
+    kind: bank
+    aliases: ["工商银行", "工行", "ICBC"]
+  msci:
+    canonical_name: "MSCI"
+    kind: index_provider
+    aliases: ["明晟"]
+  ecovadis:
+    canonical_name: "EcoVadis"
+    kind: rating_agency

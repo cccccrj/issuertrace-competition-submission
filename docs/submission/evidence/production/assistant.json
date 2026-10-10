@@ -1,0 +1,214 @@
+{
+  "input": {
+    "scope": "risk",
+    "id": "9cba9d7127b83a1b6492b6ec",
+    "question": "这条风险有哪些事实依据？请区分机器判断与待核验内容。"
+  },
+  "status": 200,
+  "first_event_seconds": 0.136,
+  "total_seconds": 42.046,
+  "events": [
+    {
+      "type": "step",
+      "step": {
+        "tool": "risk",
+        "label": "查看风险事项",
+        "query": "当前页面",
+        "by": "system",
+        "reason": "先读当前页面这一条的结论与依据",
+        "outcome": "取得 4 条资料"
+      }
+    },
+    {
+      "type": "step",
+      "step": {
+        "tool": "risk",
+        "label": "查看风险事项",
+        "query": "S1",
+        "by": "assistant",
+        "reason": "先查看风险事项S1的完整信息，了解风险分构成与核验结论",
+        "outcome": "已经查过，跳过"
+      }
+    },
+    {
+      "type": "step",
+      "step": {
+        "tool": "claim",
+        "label": "查看主张核验",
+        "query": "S2",
+        "by": "assistant",
+        "reason": "查看主张核验详情，弄清机器核验的依据与结论",
+        "outcome": "这条主张的详情已经在上面的资料里了。"
+      }
+    },
+    {
+      "type": "step",
+      "step": {
+        "tool": "event",
+        "label": "查看事件",
+        "query": "S3",
+        "by": "assistant",
+        "reason": "查看来源事件的七要素与风险分构成，以区分机器判断与待核验内容",
+        "outcome": "新增 1 条资料"
+      }
+    },
+    {
+      "type": "step",
+      "step": {
+        "tool": "answer",
+        "label": "整理回答",
+        "query": "6 句",
+        "by": "assistant",
+        "reason": "资料已覆盖风险分构成、可信度与主张核验状态，可直接作答",
+        "outcome": "每句都有出处"
+      }
+    },
+    {
+      "type": "result",
+      "result": {
+        "available": true,
+        "question": "这条风险有哪些事实依据？请区分机器判断与待核验内容。",
+        "answer": [
+          {
+            "text": "这条风险事项为高风险，风险分100.0，预警理由是阶段修正后风险分达到预警线，因处于未知阶段、系数为1.0未作调整。",
+            "sources": [
+              "S1"
+            ],
+            "source_names": [
+              "其他来源"
+            ]
+          },
+          {
+            "text": "风险分由机器规则计算得出，构成包括：基线分+15、构成事件+20、影响方向为负面+20、影响强度+20、敏感事件类型+20、敏感专题+10、分数封顶-5，这些属于机器判断部分。",
+            "sources": [
+              "S3"
+            ],
+            "source_names": [
+              "其他来源"
+            ]
+          },
+          {
+            "text": "可信度为0.525（中），构成包括裁决得分0.3、来源层级为官方发布、独立来源1个、生产方式为原创调查，这也是机器评估结果。",
+            "sources": [
+              "S1"
+            ],
+            "source_names": [
+              "其他来源"
+            ]
+          },
+          {
+            "text": "事实层面，该事项仅有一篇权威披露来源，即药明康德2026年6月9日发布于公司公告页的自愿公告，无媒体独立报道，已核对主张为0条。",
+            "sources": [
+              "S1",
+              "S3"
+            ],
+            "source_names": [
+              "其他来源",
+              "其他来源"
+            ]
+          },
+          {
+            "text": "待核验的核心内容是：公告披露原文中并未提及美国国防部将药明康德列入1260H名单，也未提及公司拟采取行动纠正，因此「公司将立即采取行动挑战并纠正该错误认定」这一主张被裁为无法核验，所有候选证据均为公告标题或免责声明，无实质内容支持或否定。",
+            "sources": [
+              "S2",
+              "S5"
+            ],
+            "source_names": [
+              "其他来源",
+              "其他来源"
+            ]
+          },
+          {
+            "text": "综上，机器判断部分（风险分、可信度、预警触发）依据充分，但事件的核心事实主张尚无任何披露原文支撑，属于待核验状态。",
+            "sources": [
+              "S1",
+              "S2"
+            ],
+            "source_names": [
+              "其他来源",
+              "其他来源"
+            ]
+          }
+        ],
+        "dropped": 0,
+        "incomplete": false,
+        "steps": [
+          {
+            "tool": "risk",
+            "label": "查看风险事项",
+            "query": "当前页面",
+            "by": "system",
+            "reason": "先读当前页面这一条的结论与依据",
+            "outcome": "取得 4 条资料"
+          },
+          {
+            "tool": "risk",
+            "label": "查看风险事项",
+            "query": "S1",
+            "by": "assistant",
+            "reason": "先查看风险事项S1的完整信息，了解风险分构成与核验结论",
+            "outcome": "已经查过，跳过"
+          },
+          {
+            "tool": "claim",
+            "label": "查看主张核验",
+            "query": "S2",
+            "by": "assistant",
+            "reason": "查看主张核验详情，弄清机器核验的依据与结论",
+            "outcome": "这条主张的详情已经在上面的资料里了。"
+          },
+          {
+            "tool": "event",
+            "label": "查看事件",
+            "query": "S3",
+            "by": "assistant",
+            "reason": "查看来源事件的七要素与风险分构成，以区分机器判断与待核验内容",
+            "outcome": "新增 1 条资料"
+          },
+          {
+            "tool": "answer",
+            "label": "整理回答",
+            "query": "6 句",
+            "by": "assistant",
+            "reason": "资料已覆盖风险分构成、可信度与主张核验状态，可直接作答",
+            "outcome": "每句都有出处"
+          }
+        ],
+        "sources": {
+          "S1": {
+            "kind": "risk",
+            "id": "9cba9d7127b83a1b6492b6ec",
+            "label": "药明康德｜出口管制：美国国防部于2026年6月8日将药明康德列入更新的1260H…，待核验，1 篇报道",
+            "link": "/risks/9cba9d7127b83a1b6492b6ec",
+            "excerpt": null
+          },
+          "S2": {
+            "kind": "claim",
+            "id": "410ecb8ba72c245be5b12203abd9d10fd7198ccc10cd1587f01261316832a3db:WuXi AppTec will take immediate actions …",
+            "label": "WuXi AppTec will take immediate actions to challenge and cor…",
+            "link": "/claims?event=410ecb8ba72c245be5b12203abd9d10fd7198ccc10cd1587f01261316832a3db",
+            "excerpt": "披露原文未提及美国国防部将药明康德列入1260H名单，亦未提及公司拟采取行动纠正该 designation，所有候选证据均为公告标题或免责声明，无实质内容支持或否定该主张。",
+            "page": null,
+            "document": null
+          },
+          "S3": {
+            "kind": "event",
+            "id": "410ecb8ba72c245be5b12203abd9d10fd7198ccc10cd1587f01261316832a3db",
+            "label": "VOLUNTARY ANNOUNCEMENT",
+            "link": "/events/410ecb8ba72c245be5b12203abd9d10fd7198ccc10cd1587f01261316832a3db",
+            "excerpt": null
+          },
+          "S5": {
+            "kind": "claim",
+            "id": "71b4bb8986ef2d95764b544bcc53421a61676c4af2ca7cdab4743e33fb0afc67",
+            "label": "WuXi AppTec will take immediate actions to challenge and cor…",
+            "link": "/claims?event=410ecb8ba72c245be5b12203abd9d10fd7198ccc10cd1587f01261316832a3db",
+            "excerpt": "披露原文未提及美国国防部将药明康德列入1260H名单，亦未提及公司拟采取行动纠正该 designation，所有候选证据均为公告标题或免责声明，无实质内容支持或否定该主张。"
+          }
+        }
+      }
+    }
+  ],
+  "passed": true,
+  "limitation": "Availability and trace inspected; no independent factual gold accuracy claimed."
+}

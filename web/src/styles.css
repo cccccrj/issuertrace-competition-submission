@@ -1,0 +1,521 @@
+/* Design tokens from the validated reference palette.
+   Dark mode is a selected set of steps for the dark surface, not an inversion.
+
+   2026-09-22：中性色由暖灰改为冷海军蓝，主色由 #2a78d6 压深到 #1c5cab。
+   反馈里「简陋、技术后台感过强」指的不是布局——布局此前已经改过一轮——而是
+   这套纸感暖灰：它是文档的颜色，不是终端的颜色。改的只有中性面与主色两件事：
+   分类槽 2–8、顺序阶、发散两极一个都没动，因为那张表是按色觉安全验证过的，
+   动一个槽就要重验全部相邻对。主色的新值 #1c5cab 本就是顺序阶的 550 步，留在
+   同一条蓝里，因此相邻对距离不变（已用调色板验证脚本在 #ffffff 与 #182740 两张
+   底上各跑一遍，全部 PASS）。护眼主题不跟着改：它的暖是它存在的理由。 */
+:root {
+  color-scheme: light;
+  /* 四级表面。改之前只有两级，而 .sidebar、.card、StatTile、Callout、Select 的
+     弹层全都取 --surface-1——一个令牌在做四件事，于是侧栏与卡面是字面同色
+     （1.000:1），卡面与页底差 3/255（1.027:1）。事件详情页七个区、侧栏、页底
+     是同一张白，只有一条 10% 的发丝线在分。
+
+     --surface-0 与 --surface-2 不是新名字：App.vue 与 InquiryChain.vue 早就
+     引用了它们，两处一直靠 fallback 活着，因为这张表从未定义过它们。
+
+     相邻两级 ≥1.06，导航对卡面 ≥1.13，由 __tests__/theme.test.js 钉住。 */
+
+  /* 导轨跟着主题走，不跨主题固定。2026-09-22 试过把导轨在三套主题下都压成深色
+     （浅色海军蓝、深色墨蓝、护眼深棕），看着确实更像金融终端；但用户切主题时
+     第一句话是「左侧不会跟着一起变」——浅色的 #0c1a2d 与深色的 #0a1524 肉眼
+     难分，于是整个换肤动作看起来是坏的。
+
+     一个跟着主题走的控件，比一个好看但像是没生效的控件重要：**主题切换的正确
+     与否，是由读者眼睛判定的**。导轨因此回到「每套主题自己那张纸的最沉一级」，
+     深色主题下它本来就是深海军蓝。 */
+  --surface-0: #e4e9f0;   /* 导航导轨，最沉 */
+  --page: #eef1f6;        /* 内容地面 */
+  --surface-1: #ffffff;   /* 卡面，抬起 */
+  --surface-2: #e9edf4;   /* 卡内内嵌：证据与引文 */
+  --text-primary: #0c1524;
+  --text-secondary: #465064;
+  --text-muted: #78849a;
+  --gridline: #dde3ec;
+  --baseline: #b8c1d1;
+  --border: rgba(12, 21, 36, 0.12);
+  --series-1: #1c5cab;
+  /* Hover and pressed steps of the accent, declared here rather than computed
+     in JS: the component library needs them, and a derived value that lives
+     outside this sheet is a second palette waiting to drift.  Kept as hex
+     because the library's colour parser does not read color-mix(). */
+  --series-1-hover: #2a78d6;
+  --series-1-pressed: #164a8c;
+  /* Categorical slots 2-8 of the same validated palette --series-1 opens.
+     They were always part of it; the sheet simply never adopted them, which
+     left every chart with one colour and therefore no chart with two series.
+     Assign in this order and never cycle: the ORDER is the colourblind-safety
+     mechanism, not a preference. Adjacent pairs (stacks, bars, lines) all
+     clear the gates; all-pairs forms (scatter, small multiples) are capped at
+     the first three. A ninth series folds into 其他 -- never a generated hue. */
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+  /* Sequential: one hue, light to dark, for magnitude on an ordered scale
+     (source tiers, funnel depth, heatmap cells). Never a categorical slot.
+     For discrete ordered marks start no lighter than step 250 on this surface. */
+  --seq-100: #cde2fb;
+  --seq-250: #86b6ef;
+  --seq-400: #3987e5;
+  --seq-550: #1c5cab;
+  --seq-700: #0d366b;
+  /* Diverging: two poles that read as opposite, with a neutral -- not a hue --
+     at the midpoint, so "no change" looks like nothing rather than like a value. */
+  --div-low: #1c5cab;
+  --div-mid: #e9edf4;
+  --div-high: #d03b3b;
+  --hover-wash: rgba(12, 21, 36, 0.05);
+  /* Status colors are reserved: never reused as a series hue, and never the
+     only carrier of meaning — every use ships with its label. */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #d03b3b;
+  --status-neutral: #78849a;
+
+  /* 排版令牌。颜色令牌随主题变，这一组不变——一个字号在深色下没有理由变大。
+
+     字号收敛到三级正文。改之前全站有 18 种取值、约 181 处，其中 11 / 11.5 /
+     12 / 12.5 / 13px 五种挤在 2px 带宽里、占了 78% 的用量：五种肉眼分不出来的
+     字号不构成层级，只是让四十多个文件各写各的。而 body 写着的 14px 基准，只在
+     没人动过的地方幸存下来——`td` 没设字号，所以表格正文是 14px，其余每个手写
+     组件都把自己缩小了。
+
+     三级之间各差 1px 仍然偏小，再拉开会挤压信息密度。这是取舍不是最优解，
+     取值记在交付物 7 的「有论证、无验证」清单里。 */
+  --fs-note: 11px;      /* 表头、标签、脚注、图例 */
+  --fs-aux: 12px;       /* 次要信息：元数据行、卡内副文本 */
+  --fs-body: 13px;      /* 正文与列表主文本 */
+  --fs-title: 15px;     /* 卡片与区块标题 */
+  --fs-page: 24px;      /* 页标题 */
+  /* 20 到 26 之间原本是空档，而「大数字，唯一允许更大的地方」全站只用在 StatTile
+     一处。于是需要一个大数字的页面就自己在这个空档里落座：驾驶舱写死 22px、评测
+     中心写死 34px，两页都为此进了字号白名单；而没写死的页面只能拿正文字号顶——
+     风险分渲染成 12px，比解释它的那句摘要（13px）还小。
+
+     补两级把这件事说清楚：一页只有一个的英雄数字，和卡内那个「这一块要看的数」。
+     正文三级（11/12/13）一个字不动——那一级的紧凑是记在案的取舍。 */
+  --fs-result: 18px;    /* 卡内关键结果：一张卡上先被看见的那个数 */
+  --fs-display: 26px;   /* 磁贴大数字 */
+  --fs-hero: 32px;      /* 一页只有一个的英雄数字 */
+
+  /* 行高：1.6 用在 13px 上是 21px 行距，段落之间反而糊在一起。 */
+  --lh-tight: 1.45;
+  --lh-body: 1.55;
+
+  /* 间距。改之前 padding 有 51 种取值、margin 52 种、gap 17 种。 */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --radius: 10px;
+  --radius-sm: 4px;
+
+  /* 成段中文的行宽。用 em 不用 ch——ch 是「0」的宽度，对中文没有意义，而中文
+     字宽约等于 1em。46em 在 13px 下约 598px，即每行 46 字；现在最宽的一处是
+     每行 91 字，正好是中文舒适行宽（30–45）的两倍。42em 落在这个区间中段。 */
+  --measure: 42em;
+}
+
+:root[data-theme='dark'],
+:root:where(:not([data-theme])) {
+  --dark-surface-1: #182740;
+}
+
+/* 主题不再有「跟随系统」，JS 总会写上 data-theme。这一块因此只服务两种情况：
+   脚本执行之前的首帧，以及禁用脚本的读者。选择器必须是 `:not([data-theme])`
+   而不是 `:not([data-theme='light'])`——后者会把护眼主题也命中，于是系统是
+   深色时护眼模式会套上一整套深色令牌。 */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme])) {
+    color-scheme: dark;
+    --surface-0: #0a1524;   /* 导航导轨，最沉 */
+    --page: #070f1c;
+    --surface-1: #182740;
+    --surface-2: #101d31;
+    --text-primary: #f2f6fc;
+    --text-secondary: #b4c0d4;
+    --text-muted: #7d8aa1;
+    --gridline: #223046;
+    --baseline: #2e3d55;
+    --border: rgba(226, 233, 245, 0.14);
+    --series-1: #3987e5;
+    --series-1-hover: #5196e8;
+    --series-1-pressed: #3277ca;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-6: #008300;
+    --series-7: #9085e9;
+    --series-8: #e66767;
+    --seq-100: #cde2fb;
+    --seq-250: #86b6ef;
+    --seq-400: #3987e5;
+    --seq-550: #1c5cab;
+    --seq-700: #184f95;
+    --div-low: #3987e5;
+    --div-mid: #2e3d55;
+    --div-high: #d03b3b;
+    --hover-wash: rgba(226, 233, 245, 0.07);
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --surface-0: #0a1524;   /* 导航导轨，最沉 */
+  --page: #070f1c;
+  --surface-1: #182740;
+  --surface-2: #101d31;
+  --text-primary: #f2f6fc;
+  --text-secondary: #b4c0d4;
+  --text-muted: #7d8aa1;
+  --gridline: #223046;
+  --baseline: #2e3d55;
+  --border: rgba(226, 233, 245, 0.14);
+  --series-1: #3987e5;
+  --series-1-hover: #5196e8;
+  --series-1-pressed: #3277ca;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --seq-100: #cde2fb;
+  --seq-250: #86b6ef;
+  --seq-400: #3987e5;
+  --seq-550: #1c5cab;
+  --seq-700: #184f95;
+  --div-low: #3987e5;
+  --div-mid: #2e3d55;
+  --div-high: #d03b3b;
+  --hover-wash: rgba(226, 233, 245, 0.07);
+}
+
+/* 界面缩放：根字号随视口宽度线性增长，全站尺寸跟着走（样式里的 px 在构建期
+   换成了 rem，见 web/postcss-px-to-rem.js）。
+
+   视口 1920 及以下是 16px，与改之前逐像素相同——这套字号与间距就是在这个
+   宽度下定的，不动。到 2560（2K 屏、系统缩放 100%）是 20px，即 1.25 倍：
+   27 寸 2K 的像素密度约 109 PPI，24 寸 1080p 约 92，同一个 13px 在前者上
+   物理尺寸小 16%。1.25 倍补回这 16%。封顶 20px：带鱼屏（3440×1440）宽但
+   不高，按宽度放大会让一屏装不下一张卡。
+
+   系统缩放 125% / 150% 的 2K、4K 屏，浏览器报的视口本来就落在 2048 / 2560
+   附近，由这同一条公式接住，不需要单独判断像素比。 */
+html { font-size: clamp(16px, calc(16px + (100vw - 1920px) * 0.00625), 20px); }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+
+a { color: var(--series-1); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* 护眼：暖米色纸面、降低的明度反差、偏暖的墨色。不是给浅色主题加一层黄滤镜
+   ——那会把八个系列色一起染歪；这里只重设表面与文字，系列色按各自在这张面
+   上的表现单独挑步。
+
+   八槽色板已对着 #f7f2e8 跑过校验：明度带、彩度下限、CVD 相邻对分离度、
+   常视力下限全部通过；「对比度低于 3:1」的警告与现有浅色主题同类，本项目
+   一贯用图例文字与图表的表格替代兑现它。 */
+:root[data-theme='sepia'] {
+  color-scheme: light;
+  --surface-0: #e9e0cb;   /* 导航导轨，最沉 */
+  --page: #f1ead9;
+  --surface-1: #fbf7ee;
+  --surface-2: #ece4d2;
+  --text-primary: #33302a;
+  --text-secondary: #5a544a;
+  --text-muted: #8a8377;
+  --gridline: #e0d8c6;
+  --baseline: #c2b9a3;
+  --border: rgba(51, 48, 42, 0.13);
+  /* 蓝色在暖底上会显冷，压深一档让它落回同一张纸上。 */
+  --series-1: #2a6fc4;
+  --series-1-hover: #3d81d3;
+  --series-1-pressed: #245ea6;
+  --series-2: #d95a26;
+  --series-3: #17a06e;
+  --series-4: #cf8c00;
+  --series-5: #d96f96;
+  --series-6: #0a7a12;
+  --series-7: #4a3aa7;
+  --series-8: #d13f3e;
+  --seq-100: #d8e5f6;
+  --seq-250: #8fb4e0;
+  --seq-400: #3d81d3;
+  --seq-550: #1e5399;
+  --seq-700: #12325f;
+  --div-low: #2a6fc4;
+  --div-mid: #e6dfd0;
+  --div-high: #c23a39;
+  --hover-wash: rgba(51, 48, 42, 0.05);
+  --status-good: #0a8f18;
+  --status-warning: #d99b0f;
+  --status-serious: #d4744c;
+  --status-critical: #c23a39;
+  --status-neutral: #8a8377;
+}
+
+.layout { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 208px;
+  flex: none;
+  border-right: 1px solid var(--border);
+  /* 导航沉下去，内容浮起来。此前这里和 .card 取同一个令牌，即字面同色。 */
+  background: var(--surface-0);
+  padding: 20px 12px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  /* A column, so the account block at the bottom is a normal flow item rather
+     than an absolutely positioned one. It used to be `position: absolute;
+     bottom: 16px` inside this element — and this element scrolls, so once the
+     seven nav groups grew taller than the viewport the block stopped being at
+     the bottom of anything and simply sat 100vh down the *content*, on top of
+     whichever links were there. */
+  display: flex;
+  flex-direction: column;
+}
+/* Nav items keep their height in the column; without this they compress when
+   the list is taller than the sidebar. */
+.sidebar > * { flex: none; }
+
+
+.brand { font-weight: 650; font-size: var(--fs-title); padding: 0 10px 18px; letter-spacing: -0.01em; }
+
+.nav-link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  /* 2px → 1px：分组注解加进来之后这一栏更长了，行距是能找回高度而不动可点面积
+     的地方（padding 不动，触摸目标仍是 33px）。 */
+  margin-bottom: 1px;
+}
+.nav-link:hover { background: var(--hover-wash); text-decoration: none; }
+/* 选中态此前也是 --hover-wash——与 hover 态同色，只靠字重 600 区分：鼠标划过
+   任意一项时，它和当前页看起来一模一样。当前页现在取卡面色（「这一页被抬起来
+   了」）并带一条 2px 强调条，hover 仍然只是一层淡淡的水洗。 */
+.nav-link.router-link-active {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--series-1);
+}
+
+/* 顶部那 52px 曾经是给右上角那颗浮动主题按钮让位的——不留的话，详情页 PageHeader
+   右侧的「导出报告」会正好落在它下面。按钮收进侧栏之后这道留白没有了理由，页标题
+   因此不再悬在半空。
+
+   正文不设总宽上限，铺满侧栏右侧。此前限在 1440px、靠左贴侧栏，理由是表格在 2560px
+   的屏上不要拉到看不出行；代价是 2K 屏右侧空出约 500px、带鱼屏空出近半屏，右上角的
+   通知与主题工具条也跟着停在屏幕中间偏右——外部试用者直接问「是不是没做自适应」
+   （2026-10-08）。读起来吃力的是成段中文，那条由下面的 46em 单独管；表格变宽是每列
+   变宽，不是挤成一行。 */
+.main { flex: 1; padding: 28px 28px 60px; min-width: 0; }
+
+/* 成段中文单独限宽，而不是收窄整栏：这一栏同时装着表格、图表与统计块，它们用得上
+   宽度——实测事件台账的表格单元格是每行 51 字，本来就没问题。每行 91 字的那两处
+   都是段落（预警卡摘要、页面说明），所以限宽只加在段落上。 */
+.prose { max-width: var(--measure); }
+
+.page-title { font-size: var(--fs-page); font-weight: 650; margin: 0 0 var(--sp-1);
+  letter-spacing: -0.01em; }
+/* 比它所解释的内容小一号：表格正文与卡片摘要是 --fs-body，旁白是 --fs-aux。
+   此前两者都是 13px 上下，最该被读的那一处并不比旁白大多少。 */
+.page-note { color: var(--text-secondary); margin: 0 0 var(--sp-5); font-size: var(--fs-aux);
+  max-width: var(--measure); }
+
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--sp-3);
+}
+/* 这条规则此前在九个视图的 scoped 样式里逐字重复了九遍。 */
+section.card { margin-bottom: var(--sp-3); }
+
+/* 案例区：你正在看的那条记录本身——事件摘要、议题头、预警头。与 .card 叠用。
+
+   配方来自登录页封面（6210746）：那六张卡当时是「纯 1px 描边加文字」，很接近一个
+   未填写的输入框；改法是给它们体积——自上而下的极淡填充、顶边一道内高光当受光面、
+   一点浅投影托离背景，外加左侧一条 3px 的蓝，是整张卡上唯一的颜色。门外解决过一次，
+   门里一直没采纳。这里是同一套，只是走令牌而不是硬编码色。 */
+.subject {
+  padding-left: calc(var(--sp-3) + 3px);
+  box-shadow: inset 3px 0 0 var(--series-1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5),
+              0 1px 3px rgba(11, 11, 11, 0.06);
+}
+/* 深色下的受光面与投影是另一组值：把浅色那组照搬过去，高光会变成一道白边。 */
+:root[data-theme='dark'] .subject,
+:root:where(:not([data-theme])) .subject {
+  box-shadow: inset 3px 0 0 var(--series-1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06),
+              0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* .small 与 .footnote 此前分别在 27 个和 3 个文件里逐字重复。 */
+.small { font-size: var(--fs-note); }
+.footnote { font-size: var(--fs-note); color: var(--text-muted); max-width: var(--measure); }
+
+/* Filters sit in one row above the content, per the interaction spec. */
+.filters { display: flex; gap: var(--sp-2); flex-wrap: wrap; align-items: center;
+  margin-bottom: var(--sp-3); }
+
+/* input[type='text'] 此前不在这条规则里，于是研判档案上「责任人」「说明」两个框
+   拿的是浏览器默认外观，和旁边的按钮长得一样宽、一样白、一样带一圈边。文本框
+   改取内嵌底色：能填的和能按的是两类东西。 */
+/* date 同理：截止日期框（专项核查）不补进来，就又是一个拿浏览器默认外观的白框。 */
+/* password 同理（I-07 修账号页时发现）：改密码的两个框此前是浏览器默认的细白框。 */
+select, input[type='search'], input[type='text'], input[type='date'], input[type='password'] {
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 9px;
+  min-height: 32px;
+}
+input[type='search'] { min-width: 220px; }
+input[type='search'], input[type='text'], input[type='date'], input[type='password'] { background: var(--surface-2); }
+input[type='text']::placeholder, input[type='search']::placeholder { color: var(--text-muted); }
+
+button {
+  font: inherit;
+  color: var(--text-secondary);
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 11px;
+  cursor: pointer;
+  min-height: 32px;
+}
+button:hover:not(:disabled) { background: var(--hover-wash); color: var(--text-primary); }
+button:disabled { opacity: 0.45; cursor: default; }
+
+table { width: 100%; border-collapse: collapse; }
+th {
+  text-align: left;
+  font-size: var(--fs-note);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  padding: 0 12px 8px;
+  border-bottom: 1px solid var(--gridline);
+  white-space: nowrap;
+}
+/* td 此前不设字号，于是继承了 body 的 14px——全站唯一还留在基准上的文字，
+   偏偏是最该有层级的地方。现在与正文同级。 */
+td { padding: var(--sp-3); border-bottom: 1px solid var(--gridline); vertical-align: top;
+  font-size: var(--fs-body); }
+tbody tr:hover { background: var(--hover-wash); }
+tbody tr:last-child td { border-bottom: none; }
+
+.muted { color: var(--text-muted); }
+.secondary { color: var(--text-secondary); }
+.nowrap { white-space: nowrap; }
+.mono { font-variant-numeric: tabular-nums; }
+
+/* 悬停有话说的词：一条极淡的虚下划线。没有记号就没人会去悬停。
+   用中性色不用色相——色相在这套界面里归图表的分类槽（见 §六）。
+   悬停够不着触屏、键盘与读屏，所以每个戴这个记号的词，在 /guide 的名词表里
+   都必须查得到；那张表才是保底，这里只是就近的便利。 */
+.glossed { text-decoration: underline dotted var(--text-muted); text-underline-offset: 3px;
+  cursor: help; }
+
+.tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: var(--fs-note);
+  color: var(--text-secondary);
+  margin: 0 4px 3px 0;
+  white-space: nowrap;
+}
+
+.empty { padding: 48px 16px; text-align: center; color: var(--text-muted); }
+.loading { padding: 48px 16px; text-align: center; color: var(--text-muted); }
+
+.pager { display: flex; gap: 10px; align-items: center; justify-content: flex-end; margin-top: 14px; }
+
+/* 证据区：被引用的原文。底色改用 --surface-2（内嵌语义，凹进卡面），而不是此前
+   的 --hover-wash——后者是「鼠标正划过这里」的意思，拿一个交互态去表达一个结构，
+   结果就是它在任何页面上都只是一块说不清来历的浅灰。
+
+   这三个类此前只覆盖八处引文呈现里的三处，其余五处各写各的。 */
+.evidence {
+  border-left: 2px solid var(--series-1);
+  padding: var(--sp-2) 0 var(--sp-2) var(--sp-3);
+  margin-top: var(--sp-2);
+  background: var(--surface-2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+/* 字面 12px / 13px 曾经逃过令牌清扫：conventions.test.js 那条只扫 views/*.vue
+   的 <style>，扫不到这张表本身。 */
+.evidence-head { font-size: var(--fs-aux); color: var(--text-secondary); margin-bottom: var(--sp-1); }
+.evidence-text { font-size: var(--fs-body); color: var(--text-primary); }
+
+.detail-grid { display: grid; grid-template-columns: 116px 1fr; gap: 6px 14px; font-size: var(--fs-body); }
+.detail-grid dt { color: var(--text-muted); }
+.detail-grid dd { margin: 0; }
+
+/* 窄屏（放在文件末尾：下面几条与前面的基础规则同权重，靠后才压得住）。
+   侧栏收成从左侧滑出的抽屉，开关在 App.vue 工具条的「菜单」上。
+   收起时用 visibility 而不是 v-if：链接仍在 DOM 里（「每个页面都有入口」的测试读的
+   是真实渲染的 href），但不在 Tab 顺序里，读屏也不会读到看不见的导航。 */
+@media (max-width: 760px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    z-index: 50;
+    width: min(264px, 85vw);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.16);
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.18s ease, visibility 0s linear 0.18s;
+  }
+  .sidebar[data-open] {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.18s ease;
+  }
+  .main { padding-left: 16px; padding-right: 16px; }
+  /* 宽表格在自己的框里横向滚动，不把整页撑出横向滚动条。表格散写在各页里，
+     逐页包一层不现实；只在窄屏下这样做，宽屏的表格逐像素不变。 */
+  .main table { display: block; overflow-x: auto; }
+  /* 卡片多是网格项，网格项的自动最小宽度等于内容的最小宽度——表格于是又把卡片、
+     进而把整列撑出视口，上面那条滚动框就落了空。 */
+  .main .card { min-width: 0; }
+  /* 字段名 + 值的两列表：值那一列的最小宽度同样是内容宽度，长机构名一来就把两列
+     撑过卡片。窄屏下值列可以收窄，长文本折行。 */
+  .detail-grid { grid-template-columns: 96px minmax(0, 1fr); }
+  .detail-grid > dd { overflow-wrap: anywhere; }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .sidebar, .sidebar[data-open] { transition: none; }
+}

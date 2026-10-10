@@ -1,0 +1,10 @@
+any_language   all          n= 1175 | bm25 shown 0.883 R@5 0.883 R@20 0.940 | dense shown 0.669 R@5 0.669 R@20 0.800 | hybrid shown 0.876 R@5 0.876 R@20 0.941 | fallback shown 0.894 R@5 0.883 R@20 0.894
+any_language   unverifiable n=  213 | bm25 shown 0.859 R@5 0.859 R@20 0.930 | dense shown 0.690 R@5 0.690 R@20 0.789 | hybrid shown 0.887 R@5 0.887 R@20 0.930 | fallback shown 0.869 R@5 0.859 R@20 0.869
+cross_lingual  all          n=  195 | bm25 shown 0.061 R@5 0.061 R@20 0.123 | dense shown 0.077 R@5 0.077 R@20 0.231 | hybrid shown 0.067 R@5 0.067 R@20 0.277 | fallback shown 0.118 R@5 0.061 R@20 0.118
+cross_lingual  unverifiable n=   10 | bm25 shown 0.000 R@5 0.000 R@20 0.000 | dense shown 0.000 R@5 0.000 R@20 0.200 | hybrid shown 0.000 R@5 0.000 R@20 0.100 | fallback shown 0.000 R@5 0.000 R@20 0.000
+numeric        all          n=  357 | bm25 shown 0.734 R@5 0.734 R@20 0.885 | dense shown 0.532 R@5 0.532 R@20 0.726 | hybrid shown 0.751 R@5 0.751 R@20 0.880 | fallback shown 0.759 R@5 0.734 R@20 0.759
+numeric        unverifiable n=   27 | bm25 shown 0.111 R@5 0.111 R@20 0.556 | dense shown 0.148 R@5 0.148 R@20 0.481 | hybrid shown 0.481 R@5 0.481 R@20 0.593 | fallback shown 0.185 R@5 0.111 R@20 0.185
+verbatim_en    all          n=  842 | bm25 shown 0.944 R@5 0.944 R@20 0.970 | dense shown 0.723 R@5 0.723 R@20 0.822 | hybrid shown 0.917 R@5 0.917 R@20 0.970 | fallback shown 0.948 R@5 0.944 R@20 0.948
+verbatim_en    unverifiable n=  186 | bm25 shown 0.973 R@5 0.973 R@20 0.989 | dense shown 0.769 R@5 0.769 R@20 0.828 | hybrid shown 0.946 R@5 0.946 R@20 0.984 | fallback shown 0.973 R@5 0.973 R@20 0.973
+decision: {"cross_lingual_gain@5": 0.0052, "verbatim_loss@5": 0.0273, "rule": "gain ≥ 0.10 and loss ≤ 0.02", "adopt_hybrid": false}
+GPU回传及平台只读接入验收通过；原冻结裁决与向量产物保持不变。

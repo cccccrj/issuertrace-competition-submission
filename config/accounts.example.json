@@ -1,0 +1,20 @@
+{
+  "_comment": "Copy to config/accounts.json (Git-ignored) and replace every hash. Generate one with: python3 -m api.auth '<password>'. Roles, in ascending authority: viewer reads only; analyst may submit review judgements; reviewer may also approve and close them. With no accounts.json present the platform falls back to a single generated account printed at startup.",
+  "accounts": [
+    {
+      "username": "viewer",
+      "role": "viewer",
+      "password_hash": "pbkdf2_sha256$240000$replace-with-your-own-salt$replace-with-your-own-hash"
+    },
+    {
+      "username": "analyst",
+      "role": "analyst",
+      "password_hash": "pbkdf2_sha256$240000$replace-with-your-own-salt$replace-with-your-own-hash"
+    },
+    {
+      "username": "reviewer",
+      "role": "reviewer",
+      "password_hash": "pbkdf2_sha256$240000$replace-with-your-own-salt$replace-with-your-own-hash"
+    }
+  ]
+}

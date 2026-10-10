@@ -1,0 +1,17 @@
+{
+  "model": "model/bge-m3",
+  "fake": false,
+  "dimensions": 1024,
+  "top_k": 20,
+  "max_length": 512,
+  "limit": null,
+  "paragraphs": 93209,
+  "queries": 3922,
+  "seconds": 57.646499,
+  "input_sha256": {
+    "paragraphs.jsonl": "94497cac311765d5ac647819f732459022d2539a3a18d75c263f1716c856bcc6",
+    "queries.jsonl": "0dc7ecc864ab7cb0d524766a6b82afd72410eb56e15bde958cdda4a4f012da6c"
+  },
+  "neighbors_sha256": "34563cb3c078aec352360c84ad65c91e2f23f7df0618a54920403619e0744a34",
+  "built_at": "2026-10-09T12:54:22.925613+00:00"
+}

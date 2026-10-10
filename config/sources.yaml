@@ -1,0 +1,1297 @@
+version: 1
+last_reviewed: "2026-08-24"
+
+scope:
+  backfill_start: "2024-01-01"
+  snapshot_as_of: "2026-08-24"
+  incremental_timezone: "Asia/Shanghai"
+  companies:
+    - cxmt
+    - wuxi_apptec
+
+enums:
+  priority:
+    P0: "必须采集：法定披露、公司原文和核心监管政策"
+    P1: "重点补充：独立报道、行业信息和地方政府信息"
+    P2: "线索发现：传播平台、付费来源元数据和需人工访问的数据库"
+  source_tier:
+    S0: "政府、交易所、法院等权威原始来源"
+    S1: "公司官网、法定信披镜像及公司授权问答"
+    S2: "独立媒体、行业媒体和专业数据库"
+    S3: "转载、社交媒体、论坛及其他线索来源"
+
+entities:
+  cxmt:
+    canonical_name: "长鑫科技集团股份有限公司"
+    # 所属行业：只适用于某一行业的专题（如「药物研发」）不会挂到别的行业的公司名下。
+    industry: "semiconductor"
+    stock_codes:
+      - exchange: "SSE STAR"
+        code: "688825"
+    include_aliases:
+      - "长鑫科技集团股份有限公司"
+      - "长鑫科技"
+      - "长鑫存储"
+      - "CXMT"
+      - "CXMT Corporation"
+      - "ChangXin Memory Technologies"
+    context_terms:
+      - "DRAM"
+      - "存储芯片"
+      - "合肥"
+      - "688825"
+    exclude_or_review:
+      - term: "长江存储"
+        reason: "独立主体 YMTC，不属于长鑫科技"
+      - term: "朗新科技"
+        reason: "名称相近但无关"
+      - term: "长鑫"
+        reason: "仅命中简称时必须同时命中股票代码、行业或地域上下文"
+    subsidiary_policy: "以最新招股书、定期报告中的合并范围为准，变更后保留有效期"
+
+  wuxi_apptec:
+    canonical_name: "无锡药明康德新药开发股份有限公司"
+    industry: "pharma"
+    stock_codes:
+      - exchange: "SSE"
+        code: "603259"
+      - exchange: "HKEX"
+        code: "02359"
+    include_aliases:
+      - "无锡药明康德新药开发股份有限公司"
+      - "药明康德"
+      - "WuXi AppTec"
+      - "WuXi AppTec Co., Ltd."
+      - "WuXi Chemistry"
+      - "WuXi Testing"
+      - "WuXi Biology"
+      - "WuXi STA"
+    context_terms:
+      - "CRO"
+      - "CDMO"
+      - "CRDMO"
+      - "603259"
+      - "02359"
+    temporal_aliases:
+      - term: "WuXi ATU"
+        valid_to: "2025-03-31"
+        reason: "历史业务口径；出售完成后不再默认归入当前主体"
+    exclude_or_review:
+      - term: "药明生物"
+        reason: "WuXi Biologics 为独立上市主体，不自动归入药明康德"
+      - term: "WuXi Biologics"
+        reason: "独立上市主体，仅作为关联事件候选"
+      - term: "药明合联"
+        reason: "WuXi XDC 为独立上市主体，仅作为关联事件候选"
+      - term: "Wuxi Medical Instrument Factory"
+        reason: "英文地名 Wuxi 造成的无关主体误命中"
+      - term: "无锡"
+        reason: "仅为地名，不得单独触发公司事件"
+    subsidiary_policy: "以最新年报合并范围为准；关联公司事件单列，不与母体事实合并"
+
+collection_defaults:
+  scheduling:
+    campaign_id: "cxmt_competition_gap_v1"
+    paused: true
+    focus_company: cxmt
+    active_source_ids:
+      - securities_times
+      - shanghai_securities_news
+    adapter_jobs_per_source_per_cycle: 6
+    drain_discovered_details_first: true
+    completion_gate:
+      company_id: cxmt
+      minimum_valid_documents: 400
+      document_types:
+        - independent_news
+        - hardware_news
+        - news_brief
+        - market_newsflash
+        - company_news
+        - company_updates
+        - semiconductor_news
+        - industry_news
+        - press_releases
+      stop_daemon: true
+    focus_note: "长鑫科技媒体有效文档已达到 400 篇活动门槛并自动停机；配置重新关闭，后续增量恢复前须再次审核。"
+  user_agent_policy: "使用可识别的项目 User-Agent，并提供联系邮箱或公开项目问题反馈地址"
+  robots_policy: "采集前检查 robots.txt 和网站条款；禁止绕过登录、验证码、访问控制或付费墙"
+  raw_preservation: "保存原文、最终 URL、抓取时间、发布时间、标题、作者、正文哈希和页面快照哈希"
+  deduplication: "先按规范化 URL 和正文哈希去重，再按标题、事件实体与时间窗口聚类"
+  evidence_rule: "S0/S1 可作为原始证据；S2 用于独立交叉验证；S3 仅作线索，必须回溯原文"
+  network_routing:
+    strategy: source_id_allowlist
+    direct_semantics: "显式忽略 HTTP_PROXY、HTTPS_PROXY 和 ALL_PROXY，直接连接目标站点"
+    proxy_semantics: "使用运行环境提供的 HTTP_PROXY、HTTPS_PROXY 或 ALL_PROXY；配置文件不保存代理地址和凭据"
+    unknown_source_route: proxy
+    retry_policy: "同一路由内指数退避；DIRECT 来源不自动切换代理，确需切换时由人工修改配置"
+    direct_source_ids:
+      - market_quotes
+      - cxmt_cn
+      - cxmt_en
+      - wuxi_cn
+      - wuxi_zh_hk
+      - sse_announcements
+      - cninfo_announcements
+      - sse_ipo_review
+      - sse_einteractive
+      - csrc
+      - gsxt
+      - credit_china
+      - cnipa
+      - miit
+      - mofcom
+      - nmpa
+      - local_environment
+      - court_documents
+      - securities_times
+      - china_securities_journal
+      - shanghai_securities_news
+      - yicai
+      - cls
+      - nbd
+      - twenty_first_finance
+      - jiemian
+      - ijiwei
+      - eet_china
+      - chinaflashmarket
+      - market_mirrors
+      - social_public
+    proxy_source_ids:
+      - wuxi_en
+      - wuxi_ir_materials
+      - wuxi_announcements
+      - hkex_news_02359
+      - congress
+      - us_hsgac
+      - us_house_oversight
+      - us_dod
+      - us_bis
+      - us_federal_register
+      - us_federal_register_api
+      - us_fda
+      - us_fda_openfda
+      - us_govinfo
+      - trendforce
+      - eetimes
+      - reuters
+      - fierce_biotech
+      - fierce_pharma
+      - biospace
+      - associated_press
+      - toms_hardware
+      - courtlistener
+      - paid_research_metadata
+  proxy_pool_policy:
+    gateway: environment_proxy
+    endpoint_source: "仅从 HTTP_PROXY、HTTPS_PROXY 或 ALL_PROXY 读取本地网关；禁止将订阅 URL、节点地址或凭据写入仓库和日志"
+    upstream_management: "上游节点选择、健康检查和故障切换由本地 Mihomo/兼容网关管理；采集器不得假设订阅节点会自动轮换"
+    session_affinity: "同一目标域名、Cookie jar 和登录状态固定出口，建议最短保持 30 分钟"
+    rotation_triggers:
+      - "网关判定当前上游节点不可达"
+      - "连续 3 次连接失败或 TLS 握手失败"
+      - "人工确认出口 IP 被目标站点临时阻断"
+    forbidden_rotation_triggers:
+      - "收到 429、Retry-After 或站点明确限频提示"
+      - "出现验证码、JavaScript challenge、登录验证或访问权限提示"
+      - "为了突破单站点频率或访问数量限制"
+    aggregate_rate_limit: "同一 source_id 的限速按全部代理节点汇总计算，不因更换出口 IP 重置"
+    privacy: "不探测、导出或记录订阅内容；日志只记录脱敏后的 route_id 和出口国家/地区（如业务确需）"
+  access_control:
+    default_profile: conservative
+    schedule_jitter_ratio: 0.20
+    conditional_requests: true
+    respect_retry_after: true
+    per_domain_queue: true
+    profiles:
+      conservative:
+        concurrency_per_domain: 1
+        min_interval_seconds: 10
+        max_requests_per_minute: 6
+        request_timeout_seconds: 30
+        max_transport_retries: 2
+      standard_public:
+        concurrency_per_domain: 2
+        min_interval_seconds: 3
+        max_requests_per_minute: 20
+        request_timeout_seconds: 30
+        max_transport_retries: 2
+      large_documents:
+        # Same politeness as conservative -- one request at a time, ten seconds
+        # apart, six a minute.  Only the read timeout differs: IPO review filings
+        # run to tens of megabytes and at the measured 700 KB/s a 20MB
+        # prospectus needs longer than 30 seconds, so the timeout was rejecting
+        # documents the publisher was serving perfectly well.
+        concurrency_per_domain: 1
+        min_interval_seconds: 10
+        max_requests_per_minute: 6
+        request_timeout_seconds: 180
+        max_transport_retries: 2
+      sensitive_public:
+        concurrency_per_domain: 1
+        min_interval_seconds: 30
+        max_requests_per_minute: 2
+        request_timeout_seconds: 45
+        max_transport_retries: 1
+      low_volume_api:
+        concurrency_per_domain: 1
+        min_interval_seconds: 30
+        max_requests_per_minute: 2
+        request_timeout_seconds: 30
+        max_transport_retries: 2
+      manual_only:
+        concurrency_per_domain: 0
+        min_interval_seconds: null
+        max_requests_per_minute: 0
+        request_timeout_seconds: null
+        max_transport_retries: 0
+    profile_source_ids:
+      standard_public:
+        - cxmt_cn
+        - cxmt_en
+        - wuxi_cn
+        - wuxi_en
+        - wuxi_zh_hk
+        - wuxi_ir_materials
+        - wuxi_announcements
+        - securities_times
+        - china_securities_journal
+        - shanghai_securities_news
+        - cls
+        - nbd
+        - twenty_first_finance
+        - jiemian
+        - ijiwei
+        - eet_china
+        - chinaflashmarket
+        - trendforce
+        - eetimes
+        - reuters
+        - fierce_biotech
+        - fierce_pharma
+        - biospace
+        - associated_press
+        - toms_hardware
+        - market_mirrors
+      conservative:
+        - sse_announcements
+        - cninfo_announcements
+        - hkex_news_02359
+        - sse_einteractive
+        - csrc
+        - congress
+        - us_hsgac
+        - us_house_oversight
+        - us_dod
+        - us_bis
+        - us_federal_register
+        - us_federal_register_api
+        - us_fda
+        - local_environment
+        - courtlistener
+      large_documents:
+        - sse_ipo_review
+      sensitive_public:
+        - miit
+      low_volume_api:
+        - us_fda_openfda
+        - us_govinfo
+      manual_only:
+        - yicai
+        - gsxt
+        - credit_china
+        - cnipa
+        - nmpa
+        - mofcom
+        - court_documents
+        - social_public
+        - paid_research_metadata
+    response_policy:
+      "304": "内容未变化，更新检查水位，不重复下载"
+      "401": "立即停止该来源并进入人工授权检查"
+      "403": "停止自动重试，冷却 24 小时并人工判断是权限、WAF 还是区域限制；不得靠换 IP 连续试探"
+      "408": "按 30 秒、120 秒退避，最多重试 2 次"
+      "429": "严格遵守 Retry-After；缺失时至少冷却 60 分钟，同一来源全代理池共同冷却"
+      "5xx": "按 30 秒、120 秒、600 秒指数退避，达到站点熔断阈值后暂停"
+      captcha_or_challenge: "保存最少诊断信息，停止自动访问并创建人工任务；不得接入自动打码或绕过机制"
+      login_or_consent_window: "保持同一 Cookie jar 与出口 IP；验证过期后进入人工刷新，不并发创建新会话"
+    circuit_breaker:
+      consecutive_failures: 5
+      rolling_window_minutes: 15
+      initial_cooldown_minutes: 60
+      max_cooldown_hours: 24
+      half_open_probe_requests: 1
+    adaptive_tuning: "只有在网站条款、robots、响应头和连续运行指标允许时才提高频率；默认配置是上限，不是必须跑满的目标"
+
+sources:
+  - source_id: cxmt_cn
+    name: "长鑫科技中文官网"
+    base_url: "https://www.cxmt.com/"
+    first_party_entity: true
+    path_exclude_prefixes: [/en/]
+    company_scope: [cxmt]
+    priority: P0
+    source_tier: S1
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [company_news, company_profile, products, media_updates, resources]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "仅采集公开页面；正文与附件分别留存并建立关联。"
+
+  - source_id: cxmt_en
+    name: "CXMT English website"
+    base_url: "https://www.cxmt.com/en/index.html"
+    first_party_entity: true
+    path_allow_prefixes: [/en/]
+    company_scope: [cxmt]
+    priority: P0
+    source_tier: S1
+    languages: [en]
+    original_timezone: Asia/Shanghai
+    document_types: [company_news, company_profile, products, media_updates]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "与中文稿按标题、时间和正文相似度建立双语版本关系，不互相覆盖。"
+
+  - source_id: wuxi_cn
+    name: "药明康德中文官网"
+    base_url: "https://www.wuxiapptec.cn/"
+    first_party_entity: true
+    path_exclude_prefixes: [/zh-hk/, /investors/announcement/]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S1
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [company_news, company_profile, sustainability, governance]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "仅采集公开页面；注意中文官网与英文官网可能存在发布时间和措辞差异。"
+
+  - source_id: wuxi_en
+    name: "WuXi AppTec English website"
+    base_url: "https://www.wuxiapptec.com/"
+    first_party_entity: true
+    path_exclude_prefixes: [/investors/announcement/]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S1
+    languages: [en]
+    original_timezone: Asia/Shanghai
+    document_types: [company_news, company_profile, sustainability, governance]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "英文政策回应常早于中文稿，保留原始时区和版本。"
+
+  - source_id: wuxi_zh_hk
+    name: "药明康德繁体中文官网"
+    base_url: "https://www.wuxiapptec.cn/zh-hk/"
+    first_party_entity: true
+    attachment_filename_date_pattern: "(?:603259|02359)_(?P<date>[0-9]{8})_"
+    allowed_hosts: [www.wuxiapptec.cn, officialsite-static.wuxiapptec.com]
+    path_allow_prefixes: [/zh-hk/, /upload/]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S1
+    languages: [zh-HK]
+    original_timezone: Asia/Shanghai
+    document_types: [company_news, company_profile, investor_information]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "用于港股受众口径和繁简版本对齐；与港交所法定披露分别保存。"
+
+  - source_id: wuxi_ir_materials
+    name: "药明康德投资者关系资料"
+    base_url: "https://www.wuxiapptec.com/investors/announcement/ir-material"
+    first_party_entity: true
+    allowed_hosts: [www.wuxiapptec.com, officialsite-static.wuxiapptec.com]
+    path_allow_prefixes: [/investors/announcement/ir-material, /upload/]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S1
+    languages: [zh-CN, en]
+    original_timezone: Asia/Shanghai
+    document_types: [results, presentations, transcripts, investor_faq]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "下载有公开 URL 的附件并提取文件日期、语言、报告期和修订版本；当前页面部分材料控件不公开 URL，并要求提交真实信息供审核，此类材料只离线记录可见元数据并进入人工任务，不提交身份信息或触发受控下载。"
+
+  - source_id: wuxi_announcements
+    name: "药明康德公司公告页"
+    base_url: "https://www.wuxiapptec.com/investors/announcement/announcements"
+    first_party_entity: true
+    allowed_hosts: [www.wuxiapptec.com, officialsite-static.wuxiapptec.com]
+    path_allow_prefixes: [/investors/announcement/announcements, /upload/]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S1
+    languages: [zh-CN, en]
+    original_timezone: Asia/Shanghai
+    document_types: [announcements, circulars, reports]
+    collection_mode: crawl
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "公司镜像用于发现和双语配对，法定披露以交易所原文为准。"
+
+  - source_id: sse_announcements
+    name: "上海证券交易所上市公司公告"
+    base_url: "https://www.sse.com.cn/disclosure/listedinfo/announcement/"
+    allowed_hosts: [www.sse.com.cn, query.sse.com.cn, static.sse.com.cn]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [announcements, periodic_reports, inquiry_responses, corrections]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: hourly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "按证券代码 688825、603259 精确检索；保留公告编号、修订和取消记录。"
+
+  - source_id: cninfo_announcements
+    name: "巨潮资讯网上市公司公告（证监会指定信息披露网站）"
+    base_url: "https://www.cninfo.com.cn/new/index"
+    allowed_hosts: [www.cninfo.com.cn, static.cninfo.com.cn]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [announcements, periodic_reports, inquiry_responses, corrections]
+    collection_mode: api
+    adapter: cninfo
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "证监会指定信息披露网站，与交易所同为法定披露渠道；按证券代码与机构号精确检索。用于取得 static.sse.com.cn 出现云盾挑战后无法自动获取的同一批公告——交易所仍是可引用出处，本源是取得渠道，两者按公司、发布日期与标题对齐后在队列中标记 superseded。"
+
+  - source_id: sse_ipo_review
+    name: "上交所发行上市审核"
+    base_url: "https://www.sse.com.cn/listing/renewal/ipo/"
+    allowed_hosts: [www.sse.com.cn, query.sse.com.cn, static.sse.com.cn]
+    company_scope: [cxmt]
+    priority: P0
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [prospectus, review_inquiries, review_responses, listing_documents]
+    collection_mode: api
+    adapter: sse_ipo
+    # 上交所的公告附件把披露日印在文件名里：002170_20251230_B8QS.pdf。这 13 份
+    # 招股书与问询回复的正文里没有一处可解析的发布时间，而文件名里一直有；
+    # 不写这条模式，它们就永远是「无发布时间」，而这是一个做脉络追踪的平台。
+    # 不写死股票代码——巨潮那条写死了 603259|02359，加一家公司就要改配置。
+    attachment_filename_date_pattern: "_(?P<date>20[0-9]{6})_"
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "重点留存长鑫科技招股书各版本及问询回复，用于披露版本比对。"
+
+  - source_id: hkex_news_02359
+    name: "港交所披露易—药明康德"
+    base_url: "https://www1.hkexnews.hk/search/titlesearch.xhtml?category=0&lang=EN&market=SEHK&stockId=208523"
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [zh-HK, en]
+    document_types: [announcements, circulars, annual_reports, monthly_returns]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: hourly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "按股份代号 02359 采集；中英文附件分别入库并关联同一披露事件。"
+
+  - source_id: sse_einteractive
+    name: "上证 e 互动"
+    base_url: "https://sns.sseinfo.com/"
+    adapter: sse_einteractive
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S1
+    languages: [zh-CN]
+    document_types: [investor_qa]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: company_statement
+    terms_and_robots_note: "按证券代码解析公开公司主页 UID，低频分页保存问题、回复和各自时间；问答是公司口径但非法定公告。"
+
+  - source_id: csrc
+    name: "中国证监会"
+    base_url: "https://www.csrc.gov.cn/guestweb4/s"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [regulation, enforcement, administrative_permission, policy]
+    collection_mode: search
+    adapter: csrc_search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用官网公开搜索表单的 GET 等价请求；仅以完整法人名低频检索并保存查询响应。"
+
+  - source_id: congress
+    name: "Congress.gov"
+    base_url: "https://www.congress.gov/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [bills, amendments, committee_reports, actions]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "直接抓取可能受限；使用站内检索或公开接口，不绕过访问控制，记录法案版本和状态。"
+
+  - source_id: us_govinfo
+    name: "U.S. Government Publishing Office GovInfo"
+    base_url: "https://www.govinfo.gov/"
+    allowed_hosts: [www.govinfo.gov]
+    adapter: govinfo_packages
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [bills, committee_reports, committee_markup, floor_debate]
+    collection_mode: api
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用美国政府出版局公开静态 PDF 包补充 Congress.gov 受限入口；仅采集已核实的 BIOSECURE 相关法案版本、委员会报告/审议记录与国会辩论，每个版本独立落盘。版本状态必须按 IH、EH、RFS、RS 等原始代码表述，不把提案或院会通过误写为已生效法律。"
+
+  - source_id: us_hsgac
+    name: "U.S. Senate HSGAC"
+    base_url: "https://www.hsgac.senate.gov/?s=WuXi"
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [hearings, press_releases, letters, reports]
+    collection_mode: search
+    discover_search_results: true
+    search_result_path_prefixes: ["/media/dems/", "/media/reps/", "/library/files/"]
+    discovery_path_prefixes: ["/media/", "/library/", "/wp-content/uploads/"]
+    detail_discovery_attachments_only: true
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "用于生物安全相关议题；必须区分提案、委员会动作与已生效法律。"
+
+  - source_id: us_house_oversight
+    name: "U.S. House Committee on Oversight"
+    base_url: "https://oversight.house.gov/?s=WuXi"
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [hearings, letters, press_releases, reports]
+    collection_mode: search
+    discover_search_results: true
+    search_result_path_prefixes: ["/release/", "/letter/", "/hearing/", "/report/"]
+    search_result_query_parameter: "highlight"
+    discovery_path_prefixes: ["/release/", "/letter/", "/hearing/", "/report/", "/wp-content/uploads/"]
+    detail_discovery_attachments_only: true
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "保存附件和签署人信息，媒体摘要不得替代委员会原文。"
+
+  - source_id: us_dod
+    name: "U.S. Department of Defense"
+    base_url: "https://www.defense.gov/"
+    allowed_hosts: [www.defense.gov, media.defense.gov]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [notices, lists, releases, policy_documents]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "正文与 media.defense.gov 附件同时保存；名单变化须保留版本。"
+
+  - source_id: us_bis
+    name: "U.S. Bureau of Industry and Security"
+    base_url: "https://www.bis.gov/"
+    adapter: bis_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [export_controls, entity_lists, rules, guidance]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用官网搜索前端声明的同域公开接口，按 ChangXin Memory Technologies、CXMT 和 WuXi AppTec 强标识周度低频查询；名单命中须核对法定名称、地址和生效日期。"
+
+  - source_id: us_federal_register
+    name: "Federal Register"
+    base_url: "https://www.federalregister.gov/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [proposed_rules, final_rules, notices, executive_documents]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用正式文号和生效日期构建政策状态，不把拟议规则表述为已生效规则。"
+
+  - source_id: us_federal_register_api
+    name: "Federal Register Public API"
+    base_url: "https://www.federalregister.gov/api/v1/documents.json"
+    allowed_hosts: [www.federalregister.gov, www.govinfo.gov]
+    path_allow_prefixes: [/api/v1/documents.json, /content/pkg/]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [proposed_rules, final_rules, notices, executive_documents]
+    collection_mode: api
+    adapter: federal_register
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "仅使用官方文档列明的免密钥公共 API；固定端点低频查询，网页挑战入口继续人工复核。"
+
+  - source_id: market_quotes
+    name: "日频行情（自选股开放接口）"
+    base_url: "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get"
+    allowed_hosts: [web.ifzq.gtimg.cn]
+    path_allow_prefixes: [/appstock/app/fqkline/get]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [api_response]
+    collection_mode: api
+    adapter: market_quotes
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: false
+    evidence_role: lead_only
+    terms_and_robots_note: "免密钥公开行情接口，逐标的各一次请求。东方财富 robots.txt 对全部代理声明 Disallow: /，因此不予采集；本接口所在主机未声明 robots 限制。行情不进证据语料，只用于影响方向的一致性对照，不作为事实证据。"
+
+  - source_id: us_fda
+    name: "U.S. Food and Drug Administration"
+    base_url: "https://www.fda.gov/"
+    allowed_hosts: [www.fda.gov, www.accessdata.fda.gov]
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [inspection, warning_letters, safety, policy, recalls, accreditation]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "必须用完整法人名、地址或 FEI 等辅助字段消歧，禁止仅凭 Wuxi 命中。"
+
+  - source_id: us_fda_openfda
+    name: "openFDA Recall Enforcement API"
+    base_url: "https://api.fda.gov/drug/enforcement.json"
+    allowed_hosts: [api.fda.gov]
+    adapter: openfda_enforcement
+    store_not_found_response: true
+    company_scope: [wuxi_apptec]
+    priority: P0
+    source_tier: S0
+    languages: [en]
+    document_types: [recalls, enforcement]
+    collection_mode: api
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用 FDA 官方 openFDA 药品和器械召回执法端点，每周按 WuXi AppTec、WuXi STA 完整短语低频查询；单次上限 1000，404 No matches found 作为有效零结果水位保全。仅作监管召回线索，不用于临床判断。"
+
+  - source_id: gsxt
+    name: "国家企业信用信息公示系统"
+    base_url: "https://www.gsxt.gov.cn/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [registration, shareholders, penalties, abnormal_operations]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "验证码和会话限制下仅人工检索，不自动绕过；记录统一社会信用代码。"
+
+  - source_id: credit_china
+    name: "信用中国"
+    base_url: "https://www.creditchina.gov.cn/"
+    allowed_hosts: [www.creditchina.gov.cn, zscq.creditchina.gov.cn, public.creditchina.gov.cn]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [administrative_penalties, credit_records]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "主站和官网当前前端声明的 public.creditchina.gov.cn 数据域均在 robots/入口请求返回 HTTP 412；不重试、不维持会话，仅按官网脚本给出的查询 URL 人工核验并合法导入。处罚附件优先保存。"
+
+  - source_id: cnipa
+    name: "国家知识产权局"
+    base_url: "https://www.cnipa.gov.cn/"
+    allowed_hosts: [www.cnipa.gov.cn, pss-system.cponline.cnipa.gov.cn, epub.cnipa.gov.cn]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [patents, trademarks, adjudications, policy]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "门户公开搜索的动态结果请求在 30 秒上限内重复超时，专利检索另位于专用系统；不维持页面会话、不访问登录接口，仅人工合法检索并导入。专利量仅作事实字段，技术价值判断需结合专利族、法律状态和引用。"
+
+  - source_id: miit
+    name: "工业和信息化部"
+    base_url: "https://www.miit.gov.cn/"
+    adapter: miit_search
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [industry_policy, standards, lists, approvals]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "使用官网前端公开声明的同域检索接口，按完整法人名、长鑫存储和 CXMT 强标识做有日期边界的低频精确查询；面向产业政策、标准和公开名单。"
+
+  - source_id: mofcom
+    name: "商务部"
+    base_url: "https://www.mofcom.gov.cn/"
+    allowed_hosts: [www.mofcom.gov.cn, search.mofcom.gov.cn]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [trade_policy, export_controls, sanctions_response]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "用于跨境贸易、出口管制和政策回应。官网公开搜索位于 search.mofcom.gov.cn，但该子域 robots 与结果页在独立核验中持续超时，无法验证访问规则；停止自动重试，仅人工按完整法人名检索并合法导入。"
+
+  - source_id: nmpa
+    name: "国家药品监督管理局"
+    base_url: "https://www.nmpa.gov.cn/"
+    allowed_hosts: [www.nmpa.gov.cn, zwfw.nmpa.gov.cn, app.gjzwfw.gov.cn, udi.nmpa.gov.cn]
+    company_scope: [wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [regulation, inspection, safety, approvals]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "主站返回 HTTP 412；国家政务服务平台上的官方药品生产企业查询要求图形验证码，故仅人工按完整法人和主要境内子公司检索并合法导入。医疗器械唯一标识库虽公开免登录，但仅覆盖器械产品，不替代药品、检查与安全全库。药品名称相似不得替代主体匹配。"
+
+  - source_id: local_environment
+    name: "重点经营地生态环境部门"
+    base_url: "https://sthjt.ah.gov.cn/"
+    adapter: local_environment_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [eia, acceptance, permits, penalties, monitoring]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "首批通过安徽省厅公开站内搜索精确检索法人及长鑫存储、长鑫新桥主体，结果先按关联候选保存；药明康德另扩展上海、江苏、北京，按年报经营地维护站点清单。"
+
+  - source_id: court_documents
+    name: "中国裁判文书网"
+    base_url: "https://wenshu.court.gov.cn/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P2
+    source_tier: S0
+    languages: [zh-CN]
+    document_types: [judgments, rulings]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: authoritative_fact
+    terms_and_robots_note: "仅人工合规访问；案件当事人须以完整法人名和案号核验。"
+
+  - source_id: securities_times
+    name: "证券时报"
+    base_url: "https://www.stcn.com/"
+    adapter: stcn_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [news, interviews, analysis]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "robots.txt 返回 404，未声明禁止路径；使用首页公开 GET 搜索及页面声明的同源 search_data JSON 端点，以匿名会话 Cookie、Referer 和 X-Requested-With 复现普通前端流程。按‘长鑫科技’和‘药明康德’强标识低频逐页处理，每周期只处理一个结果页流程（入口页和结果端点）或一个详情；进入 2024-01-01 前停止。查询页不计作事件；引用公告的报道需回链公告原文，独家采访保留作者和受访者。"
+
+  - source_id: china_securities_journal
+    name: "中国证券报"
+    base_url: "https://www.cs.com.cn/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [news, interviews, analysis]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "robots.txt 返回 404；2026-08-25 对标准公开 sitemap.xml 的单次核验返回 404，首页也未公开全站主体检索表单。因此自动任务不猜测查询接口或无差别遍历详情，仅保留现有入口和人工合规导入；用于交易所事件的独立报道和市场影响信息。"
+
+  - source_id: shanghai_securities_news
+    name: "上海证券报·中国证券网"
+    base_url: "https://www.cnstock.com/"
+    allowed_hosts: [www.cnstock.com, api.cnstock.com]
+    adapter: cnstock_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [news, interviews, roadshows, analysis]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "www.cnstock.com 与 api.cnstock.com 的 robots.txt 均返回 404，未声明禁止路径；使用官网公开 searchResult 页面及其前端明确声明的 https://api.cnstock.com/search/news JSON POST 端点，携带普通 Origin、Referer 与 cnstock-client-type 请求头，不登录、不提交验证码。按‘长鑫科技’和‘药明康德’强标识逐页低频检索，每周期最多处理一个查询页或一篇公开详情，进入 2024-01-01 前停止；查询响应不计作事件，结果需在标题、摘要或正文再次精确匹配。路演问答需标记为公司授权口径，普通报道标记为媒体口径。"
+
+  - source_id: yicai
+    name: "第一财经"
+    base_url: "https://www.yicai.com/"
+    allowed_hosts: [www.yicai.com]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [news, interviews, analysis]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "2026-08-25 运行时 robots 明确禁止 /search；尽管网页前端声明了同源检索接口，自动任务不得访问搜索页或结果接口，也不得通过其他路径替代。该来源改为人工合规导入：仅在合法获得公开正文、标题或元数据后导入并复核主体和日期；付费内容不采集。"
+
+  - source_id: cls
+    name: "财联社"
+    base_url: "https://www.cls.cn/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [breaking_news, news, interviews]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: hourly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "快讯用于早期发现，事实落库前回溯公告、监管或完整报道。"
+
+  - source_id: nbd
+    name: "每日经济新闻"
+    base_url: "https://www.nbd.com.cn/"
+    adapter: nbd_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [news, interviews, company_responses]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "使用公开搜索页前端声明的同域 JSON 端点，仅以两家公司的完整法人名周度查询，每页 25 条、总量上限 500；逐条复核精确短语并在请求详情前剔除 2024-01-01 前记录。查询响应单独保全为 search_response，每周期最多请求一个分页或一个详情；报道事实须回溯公司或监管原文。"
+
+  - source_id: twenty_first_finance
+    name: "21财经"
+    base_url: "https://www.21jingji.com/"
+    adapter: twenty_first_search
+    allowed_hosts: [www.21jingji.com, m.21jingji.com, so.21jingji.com]
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [news, interviews, company_responses]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "使用公开搜索页前端声明的 so.21jingji.com 密钥和只读检索接口，仅查询两家公司的完整法人名；遵守页面每页 20 条、最多 5 页的公开上限，每周期最多处理一个分页或一个详情。加密响应仅按页面公开的 AES-CBC 算法解码，密钥与检索原响应均保全；2024-01-01 前详情不请求，转载和引述需标记原始出处。"
+
+  - source_id: jiemian
+    name: "界面新闻"
+    base_url: "https://www.jiemian.com/"
+    allowed_hosts: [www.jiemian.com, a.jiemian.com]
+    adapter: jiemian_search
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [news, investigations, interviews]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "使用 robots 允许的 a.jiemian.com 公开 HTML 检索页，按‘长鑫科技’和‘药明康德’强标识逐页低频检索；每周期最多请求一个检索页或详情页，结果按页面日期倒序推进，进入 2024-01-01 前即停止。增量遇到既有 URL 即停止继续翻页。查询页不计作事件；付费或登录内容只保存公开元数据，不绕过访问控制。"
+
+  - source_id: ijiwei
+    name: "集微网"
+    base_url: "https://www.ijiwei.com/"
+    adapter: ijiwei_latest
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [semiconductor_news, supply_chain, technology, interviews]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "robots 禁止 /api，自动任务不访问或逆向该路径；robots 声明的 sitemap 仅含导航页，故每天只读取允许的 /jwnews SSR 最新 20 条窗口。标题或摘要须含长鑫科技、长鑫存储、CXMT、ChangXin Memory 强标识，或“长鑫”同时带 DRAM/LPDDR/存储/芯片等上下文才请求公开详情。该方式无历史回溯能力，台账固定标为 latest_20_only；工艺、产能和供应链数字必须注明消息来源并交叉核验。"
+
+  - source_id: eet_china
+    name: "电子工程专辑 EET China"
+    base_url: "https://www.eet-china.com/"
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    original_timezone: Asia/Shanghai
+    document_types: [semiconductor_news, technology, supply_chain]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "2026-08-25 直接合规检查 robots.txt 返回 HTTP 405，未取得可确认的自动访问规则，已转人工复核且守护进程不再自动请求；后续仅在出版方明确公开访问边界后重新评估。技术推断与公司披露分开保存，关键参数需第二来源核验。"
+
+  - source_id: chinaflashmarket
+    name: "CFM 闪存市场"
+    base_url: "https://www.chinaflashmarket.com/producer/cxmt"
+    adapter: cfm_producer
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [zh-CN]
+    document_types: [memory_market, company_updates, prices]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "以公开长鑫厂商聚合页作唯一发现入口，仅将页面明确列出的 /a/ 资讯与 /newsflash/ 快讯按日期入队；2024-01-01 前链接不请求，每周期最多处理一条。快讯和市场估计只作行业线索，不替代公司或监管原文。"
+
+  - source_id: trendforce
+    name: "TrendForce"
+    base_url: "https://www.trendforce.com/"
+    adapter: trendforce_archive
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [en, zh-CN]
+    original_timezone: Asia/Taipei
+    document_types: [market_research, memory_prices, capacity_estimates]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_estimate
+    terms_and_robots_note: "robots 明确禁止 /search 和 /searchNews，自动任务不访问这些路径；仅使用允许的半导体新闻归档，按日期倒序每页 5 条，以标题或公开摘要中的 CXMT / ChangXin Memory Technologies 强标识发现候选，整页早于 2024-01-01 即停止。每周期最多处理一个归档页或一条公开详情，周度复查第一页；付费报告不请求正文，估算值不得写成公司披露值。"
+
+  - source_id: eetimes
+    name: "EE Times"
+    base_url: "https://www.eetimes.com/company/changxin-memory-technologies-cxmt/"
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    document_types: [semiconductor_news, technology, supply_chain]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "robots 允许公开公司栏目和声明的 sitemap，并禁止 /search；但 2026-08-25 对公开公司页和 sitemap 的合规低频读取连续出现 HTTP/2 传输错误或连接停滞，自动任务已暂停，待人工网络核验后再启用。不得通过切换协议、代理或其他方式规避；保留报道中的原始引述和外链，技术推断单独标记。"
+
+  - source_id: reuters
+    name: "Reuters"
+    base_url: "https://www.reuters.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    document_types: [news, policy, markets, interviews]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: hourly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "遵守许可和访问限制；不可抓取时仅保留元数据与链接，事实回溯原始文件。"
+
+  - source_id: fierce_biotech
+    name: "Fierce Biotech"
+    base_url: "https://www.fiercebiotech.com/"
+    adapter: fierce_search
+    company_scope: [wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    document_types: [biopharma_news, policy, outsourcing, deals]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "使用公开搜索页前端声明的同源 JSON:API、域过滤和静态请求头，周度只查询 WuXi AppTec 完整短语；按发布日期倒序每页 10 条，整页进入 2024 年前即停止，每周期与 Fierce Pharma 合计最多推进一个分页或详情。API 查询响应只作检索证据；引述法案时回链官方立法文本。"
+
+  - source_id: fierce_pharma
+    name: "Fierce Pharma"
+    base_url: "https://www.fiercepharma.com/"
+    adapter: fierce_search
+    company_scope: [wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    document_types: [pharma_news, manufacturing, policy, deals]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "使用公开搜索页前端声明的同源 JSON:API、域过滤和静态请求头，周度只查询 WuXi AppTec 完整短语；按发布日期倒序每页 10 条，整页进入 2024 年前即停止，每周期与 Fierce Biotech 合计最多推进一个分页或详情。制造、供应链和客户事件需做主体及合同关系核验。"
+
+  - source_id: biospace
+    name: "BioSpace"
+    base_url: "https://www.biospace.com/"
+    adapter: biospace_sitemap
+    company_scope: [wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    document_types: [biopharma_news, press_releases, deals, policy]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "robots 明确禁止 /search，自动任务不访问该路径；仅使用 robots 明示的 sitemap.xml 及其中 2024-01 起的月度 sitemap，以 URL 标题中的 WuXi AppTec 完整短语做标题级发现。每周期最多处理一个月度 sitemap 或一个公开详情，周度复查索引；该路径不能覆盖仅在正文中提及主体的文章。编辑报道与企业新闻稿分开标记，新闻稿降级为企业口径。"
+
+  - source_id: associated_press
+    name: "Associated Press"
+    base_url: "https://apnews.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    original_timezone: America/New_York
+    document_types: [news, policy, markets]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: false
+    evidence_eligible: true
+    evidence_role: independent_reporting
+    terms_and_robots_note: "robots 允许其声明的 sitemap，但禁止 /search；月度 sitemap 不提供文章标题等可按主体筛选的元数据，自动任务不进行无差别详情遍历。该来源暂仅保留公开入口/人工核验线索，不能计作两家主体的完整媒体覆盖；政策和法律状态回溯政府原文。"
+
+  - source_id: toms_hardware
+    name: "Tom's Hardware"
+    base_url: "https://www.tomshardware.com/"
+    adapter: toms_sitemap
+    company_scope: [cxmt]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    original_timezone: America/New_York
+    document_types: [hardware_news, product_tests, supply_chain]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: mixed
+    evidence_eligible: true
+    evidence_role: industry_reporting
+    terms_and_robots_note: "robots 以通配符明确禁止带 searchTerm 的搜索 URL，自动任务不访问该路径；仅使用 robots 明示的 sitemap.xml 及其中 2024-01 起月度 sitemap，以 URL 标题中的 CXMT 或 ChangXin Memory Technologies 强标识做标题级发现。每周期最多处理一个月度 sitemap 或一个公开详情，周度复查索引；消费级测试不得外推公司整体技术能力。"
+
+  - source_id: courtlistener
+    name: "CourtListener"
+    base_url: "https://www.courtlistener.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P1
+    source_tier: S2
+    languages: [en]
+    original_timezone: America/New_York
+    document_types: [docket_metadata, opinions, public_filings]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: false
+    evidence_eligible: true
+    evidence_role: public_legal_index
+    terms_and_robots_note: "仅作美国诉讼公开检索入口；案件事实以法院案号和原始文件核验。2026-09-04 复核：该站 robots.txt 对本项目 User-Agent 返回 HTTP 403，按 collector.collect.robots_decision 的既定判据（401/403 一律视为不允许）本源不予采集，零产出不是故障。其公开 REST API 可用且确实命中相关案件（Wuxi Apptec Co., Ltd. v. U.S. Department of Defense），但取不到 robots 就不能确认许可范围，因此不采——这条限制的后果记在交付物4-数据说明 §5.5。"
+
+  - source_id: market_mirrors
+    name: "行情资讯与公告镜像平台"
+    base_url: "https://finance.eastmoney.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P2
+    source_tier: S3
+    languages: [zh-CN]
+    document_types: [news_aggregation, announcement_mirrors, market_data]
+    collection_mode: search
+    backfill_start: "2024-01-01"
+    cadence: hourly
+    paywall: false
+    evidence_eligible: false
+    evidence_role: discovery_only
+    terms_and_robots_note: "包含东方财富等镜像入口；公告必须回溯上交所或港交所原文。"
+
+  - source_id: social_public
+    name: "公开社交媒体与论坛"
+    base_url: "https://weibo.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P2
+    source_tier: S3
+    languages: [zh-CN]
+    document_types: [public_posts, discussions, propagation_signals]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: daily
+    paywall: mixed
+    evidence_eligible: false
+    evidence_role: discovery_only
+    terms_and_robots_note: "首批含微博、微信公众号公开链接、雪球和股吧；只处理公开 URL，不绕过登录，个人信息最小化。"
+
+  - source_id: paid_research_metadata
+    name: "付费行业研究元数据"
+    base_url: "https://omdia.tech.informa.com/"
+    company_scope: [cxmt, wuxi_apptec]
+    priority: P2
+    source_tier: S2
+    languages: [en]
+    document_types: [report_metadata, analyst_estimates]
+    collection_mode: manual
+    backfill_start: "2024-01-01"
+    cadence: weekly
+    paywall: true
+    evidence_eligible: false
+    evidence_role: metadata_only
+    terms_and_robots_note: "首批仅保存 Omdia、TechInsights、DIGITIMES、STAT、Endpoints 等标题、作者、日期、摘要和链接；无授权不复制正文。"

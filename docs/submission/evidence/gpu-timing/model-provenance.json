@@ -1,0 +1,14 @@
+{
+  "official_model": "BAAI/bge-m3",
+  "official_metadata_url": "https://huggingface.co/api/models/BAAI/bge-m3?blobs=true",
+  "official_revision": "5617a9f61b028005a4858fdac845db406aefb181",
+  "local_source": "Xorbits/bge-m3 mirror from existing model cache",
+  "official_pytorch_model_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+  "local_pytorch_model_sha256": "b5e0ce3470abf5ef3831aa1bd5553b486803e83251590ab7ff35a117cf6aad38",
+  "pytorch_model_hash_matches_official": true,
+  "actual_loaded_file": "model.safetensors",
+  "actual_loaded_sha256": "993b2248881724788dcab8c644a91dfd63584b6e5604ff2037cb5541e1e38e7e",
+  "actual_loaded_bytes": 2271064456,
+  "weights_distributed_in_git": false,
+  "scope": "The historical run did not retain a model revision. Official metadata and mirrored safetensors are identified separately; no strict controlled cross-device speedup is asserted."
+}

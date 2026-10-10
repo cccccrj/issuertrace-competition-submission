@@ -1,0 +1,323 @@
+{
+  "started_at": "2026-10-09T12:53:19.725606+00:00",
+  "complete": true,
+  "source_commit": "4685ccbd5da4207f79af2977eaacdff6986adc1a",
+  "benchmark_script_sha256": "a97053e32db9bb6952c9a12845fe65caafd7e083b0289da984aab2947b4a6bd5",
+  "encoder_script_sha256": "723786d116bf4e5334339df0990fe6d0895453187b08a96ebe442d694de0f79c",
+  "input": {
+    "paragraphs": 93209,
+    "queries": 3922,
+    "paragraph_fingerprint": "e131aea74bede795b702cc29eb548745fc98690a213ed3c1b88b529077f202f0",
+    "sha256": {
+      "paragraphs.jsonl": "94497cac311765d5ac647819f732459022d2539a3a18d75c263f1716c856bcc6",
+      "queries.jsonl": "0dc7ecc864ab7cb0d524766a6b82afd72410eb56e15bde958cdda4a4f012da6c"
+    }
+  },
+  "model_files": [
+    {
+      "file": "1_Pooling/config.json",
+      "bytes": 191,
+      "sha256": "e54c164a07274f2eb45bb724f54a79d1efcc90c41573887cd9a29aeee0597352"
+    },
+    {
+      "file": "README.md",
+      "bytes": 1356,
+      "sha256": "7b8173e05d1b08af425fa188ec46ac2b992271e364ff681f03051c7873d9f896"
+    },
+    {
+      "file": "colbert_linear.pt",
+      "bytes": 2100674,
+      "sha256": "19bfbae397c2b7524158c919d0e9b19393c5639d098f0a66932c91ed8f5f9abb"
+    },
+    {
+      "file": "config.json",
+      "bytes": 687,
+      "sha256": "26159e7ad065073448460117eb24b7a4572f6f4e78eadff65dc0a11c052449fa"
+    },
+    {
+      "file": "config_sentence_transformers.json",
+      "bytes": 123,
+      "sha256": "1eef72430e7194a1e59680e635aed81ffa083f05668dbc5bb1c56c04c0999c38"
+    },
+    {
+      "file": "configuration.json",
+      "bytes": 181,
+      "sha256": "b547105f42b18d2fc70578ebbd41d5418da93db6b1bf3a121b19146e95ec7860"
+    },
+    {
+      "file": "imgs/long.jpg",
+      "bytes": 218413,
+      "sha256": "61cf887ba078c189d4f2e3cf7fcdfd28bf154963ad24f6838f916bad54230fea"
+    },
+    {
+      "file": "imgs/miracl.jpg",
+      "bytes": 200826,
+      "sha256": "e02048688a4e97f2ca44f4f598405c2d7d0f521fdc8b35dd0372de4bd56a6080"
+    },
+    {
+      "file": "imgs/mkqa.jpg",
+      "bytes": 326139,
+      "sha256": "ec5da089cc0f9633571af26e6ac42b209f7cfe98a464de0100b8536176c5e1b4"
+    },
+    {
+      "file": "model.safetensors",
+      "bytes": 2271064456,
+      "sha256": "993b2248881724788dcab8c644a91dfd63584b6e5604ff2037cb5541e1e38e7e"
+    },
+    {
+      "file": "modules.json",
+      "bytes": 349,
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+    },
+    {
+      "file": "sentence_bert_config.json",
+      "bytes": 54,
+      "sha256": "eb9b44b13c0f52a3b3685c3b1cbdea1ba8b04bea123b98f61610048940776eb1"
+    },
+    {
+      "file": "sentencepiece.bpe.model",
+      "bytes": 5069051,
+      "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+    },
+    {
+      "file": "sparse_linear.pt",
+      "bytes": 3516,
+      "sha256": "45c93804d2142b8f6d7ec6914ae23a1eee9c6a1d27d83d908a20d2afb3595ad9"
+    },
+    {
+      "file": "special_tokens_map.json",
+      "bytes": 964,
+      "sha256": "8c785abebea9ae3257b61681b4e6fd8365ceafde980c21970d001e834cf10835"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 17098108,
+      "sha256": "21106b6d7dab2952c1d496fb21d5dc9db75c28ed361a05f5020bbba27810dd08"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 1313,
+      "sha256": "4c532e44f339fd1142ff026025b6a7910bef6e32aa4b5d7baa73e39a9db9fe88"
+    }
+  ],
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 4090 D, 570.124.04, 24564 MiB, 425.00 W",
+    "cpu": "Architecture:                       x86_64\nCPU op-mode(s):                     32-bit, 64-bit\nAddress sizes:                      52 bits physical, 57 bits virtual\nByte Order:                         Little Endian\nCPU(s):                             256\nOn-line CPU(s) list:                0-255\nVendor ID:                          AuthenticAMD\nModel name:                         AMD EPYC 9754 128-Core Processor\nCPU family:                         25\nModel:                              160\nThread(s) per core:                 2\nCore(s) per socket:                 128\nSocket(s):                          1\nStepping:                           2\nFrequency boost:                    enabled\nCPU max MHz:                        3100.3411\nCPU min MHz:                        1500.0000\nBogoMIPS:                           4499.86\nFlags:                              fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 invpcid_single hw_pstate ssbd mba ibrs ibpb stibp vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif v_spec_ctrl avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid overflow_recov succor smca fsrm flush_l1d\nVirtualization:                     AMD-V\nL1d cache:                          4 MiB (128 instances)\nL1i cache:                          4 MiB (128 instances)\nL2 cache:                           128 MiB (128 instances)\nL3 cache:                           256 MiB (16 instances)\nNUMA node(s):                       1\nNUMA node0 CPU(s):                  0-255\nVulnerability Gather data sampling: Not affected\nVulnerability Itlb multihit:        Not affected\nVulnerability L1tf:                 Not affected\nVulnerability Mds:                  Not affected\nVulnerability Meltdown:             Not affected\nVulnerability Mmio stale data:      Not affected\nVulnerability Retbleed:             Not affected\nVulnerability Spec rstack overflow: Mitigation; safe RET\nVulnerability Spec store bypass:    Mitigation; Speculative Store Bypass disabled via prctl and seccomp\nVulnerability Spectre v1:           Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:           Mitigation; Retpolines, IBPB conditional, IBRS_FW, STIBP always-on, RSB filling, PBRSB-eIBRS Not affected\nVulnerability Srbds:                Not affected\nVulnerability Tsx async abort:      Not affected",
+    "cgroup": {
+      "cpu.max": "1800000 100000",
+      "memory.max": "64424509440",
+      "cpuset.cpus.effective": "0-255"
+    },
+    "capability": [
+      8,
+      9
+    ]
+  },
+  "environment": {
+    "python": "3.10.15",
+    "os": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+    "torch": "2.8.0+cu128",
+    "cuda": "12.8",
+    "packages": {
+      "sentence-transformers": "4.1.0",
+      "transformers": "4.55.2",
+      "tokenizers": "0.21.4",
+      "numpy": "2.2.6",
+      "huggingface-hub": "0.36.0"
+    }
+  },
+  "parameters": {
+    "batch_size": 64,
+    "max_length": 512,
+    "top_k": 20,
+    "precision": "float16",
+    "normalized": true,
+    "device": "cuda:0",
+    "actual_gpu_count": 1,
+    "repeats": 3,
+    "seed": 42,
+    "allow_tf32": false
+  },
+  "runs": [
+    {
+      "repetition": 1,
+      "companies": [
+        {
+          "company": "cxmt",
+          "paragraphs": 27534,
+          "queries": 1145,
+          "paragraph_encode_seconds": 14.451757,
+          "query_encode_seconds": 0.452503,
+          "neighbors_seconds": 0.035712
+        },
+        {
+          "company": "wuxi_apptec",
+          "paragraphs": 65675,
+          "queries": 2777,
+          "paragraph_encode_seconds": 41.205814,
+          "query_encode_seconds": 1.103271,
+          "neighbors_seconds": 0.086675
+        }
+      ],
+      "encoding_seconds": 57.213345,
+      "neighbors_seconds": 0.122387,
+      "file_write_seconds": 0.086716,
+      "elapsed_seconds": 57.646499,
+      "texts_per_second": 1697.698,
+      "gpu_peak_resident_mib": 3493.0,
+      "gpu_peak_utilization_pct": 100.0,
+      "torch_peak_allocated_mib": 1897.407,
+      "torch_peak_reserved_mib": 3066.0,
+      "neighbors_sha256": "34563cb3c078aec352360c84ad65c91e2f23f7df0618a54920403619e0744a34",
+      "acceptance": {
+        "passed": true,
+        "queries": 3922,
+        "all_queries_covered": true,
+        "company_scope_correct": true,
+        "finite_sorted_scores": true,
+        "top_k_correct": true,
+        "fp16_score_tolerance": 0.005,
+        "score_min": 0.4561,
+        "score_max": 1.001
+      },
+      "gpu_sample_count": 175,
+      "sampler_errors": []
+    },
+    {
+      "repetition": 2,
+      "companies": [
+        {
+          "company": "cxmt",
+          "paragraphs": 27534,
+          "queries": 1145,
+          "paragraph_encode_seconds": 14.71661,
+          "query_encode_seconds": 0.457503,
+          "neighbors_seconds": 0.043034
+        },
+        {
+          "company": "wuxi_apptec",
+          "paragraphs": 65675,
+          "queries": 2777,
+          "paragraph_encode_seconds": 41.223233,
+          "query_encode_seconds": 1.114116,
+          "neighbors_seconds": 0.324224
+        }
+      ],
+      "encoding_seconds": 57.511462,
+      "neighbors_seconds": 0.367258,
+      "file_write_seconds": 0.085641,
+      "elapsed_seconds": 58.131274,
+      "texts_per_second": 1688.898,
+      "gpu_peak_resident_mib": 3493.0,
+      "gpu_peak_utilization_pct": 100.0,
+      "torch_peak_allocated_mib": 1897.407,
+      "torch_peak_reserved_mib": 3066.0,
+      "neighbors_sha256": "34563cb3c078aec352360c84ad65c91e2f23f7df0618a54920403619e0744a34",
+      "acceptance": {
+        "passed": true,
+        "queries": 3922,
+        "all_queries_covered": true,
+        "company_scope_correct": true,
+        "finite_sorted_scores": true,
+        "top_k_correct": true,
+        "fp16_score_tolerance": 0.005,
+        "score_min": 0.4561,
+        "score_max": 1.001
+      },
+      "gpu_sample_count": 177,
+      "sampler_errors": []
+    },
+    {
+      "repetition": 3,
+      "companies": [
+        {
+          "company": "cxmt",
+          "paragraphs": 27534,
+          "queries": 1145,
+          "paragraph_encode_seconds": 14.466346,
+          "query_encode_seconds": 0.456893,
+          "neighbors_seconds": 0.317552
+        },
+        {
+          "company": "wuxi_apptec",
+          "paragraphs": 65675,
+          "queries": 2777,
+          "paragraph_encode_seconds": 41.311634,
+          "query_encode_seconds": 1.118845,
+          "neighbors_seconds": 0.370738
+        }
+      ],
+      "encoding_seconds": 57.353718,
+      "neighbors_seconds": 0.68829,
+      "file_write_seconds": 0.090338,
+      "elapsed_seconds": 58.306376,
+      "texts_per_second": 1693.543,
+      "gpu_peak_resident_mib": 3493.0,
+      "gpu_peak_utilization_pct": 100.0,
+      "torch_peak_allocated_mib": 1897.407,
+      "torch_peak_reserved_mib": 3066.0,
+      "neighbors_sha256": "34563cb3c078aec352360c84ad65c91e2f23f7df0618a54920403619e0744a34",
+      "acceptance": {
+        "passed": true,
+        "queries": 3922,
+        "all_queries_covered": true,
+        "company_scope_correct": true,
+        "finite_sorted_scores": true,
+        "top_k_correct": true,
+        "fp16_score_tolerance": 0.005,
+        "score_min": 0.4561,
+        "score_max": 1.001
+      },
+      "gpu_sample_count": 179,
+      "sampler_errors": []
+    }
+  ],
+  "model_load_seconds": 4.655905,
+  "warmup": {
+    "paragraphs": 64,
+    "queries": 64,
+    "batches": 1,
+    "excluded_from_timing": true
+  },
+  "finished_at": "2026-10-09T12:56:19.386922+00:00",
+  "gpu_execution_observed": true,
+  "summary": {
+    "encoding_seconds": {
+      "mean": 57.359508,
+      "median": 57.353718,
+      "std_sample": 0.149143,
+      "p95": 57.495688,
+      "min": 57.213345,
+      "max": 57.511462,
+      "samples": 3
+    },
+    "neighbors_seconds": {
+      "mean": 0.392645,
+      "median": 0.367258,
+      "std_sample": 0.283804,
+      "p95": 0.656187,
+      "min": 0.122387,
+      "max": 0.68829,
+      "samples": 3
+    },
+    "elapsed_seconds": {
+      "mean": 58.02805,
+      "median": 58.131274,
+      "std_sample": 0.341835,
+      "p95": 58.288866,
+      "min": 57.646499,
+      "max": 58.306376,
+      "samples": 3
+    },
+    "texts_per_second": {
+      "mean": 1693.379667,
+      "median": 1693.543,
+      "std_sample": 4.402273,
+      "p95": 1697.2825,
+      "min": 1688.898,
+      "max": 1697.698,
+      "samples": 3
+    }
+  },
+  "repeat_output_hashes_identical": true
+}

@@ -1,0 +1,28 @@
+{
+  "checks": {
+    "events_without_version": 0,
+    "claims_without_event": 0,
+    "verdicts_without_claim": 0,
+    "evidence_without_version": 0,
+    "duplicate_members_without_version": 0
+  },
+  "passed": true,
+  "groups": {
+    "events_by_company": {
+      "cxmt": 604,
+      "wuxi_apptec": 1303
+    },
+    "verdicts": {
+      "CONFLICT": 195,
+      "PARTIAL": 639,
+      "SUPPORTED": 2091,
+      "UNVERIFIABLE": 997
+    },
+    "alerts_by_level": {
+      "high": 101,
+      "low": 59,
+      "medium": 121
+    }
+  },
+  "limitation": "Referential consistency is not factual accuracy or full raw-file hash verification."
+}

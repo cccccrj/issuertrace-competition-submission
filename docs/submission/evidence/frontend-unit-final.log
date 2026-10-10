@@ -1,0 +1,45 @@
+
+> listed-company-event-intelligence-web@1.0.0 test
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90m/home/demo/lcei-submission-frontend-final[39m
+
+ [32m✓[39m src/__tests__/ui/conventions.test.js [2m([22m[2m49 tests[22m[2m)[22m[32m 197[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/target-text.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/no-internals.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/__tests__/api-stream.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/__tests__/charts/options.test.js [2m([22m[2m28 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui-scale.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/numeric-check.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 85[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/search-box.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 134[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/subscriptions.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 230[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/assistant-panel.test.js [2m([22m[2m9 tests[22m[2m)[22m[32m 300[2mms[22m[39m
+ [32m✓[39m src/__tests__/charts/echart.test.js [2m([22m[2m10 tests[22m[2m)[22m[32m 195[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/tasks.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 260[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/select.test.js [2m([22m[2m26 tests[22m[2m)[22m[33m 502[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/users.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 289[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/login.test.js [2m([22m[2m15 tests[22m[2m)[22m[33m 532[2mms[22m[39m
+ [32m✓[39m src/__tests__/ui/components.test.js [2m([22m[2m18 tests[22m[2m)[22m[32m 294[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/audit-actions.test.js [2m([22m[2m6 tests[22m[2m)[22m[33m 348[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/investigations.test.js [2m([22m[2m5 tests[22m[2m)[22m[33m 321[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/search.test.js [2m([22m[2m8 tests[22m[2m)[22m[33m 476[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/guide.test.js [2m([22m[2m9 tests[22m[2m)[22m[33m 938[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/ingestion-layers.test.js [2m([22m[2m6 tests[22m[2m)[22m[33m 804[2mms[22m[39m
+ [32m✓[39m src/__tests__/theme.test.js [2m([22m[2m19 tests[22m[2m)[22m[32m 84[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/risk-center.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 225[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/master-data.test.js [2m([22m[2m5 tests[22m[2m)[22m[33m 337[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/company.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 268[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/issue-reassign.test.js [2m([22m[2m12 tests[22m[2m)[22m[33m 792[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/review.test.js [2m([22m[2m19 tests[22m[2m)[22m[33m 1700[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/event-detail.test.js [2m([22m[2m30 tests[22m[2m)[22m[33m 1069[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/risks.test.js [2m([22m[2m28 tests[22m[2m)[22m[33m 1917[2mms[22m[39m
+ [32m✓[39m src/__tests__/views/overview.test.js [2m([22m[2m18 tests[22m[2m)[22m[33m 2275[2mms[22m[39m
+     [33m[2m✓[22m[39m 头条数字从 0 滚到接口给的终值，并且不用等宽数字 [33m 833[2mms[22m[39m
+ [32m✓[39m src/__tests__/app-shell.test.js [2m([22m[2m41 tests[22m[2m)[22m[33m 2128[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m31 passed[39m[22m[90m (31)[39m
+[2m      Tests [22m [1m[32m406 passed[39m[22m[90m (406)[39m
+[2m   Start at [22m 20:13:18
+[2m   Duration [22m 7.51s[2m (transform 42.99s, setup 12.39s, import 63.46s, tests 16.81s, environment 35.65s)[22m
+

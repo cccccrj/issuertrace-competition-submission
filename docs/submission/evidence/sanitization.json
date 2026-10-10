@@ -1,0 +1,26 @@
+{
+  "cleared_tables": [
+    "platform_users",
+    "platform_actions",
+    "review_tasks",
+    "review_decisions",
+    "review_assignments",
+    "review_pre_annotations",
+    "model_gateway_state",
+    "alert_subscriptions",
+    "alert_deliveries",
+    "alert_dispositions",
+    "alert_disposition_events",
+    "notification_reads",
+    "notifications",
+    "issue_adjustments"
+  ],
+  "accounts": [
+    "competition-viewer",
+    "competition-analyst",
+    "competition-analyst2",
+    "competition-reviewer",
+    "competition-admin"
+  ],
+  "integrity_check": "ok"
+}

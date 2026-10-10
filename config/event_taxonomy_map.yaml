@@ -1,0 +1,216 @@
+# 官方事件名 → 本系统受控词表 的冻结映射
+#
+# 用途：把主办方数据集的 event_name（84 家公司 44 个去重名 + 17 个行业 20 个名，
+# 每个名都带长文定义）折算到本系统的两套受控词表上，从而在不做人工标注的前提下
+# 计算 E1。映射是交付方的一次性人工归并，是评测中唯一的主观环节，因此必须公开、
+# 冻结、并与指标一同呈现。
+#
+# 两套目标词表的定位不同：
+#   issue_codes  —— 26 个议题码（processor/pipeline.py::ISSUE_RULES；v1 时为 22 个，
+#                   v2 补入四个见 changelog_v2），粒度与官方体系接近，是 E1 的**主指标**。
+#   event_types  —— 12 类命题事件类型（同文件 EVENT_TYPES），是 E1 的**副表**。
+#
+# 已实测并须随指标申明的事实：两套体系的轴不同。官方按**业务动作**划分（创新、
+# 拓展、战略、产能、行业政策），本系统 12 类按**风险类型**划分（处罚、诉讼、审计、
+# 股权、召回）。因此 event_types 一侧高度退化——44 个官方名里有 14 个唯一落入
+# PRODUCT_TECH_IP，其余大量落入 CUSTOMER_SUPPLIER_OPERATIONS，混淆矩阵接近单列。
+# 这不是分类器的错误，是词表覆盖面的事实，报告中作为误差分析的一部分呈现。
+#
+# 空列表 `[]` 表示**本系统词表没有对应类**。这类金标行进入独立的 unmappable 桶，
+# 在报告中单列行数，既不丢弃、也不计为系统错误。每一个 `[]` 都必须在
+# unmappable_rationale 中写明理由。
+
+version: 2
+frozen_at: "2026-09-03"
+supersedes:
+  version: 1
+  frozen_at: "2026-09-02"
+  file_sha256: "511513a7"  # 前 8 位，与 benchmark_runs.map_version 中的 v1+511513a7 对应
+dataset: "命题二 事件驱动智能识别可信评估与脉络追踪（主办方发放）"
+dataset_sha256:
+  事件类型_标的.json: "06d7c747f879913dfd5eb1d8e9356ba7eec8a4449145211c0ebf5742f52eeb4a"
+  事件类型_行业.json: "95b66eddf770f903ef48c79bf632a14c75147004149185a22229bc0fe67bf01d"
+
+policy: >
+  本映射在计算任何指标之前提交，冻结后不得因指标不佳而修改。任何修改必须提升
+  version，并在评测报告中与旧版数字并列呈现；benchmark_runs.map_version 记录
+  运行时使用的版本与文件哈希，事后改动在 git 历史中可检测。
+
+changelog_v2: >
+  v1 → v2 只做一件事：为 v1 中判为「本系统词表无对应类」的 37 个官方事件名补上类目，
+  代价是本系统议题词表从 22 码扩到 26 码（processor/pipeline.py::ISSUE_RULES）。
+  **v1 中已有的映射一律未改动**——改已有映射等于用指标反推归并，是冻结政策禁止的；
+  因此 "OPEC+产量政策变化" 仍归 CYCLE_PRICE 而非新增的 INDUSTRY_POLICY，尽管后者
+  事后看更贴切。这条自我约束的代价写在这里，供复核。
+
+  四个新码而非路线图所说的两个：37 个名实际分成四类，行业侧是「政策」与「景气/产业发展」，
+  公司侧是「拓展」与「战略转型」。进入新地盘与重组既有地盘不是同一类事件，合并会造出
+  一个分类器无从区分、报告也无从辩护的杂类。
+
+  补完后仍不可映射者只剩 1 个（"公共卫生事件"），理由见 unmappable_rationale。
+
+# ---------------------------------------------------------------------------
+# 公司事件（44 个去重名）
+# ---------------------------------------------------------------------------
+event_name_to_issue_codes:
+  # —— 技术与产品：与 TECH_LEVEL「技术水平与产品代际」直接对应 ——
+  "产品技术创新": [TECH_LEVEL]
+  "关键技术突破": [TECH_LEVEL]
+  "技术突破与创新": [TECH_LEVEL]
+  "技术研发进展": [TECH_LEVEL]
+  "化学制品科技创新": [TECH_LEVEL]
+  "钢铁生产核心技术突破": [TECH_LEVEL]
+  "光伏新技术迭代升级": [TECH_LEVEL]
+  "光伏组件行业技术迭代": [TECH_LEVEL]
+  "新产品升级发布": [TECH_LEVEL]
+  "储能电池产品迭代": [TECH_LEVEL]
+  "动力电池产品迭代": [TECH_LEVEL]
+  "医药研发突破": [DRUG_DEVELOPMENT]
+  # —— 产能：定义中的「产线扩建 / 投产 / 装机容量」即 YIELD_CAPACITY ——
+  "产能布局调整": [YIELD_CAPACITY]
+  "海外产能进展": [YIELD_CAPACITY]
+  "重大项目投资建设": [YIELD_CAPACITY]
+  # —— 客户与订单 ——
+  "签订重要合同": [CUSTOMER]
+  "行业下游的需求变化": [CUSTOMER]
+  # —— 竞争与价格 ——
+  "市场竞争": [COMPETITION]
+  "市场竞争加剧": [COMPETITION]
+  "大宗商品景气与价格波动加剧": [CYCLE_PRICE]
+  "新车发布定价": [TECH_LEVEL, CYCLE_PRICE]
+  # —— 资本与财务 ——
+  "资本市场运作": [FUND_RAISE, SHAREHOLDER]
+  "现金流风险": [FINANCIAL]
+  # —— 地缘政治：定义落在出口管制 / 制裁 / 地缘风险上 ——
+  "发生地缘政治事件": [EXPORT_CTRL]
+  "地缘政治": [EXPORT_CTRL]
+  # —— 以下在 v1 时无对应类目，v2 由四个新增码承接 ——
+  "公司战略调整": [STRATEGY_TRANSFORM]
+  "业务战略调整": [STRATEGY_TRANSFORM]
+  "新业务拓展": [BUSINESS_EXPANSION]
+  "业务拓展": [BUSINESS_EXPANSION]
+  "重大业务拓展": [BUSINESS_EXPANSION]
+  "零售业务策略调整": [STRATEGY_TRANSFORM]
+  "全球化市场扩张与品牌布局": [BUSINESS_EXPANSION]
+  "国际化布局": [BUSINESS_EXPANSION]
+  "新车出海": [BUSINESS_EXPANSION]
+  "To B业务拓展（新能源、机器人等）": [BUSINESS_EXPANSION]
+  "合资品牌战略": [STRATEGY_TRANSFORM]
+  "公司战略变化及对外投资": [STRATEGY_TRANSFORM]
+  "企业转型催化": [STRATEGY_TRANSFORM]
+  "数字化转型深化": [STRATEGY_TRANSFORM]
+  "结构升级": [STRATEGY_TRANSFORM]
+  "调改措施进展": [STRATEGY_TRANSFORM]
+  "充换电基础设施完善": [BUSINESS_EXPANSION]
+  "商业航天与低空经济发展": [INDUSTRY_TREND]
+  "电力投资政策": [INDUSTRY_POLICY]
+
+# ---------------------------------------------------------------------------
+# 行业事件（20 个名）
+# ---------------------------------------------------------------------------
+industry_event_name_to_issue_codes:
+  "水产品价格变动": [CYCLE_PRICE]
+  "OPEC+产量政策变化": [CYCLE_PRICE]
+  # 以下 18 个全部是行业政策或行业景气类。v1 时本系统议题词表按公司议题设计，
+  # 没有任何一个行业政策码可供对应；v2 由 INDUSTRY_POLICY / INDUSTRY_TREND 承接，
+  # 只剩「公共卫生事件」仍无类目。
+  "农业政策变动": [INDUSTRY_POLICY]
+  "公共卫生事件": []
+  "国内创新药支持政策": [INDUSTRY_POLICY]
+  "教育行业政策调整": [INDUSTRY_POLICY]
+  "存款利率下调": [INDUSTRY_POLICY]
+  "金融政策支持": [INDUSTRY_POLICY]
+  "行业政策": [INDUSTRY_POLICY]
+  "行业政策推动": [INDUSTRY_POLICY]
+  "行业调控政策发布": [INDUSTRY_POLICY]
+  "重大基建项目开发": [INDUSTRY_TREND]
+  "化债政策": [INDUSTRY_POLICY]
+  "稳增长政策": [INDUSTRY_POLICY]
+  "绿色政策发布": [INDUSTRY_POLICY]
+  "风电产业政策支持": [INDUSTRY_POLICY]
+  "工业自动化政策支持变化": [INDUSTRY_POLICY]
+  "航海装备产业升级": [INDUSTRY_TREND]
+  "影视行业政策变动": [INDUSTRY_POLICY]
+  "影视市场表现变化": [INDUSTRY_TREND]
+
+# ---------------------------------------------------------------------------
+# 副表：12 类命题事件类型。覆盖率高但区分度低，退化情况见文件抬头。
+# ---------------------------------------------------------------------------
+event_name_to_event_types:
+  "产品技术创新": [PRODUCT_TECH_IP]
+  "关键技术突破": [PRODUCT_TECH_IP]
+  "技术突破与创新": [PRODUCT_TECH_IP]
+  "技术研发进展": [PRODUCT_TECH_IP]
+  "化学制品科技创新": [PRODUCT_TECH_IP]
+  "钢铁生产核心技术突破": [PRODUCT_TECH_IP]
+  "光伏新技术迭代升级": [PRODUCT_TECH_IP]
+  "光伏组件行业技术迭代": [PRODUCT_TECH_IP]
+  "新产品升级发布": [PRODUCT_TECH_IP]
+  "储能电池产品迭代": [PRODUCT_TECH_IP]
+  "动力电池产品迭代": [PRODUCT_TECH_IP]
+  "医药研发突破": [PRODUCT_TECH_IP]
+  "新车发布定价": [PRODUCT_TECH_IP]
+  "数字化转型深化": [PRODUCT_TECH_IP]
+  "商业航天与低空经济发展": [PRODUCT_TECH_IP]
+  "资本市场运作": [M_AND_A_ASSET_TRANSACTION, IPO_REFINANCING]
+  "重大项目投资建设": [M_AND_A_ASSET_TRANSACTION]
+  "公司战略变化及对外投资": [M_AND_A_ASSET_TRANSACTION]
+  "合资品牌战略": [M_AND_A_ASSET_TRANSACTION]
+  "现金流风险": [FINANCIAL_AUDIT]
+  "发生地缘政治事件": [REGULATORY_COMPLIANCE]
+  "地缘政治": [REGULATORY_COMPLIANCE]
+  "电力投资政策": [REGULATORY_COMPLIANCE]
+  "公司战略调整": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "业务战略调整": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "新业务拓展": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "业务拓展": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "重大业务拓展": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "零售业务策略调整": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "全球化市场扩张与品牌布局": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "国际化布局": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "新车出海": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "To B业务拓展（新能源、机器人等）": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "企业转型催化": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "结构升级": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "调改措施进展": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "充换电基础设施完善": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "产能布局调整": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "海外产能进展": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "签订重要合同": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "行业下游的需求变化": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "市场竞争": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "市场竞争加剧": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "大宗商品景气与价格波动加剧": [CUSTOMER_SUPPLIER_OPERATIONS]
+
+industry_event_name_to_event_types:
+  "农业政策变动": [REGULATORY_COMPLIANCE]
+  "国内创新药支持政策": [REGULATORY_COMPLIANCE]
+  "教育行业政策调整": [REGULATORY_COMPLIANCE]
+  "存款利率下调": [REGULATORY_COMPLIANCE]
+  "金融政策支持": [REGULATORY_COMPLIANCE]
+  "行业政策": [REGULATORY_COMPLIANCE]
+  "行业政策推动": [REGULATORY_COMPLIANCE]
+  "行业调控政策发布": [REGULATORY_COMPLIANCE]
+  "化债政策": [REGULATORY_COMPLIANCE]
+  "稳增长政策": [REGULATORY_COMPLIANCE]
+  "绿色政策发布": [REGULATORY_COMPLIANCE]
+  "风电产业政策支持": [REGULATORY_COMPLIANCE]
+  "工业自动化政策支持变化": [REGULATORY_COMPLIANCE]
+  "影视行业政策变动": [REGULATORY_COMPLIANCE]
+  "OPEC+产量政策变化": [REGULATORY_COMPLIANCE]
+  "公共卫生事件": [SAFETY_QUALITY_RECALL]
+  "航海装备产业升级": [PRODUCT_TECH_IP]
+  "水产品价格变动": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "重大基建项目开发": [CUSTOMER_SUPPLIER_OPERATIONS]
+  "影视市场表现变化": [CUSTOMER_SUPPLIER_OPERATIONS]
+
+# ---------------------------------------------------------------------------
+# 每一个空映射的理由。缺任何一条，tests/test_taxonomy_map.py 会失败。
+# v2 补码后这里从 37 条降到 1 条；被删掉的 36 条理由在 git 历史与 v1 文件中可查。
+# ---------------------------------------------------------------------------
+unmappable_rationale:
+  # 公司侧：官方按「业务动作」立目，本系统议题词表按「审核期关注点」立目，
+  # 二者在战略与拓展这一片完全不相交。
+  # 行业侧：本系统议题词表本就是按公司议题设计的（方案 §8.2），
+  # 行业政策与行业景气整体缺位。这是词表覆盖面的结构性缺口，不是分类错误。
+  "公共卫生事件": "行业级外部冲击事件，本系统议题词表无对应类目"

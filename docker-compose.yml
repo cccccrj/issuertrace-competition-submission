@@ -1,0 +1,68 @@
+# 一键启动，两档：
+#
+#   docker compose --profile minimal up -d   只读平台，够看够演示
+#   docker compose --profile full up -d      再加采集与处理的运行时
+#
+# 两档的差别只有一处，而且是刻意的：**挂什么进去**。
+#
+# minimal 对应 scripts/package_deploy.sh 的默认包（约 50MB）——平台的结论全部读自
+# SQLite 与导出产物，原始证据一个字节都不打开。full 对应 --with-raw 的包（约 1GB），
+# 因为重跑处理器要读 data/raw 的原文、复算内容哈希也要。
+#
+# 语料是挂载而不是拷贝：data/ 里有处理层拥有的 SQLite 与每一条引用指向的原始文件，
+# 两者都必须活得比容器长。config/ 只读挂载，因为公司清单与来源范围是平台的规则、不是它的状态。
+#
+# **换了镜像而库还是旧的时候，先迁移再起 platform**：平台以只读方式打开数据库，自己建不了
+# 新列新表，症状是某个页面 500 而不是启动失败（启动日志与 /api/health 会点名缺了什么）。
+#
+#   docker compose --profile full run --rm toolchain python -m processor.repair_labels
+#   docker compose --profile full run --rm toolchain python -m processor.finalize
+services:
+  platform:
+    profiles: ["minimal", "full"]
+    build: .
+    image: listed-company-event-intelligence:local
+    ports:
+      # Bound to loopback: this platform carries collected corpora and review
+      # decisions, and nothing about it wants to be on a public interface
+      # without the TLS terminator described in docs/submission/01-部署与访问.md.
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+    environment:
+      # 账号住在库里的 platform_users 表（见 docs/submission/01-部署与访问.md §二），不再有
+      # AUTH_USERNAME / AUTH_PASSWORD 这一对——2026-09-06 起没有任何代码读它们，留着只会
+      # 让人以为在这里配了个登录。AUTH_SECRET 仍要配：不配则每次重启所有人掉线。
+      AUTH_SECRET: ${AUTH_SECRET:-}
+    restart: unless-stopped
+
+  # 采集与处理不是常驻服务，所以这一档给的是「进去就能干活的运行时」，不是后台进程：
+  # 默认命令只打印可用入口然后退出，真要跑用
+  #   docker compose --profile full run --rm toolchain python -m processor.pipeline
+  # 它比 platform 多挂两样东西——原始证据和 .env。前者是重跑处理器的输入，后者带着
+  # 模型网关密钥，只读挂载，且只有这一档需要它；只读平台没有任何理由碰密钥。
+  toolchain:
+    profiles: ["full"]
+    build: .
+    image: listed-company-event-intelligence:local
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+      - ./.env:/app/.env:ro
+    environment:
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      COLLECTOR_CONTACT: ${COLLECTOR_CONTACT:-}
+    command:
+      - python
+      - -c
+      - |
+        print("采集与处理入口（用 docker compose --profile full run --rm toolchain <命令>）:")
+        for entry in ("collector.collect", "collector.scheduler", "processor.pipeline",
+                      "processor.claim_index", "processor.claim_verdict",
+                      "processor.event_types", "processor.event_impact",
+                      "processor.repair_labels", "processor.finalize", "processor.verify"):
+            print("  python -m", entry)
+    restart: "no"

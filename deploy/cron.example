@@ -1,0 +1,6 @@
+# Replace /path/to/... before installing. scripts/run_scheduler.sh reads the
+# Git-ignored .env file. The scheduler's own lock prevents overlapping runs.
+# A 17-minute offset avoids common quarter-hour traffic bursts.
+17 * * * * cd /path/to/listed-company-event-intelligence && ./scripts/run_scheduler.sh --priority ALL --max-sources 4 --max-pages 3 --discover >> data/logs/scheduler.log 2>&1
+# Weekly offline checksum verification; no network requests are made.
+47 3 * * 0 cd /path/to/listed-company-event-intelligence && python3 -m collector.verify_storage && python3 -m collector.report >> data/logs/storage-verification.log 2>&1

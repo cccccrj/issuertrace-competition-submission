@@ -1,0 +1,9 @@
+# Only for scripts/gpu/embed_neighbors.py on the GPU server.  The platform and
+# the processing pipeline never import any of this.
+#
+# Install torch first with the wheel that matches the server's CUDA, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cu121
+# then:
+#   pip install -r requirements-gpu.txt
+sentence-transformers>=3.0,<6
+numpy>=1.24

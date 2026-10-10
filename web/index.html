@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>上市公司事件智能平台</title>
+    <!-- 在样式生效前定下主题，免得默认深色先闪一下白底。逻辑与 App.vue 的 THEME_KEY /
+         DEFAULT_THEME 相同，由 app-shell.test.js 钉成一致。 -->
+    <script>
+      try {
+        var chosen = localStorage.getItem('theme-choice')
+        document.documentElement.setAttribute('data-theme',
+          chosen === 'light' || chosen === 'dark' || chosen === 'sepia' ? chosen : 'dark')
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark')
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

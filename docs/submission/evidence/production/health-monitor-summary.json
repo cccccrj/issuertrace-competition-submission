@@ -1,0 +1,7 @@
+{
+  "samples": 20,
+  "healthy": 20,
+  "start": "2026-10-08T20:11:20.992186+00:00",
+  "end": "2026-10-08T20:30:46.488067+00:00",
+  "limitation": "Partial load window, light public liveness only, not continuous whole-service monitoring"
+}

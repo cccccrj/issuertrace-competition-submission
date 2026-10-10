@@ -1,0 +1,269 @@
+{
+  "base": "http://127.0.0.1:8013",
+  "at": "2026-10-08T20:33:31.468140+00:00",
+  "stages": [
+    {
+      "users": 1,
+      "think_seconds": 1,
+      "seconds": 30.4,
+      "requests": 29,
+      "failed": 0,
+      "error_rate": 0.0,
+      "rps": 0.95,
+      "p50_ms": 34.09,
+      "p95_ms": 110.35,
+      "p99_ms": 111.26,
+      "max_ms": 122.22,
+      "by_path": {
+        "/api/risks?limit=25": {
+          "requests": 4,
+          "p95_ms": 30.85
+        },
+        "/api/search?q=募集资金&limit=5": {
+          "requests": 6,
+          "p95_ms": 111.26
+        },
+        "/api/risks/summary": {
+          "requests": 2,
+          "p95_ms": 34.09
+        },
+        "/api/events?limit=25": {
+          "requests": 1,
+          "p95_ms": 44.12
+        },
+        "/api/timeline?limit=25": {
+          "requests": 2,
+          "p95_ms": 47.83
+        },
+        "/api/claims?limit=25": {
+          "requests": 3,
+          "p95_ms": 52.91
+        },
+        "/api/notifications/read": {
+          "requests": 4,
+          "p95_ms": 25.55
+        },
+        "/api/notifications?limit=25": {
+          "requests": 3,
+          "p95_ms": 26.34
+        },
+        "/api/issues?limit=25": {
+          "requests": 4,
+          "p95_ms": 13.63
+        }
+      }
+    },
+    {
+      "users": 5,
+      "think_seconds": 1,
+      "seconds": 30.8,
+      "requests": 145,
+      "failed": 0,
+      "error_rate": 0.0,
+      "rps": 4.7,
+      "p50_ms": 37.01,
+      "p95_ms": 122.91,
+      "p99_ms": 150.71,
+      "max_ms": 169.72,
+      "by_path": {
+        "/api/risks?limit=25": {
+          "requests": 9,
+          "p95_ms": 46.82
+        },
+        "/api/search?q=募集资金&limit=5": {
+          "requests": 20,
+          "p95_ms": 148.37
+        },
+        "/api/risks/summary": {
+          "requests": 16,
+          "p95_ms": 62.05
+        },
+        "/api/events?limit=25": {
+          "requests": 11,
+          "p95_ms": 44.49
+        },
+        "/api/timeline?limit=25": {
+          "requests": 19,
+          "p95_ms": 87.29
+        },
+        "/api/claims?limit=25": {
+          "requests": 16,
+          "p95_ms": 117.33
+        },
+        "/api/notifications/read": {
+          "requests": 12,
+          "p95_ms": 53.22
+        },
+        "/api/notifications?limit=25": {
+          "requests": 23,
+          "p95_ms": 60.57
+        },
+        "/api/issues?limit=25": {
+          "requests": 19,
+          "p95_ms": 17.9
+        }
+      }
+    },
+    {
+      "users": 10,
+      "think_seconds": 1,
+      "seconds": 61.0,
+      "requests": 574,
+      "failed": 0,
+      "error_rate": 0.0,
+      "rps": 9.41,
+      "p50_ms": 41.36,
+      "p95_ms": 124.87,
+      "p99_ms": 208.54,
+      "max_ms": 313.85,
+      "by_path": {
+        "/api/risks?limit=25": {
+          "requests": 62,
+          "p95_ms": 48.13
+        },
+        "/api/search?q=募集资金&limit=5": {
+          "requests": 64,
+          "p95_ms": 165.97
+        },
+        "/api/risks/summary": {
+          "requests": 54,
+          "p95_ms": 70.89
+        },
+        "/api/events?limit=25": {
+          "requests": 62,
+          "p95_ms": 59.3
+        },
+        "/api/timeline?limit=25": {
+          "requests": 72,
+          "p95_ms": 88.4
+        },
+        "/api/claims?limit=25": {
+          "requests": 79,
+          "p95_ms": 113.45
+        },
+        "/api/notifications/read": {
+          "requests": 63,
+          "p95_ms": 63.09
+        },
+        "/api/notifications?limit=25": {
+          "requests": 59,
+          "p95_ms": 78.76
+        },
+        "/api/issues?limit=25": {
+          "requests": 59,
+          "p95_ms": 47.2
+        }
+      }
+    },
+    {
+      "users": 25,
+      "think_seconds": 1,
+      "seconds": 121.0,
+      "requests": 2736,
+      "failed": 0,
+      "error_rate": 0.0,
+      "rps": 22.61,
+      "p50_ms": 71.53,
+      "p95_ms": 259.02,
+      "p99_ms": 454.81,
+      "max_ms": 1170.95,
+      "by_path": {
+        "/api/risks?limit=25": {
+          "requests": 310,
+          "p95_ms": 233.18
+        },
+        "/api/search?q=募集资金&limit=5": {
+          "requests": 288,
+          "p95_ms": 336.92
+        },
+        "/api/risks/summary": {
+          "requests": 289,
+          "p95_ms": 334.28
+        },
+        "/api/events?limit=25": {
+          "requests": 328,
+          "p95_ms": 220.63
+        },
+        "/api/timeline?limit=25": {
+          "requests": 300,
+          "p95_ms": 209.76
+        },
+        "/api/claims?limit=25": {
+          "requests": 292,
+          "p95_ms": 201.08
+        },
+        "/api/notifications/read": {
+          "requests": 306,
+          "p95_ms": 244.52
+        },
+        "/api/notifications?limit=25": {
+          "requests": 304,
+          "p95_ms": 308.48
+        },
+        "/api/issues?limit=25": {
+          "requests": 319,
+          "p95_ms": 151.72
+        }
+      }
+    },
+    {
+      "users": 50,
+      "think_seconds": 1,
+      "seconds": 1802.1,
+      "requests": 37479,
+      "failed": 0,
+      "error_rate": 0.0,
+      "rps": 20.8,
+      "p50_ms": 1160.06,
+      "p95_ms": 3160.73,
+      "p99_ms": 4370.84,
+      "max_ms": 7479.03,
+      "by_path": {
+        "/api/risks?limit=25": {
+          "requests": 4174,
+          "p95_ms": 2832.21
+        },
+        "/api/search?q=募集资金&limit=5": {
+          "requests": 4197,
+          "p95_ms": 1982.42
+        },
+        "/api/risks/summary": {
+          "requests": 4275,
+          "p95_ms": 3635.17
+        },
+        "/api/events?limit=25": {
+          "requests": 4198,
+          "p95_ms": 2269.15
+        },
+        "/api/timeline?limit=25": {
+          "requests": 4154,
+          "p95_ms": 1937.03
+        },
+        "/api/claims?limit=25": {
+          "requests": 4281,
+          "p95_ms": 2248.76
+        },
+        "/api/notifications/read": {
+          "requests": 3815,
+          "p95_ms": 3809.77
+        },
+        "/api/notifications?limit=25": {
+          "requests": 4201,
+          "p95_ms": 4229.0
+        },
+        "/api/issues?limit=25": {
+          "requests": 4184,
+          "p95_ms": 1568.88
+        }
+      }
+    }
+  ],
+  "identities": 50,
+  "authenticated_before_timing": true,
+  "workload": "90% mixed reads / 10% real notification read-receipt writes; no AI requests",
+  "acceptance": {
+    "error_rate_max": 0.01,
+    "p95_ms_max": 2000
+  },
+  "passed": false
+}

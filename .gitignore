@@ -1,0 +1,51 @@
+# 敏感业务数据：真实企业舆情台账，含媒体合作价格、联系人与内部处置备注
+# 一律不入库（见 docs/命题二-总体方案-Pro.md §3.3）
+data.zip
+*.xlsx
+*.xls
+
+# 数据分层目录：仅 data/sample、data/eval 允许入库
+data/
+!data/sample/
+!data/eval/
+
+# 原文与快照
+*.pdf
+snapshots/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Node
+node_modules/
+.private/
+artifacts/
+web/screenshots/
+
+# Formal submission PDFs are intentional deliverables, not raw collected PDFs.
+!docs/submission/*.pdf
+dist/
+.vite/
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Platform accounts: password hashes stay out of Git; see config/accounts.example.json
+# The glob covers the backups a password rotation leaves behind: the base name
+# was ignored, accounts.json.bak-<stamp> was not, and a credential file that
+# only one line of .gitignore stands between and a public branch is one line too
+# few.
+config/accounts.json
+config/accounts.json.*
+
+# 截图体检的输出（scripts/screenshots.mjs），是产物不是资产
+web/screenshots/

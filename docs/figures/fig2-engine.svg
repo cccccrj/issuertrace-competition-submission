@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="研判引擎链路：报道经抽取、双路召回、四值核验、可信评估、聚合去重、议题台账、阶段风险后生成预警，人工复核回流">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#0B1220"/><stop offset="0.55" stop-color="#0C1526"/><stop offset="1" stop-color="#0A1020"/>
+  </linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.45" r="0.6">
+    <stop offset="0" stop-color="#38BDF8" stop-opacity="0.10"/><stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#15274A"/><stop offset="1" stop-color="#0F1B33"/>
+  </linearGradient>
+  <linearGradient id="cardStar" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3A2A0E"/><stop offset="1" stop-color="#1A1610"/>
+  </linearGradient>
+  <linearGradient id="bandHead" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#16274A"/><stop offset="1" stop-color="#0F1729"/>
+  </linearGradient>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#1C2A45"/>
+  </pattern>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#38BDF8"/>
+  </marker>
+  <marker id="arrowAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#F59E0B"/>
+  </marker>
+  <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#34D399"/>
+  </marker>
+</defs>
+<g font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','WenQuanYi Zen Hei',sans-serif">
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<rect width="1920" height="1080" fill="url(#dots)"/>
+<rect width="1920" height="1080" fill="url(#glow)"/>
+<rect x="40" y="44" width="6" height="48" rx="3" fill="#38BDF8"/>
+<text x="62" y="78" font-size="38" fill="#E2E8F0" font-weight="bold" text-anchor="start">智能研判引擎 · 技术链路</text>
+<text x="64" y="112" font-size="18" fill="#94A3B8" font-weight="normal" text-anchor="start">一条报道从入库到预警：抽取 → 召回 → 核验 → 可信 → 聚合 → 议题 → 风险 → 预警，人工定论回流</text>
+<rect x="930" y="170" width="350" height="132" rx="14" fill="#0F1729" stroke="#38BDF8" stroke-width="1.4" stroke-opacity="0.6"/>
+<text x="1105" y="198" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle" letter-spacing="2">证据底座</text>
+<rect x="946" y="212" width="155" height="76" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1023.5" y="246.0" font-size="17" fill="#E2E8F0" font-weight="bold" text-anchor="middle">FTS5 · BM25</text>
+<text x="1023.5" y="271.0" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">93,209 段披露</text>
+<rect x="1109" y="212" width="155" height="76" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1186.5" y="246.0" font-size="17" fill="#E2E8F0" font-weight="bold" text-anchor="middle">BGE-M3 向量</text>
+<text x="1186.5" y="271.0" font-size="13" fill="#94A3B8" font-weight="normal" text-anchor="middle">GPU 离线 · Top-20</text>
+<rect x="1330" y="162" width="470" height="140" rx="14" fill="url(#cardStar)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9" filter="url(#soft)"/>
+<text x="1565.0" y="198" font-size="21" fill="#FBBF24" font-weight="bold" text-anchor="middle">★ 披露版本比对引擎</text>
+<text x="1565.0" y="230" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">招股书四稿链式比对 · 问询函题号与轮次解析</text>
+<line x1="1348" y1="260" x2="1782" y2="260" stroke="#1E2A44" stroke-width="1"/>
+<text x="1565.0" y="286" font-size="15" fill="#FBBF24" font-weight="bold" text-anchor="middle">1,212 条差异 · 16 道问询 → 80 组对齐</text>
+<path d="M 1023 302 L 1023 388" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="953.5" y="335" width="139" height="26" rx="13" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="1023" y="352.68" font-size="13" fill="#38BDF8" font-weight="normal" text-anchor="middle">关键词召回 前 5</text>
+<path d="M 1186 302 L 1186 388" fill="none" stroke="#34D399" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<rect x="1123.0" y="335" width="126" height="26" rx="13" fill="#0B1220" stroke="#34D399" stroke-width="1.2" /><text x="1186" y="352.68" font-size="13" fill="#34D399" font-weight="normal" text-anchor="middle">语义兜底 补 2</text>
+<path d="M 1405 302 L 1405 388" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<rect x="1329.5" y="335" width="151" height="26" rx="13" fill="#0B1220" stroke="#F59E0B" stroke-width="1.2" /><text x="1405" y="352.68" font-size="13" fill="#F59E0B" font-weight="normal" text-anchor="middle">问询路由 · 已解释</text>
+<rect x="80" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="205.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">多源报道 / 公告</text>
+<text x="205.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">55 信源合规采集</text>
+<text x="205.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">内容寻址存证</text>
+<line x1="98" y1="508" x2="312" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="205.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">2,803 篇准入</text>
+<rect x="380" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="408" cy="420" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="408" y="425" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">1</text>
+<text x="515.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">结构化抽取</text>
+<text x="505.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">大模型 + JSON Schema</text>
+<text x="505.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">主张逐字溯源</text>
+<line x1="398" y1="508" x2="612" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="505.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">1,907 个事件</text>
+<rect x="680" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="708" cy="420" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="708" y="425" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">2</text>
+<text x="815.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">原子主张</text>
+<text x="805.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">可核验的最小事实</text>
+<text x="805.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">七要素标准化</text>
+<line x1="698" y1="508" x2="912" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="805.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">3,922 条主张</text>
+<rect x="980" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="1008" cy="420" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="1008" y="425" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">3</text>
+<text x="1115.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">双路召回</text>
+<text x="1105.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">BM25 前 5 原样保留</text>
+<text x="1105.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">向量只追加、不替换</text>
+<line x1="998" y1="508" x2="1212" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="1105.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">候选含证据 89.4%</text>
+<rect x="1280" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="1308" cy="420" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="1308" y="425" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">4</text>
+<text x="1415.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">四值核验</text>
+<text x="1405.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">支持 / 部分 / 冲突 / 无法核验</text>
+<text x="1405.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">数值先走规则</text>
+<line x1="1298" y1="508" x2="1512" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="1405.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">支持 2,091 · 冲突 195</text>
+<rect x="1580" y="392" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="1608" cy="420" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="1608" y="425" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">5</text>
+<text x="1715.0" y="428" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">两层可信度</text>
+<text x="1705.0" y="460" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">可审计判定层</text>
+<text x="1705.0" y="482" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">+ 四因子排序分</text>
+<line x1="1598" y1="508" x2="1812" y2="508" stroke="#1E2A44" stroke-width="1"/>
+<text x="1705.0" y="534" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">0.40/0.30/0.15/0.15</text>
+<path d="M 334 471.0 L 374 471.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 634 471.0 L 674 471.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 934 471.0 L 974 471.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1234 471.0 L 1274 471.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1534 471.0 L 1574 471.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1705.0 554 L 1705.0 634" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="1662.5" y="582.0" width="89" height="26" rx="13" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="1707.0" y="599.68" font-size="13" fill="#38BDF8" font-weight="normal" text-anchor="middle">按议题汇聚</text>
+<rect x="1580" y="640" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="1608" cy="668" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="1608" y="673" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">6</text>
+<text x="1715.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">聚合去重</text>
+<text x="1705.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">SimHash + LSH 8 段</text>
+<text x="1705.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">Jaccard + 包含度</text>
+<line x1="1598" y1="756" x2="1812" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="1705.0" y="782" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">E5 pair-F1 0.8569</text>
+<rect x="1280" y="640" width="250" height="158" rx="14" fill="url(#cardStar)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9" filter="url(#soft)"/>
+<circle cx="1308" cy="668" r="15" fill="#0B1220" stroke="#F59E0B" stroke-width="1.5"/>
+<text x="1308" y="673" font-size="14" fill="#F59E0B" font-weight="bold" text-anchor="middle">7</text>
+<text x="1415.0" y="676" font-size="21" fill="#FBBF24" font-weight="bold" text-anchor="middle">★ 议题台账</text>
+<text x="1405.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">文章 → 事件 → 议题</text>
+<text x="1405.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">萌芽 / 升温 / 活跃 / 降温 / 沉寂</text>
+<line x1="1298" y1="756" x2="1512" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="1405.0" y="782" font-size="15" fill="#FBBF24" font-weight="bold" text-anchor="middle">41 个议题</text>
+<rect x="980" y="640" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="1008" cy="668" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="1008" y="673" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">8</text>
+<text x="1115.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">阶段感知风险</text>
+<text x="1105.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">可解释加分项</text>
+<text x="1105.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">× IPO 阶段系数 1.0–1.3</text>
+<line x1="998" y1="756" x2="1212" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="1105.0" y="782" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">发行询价期 ×1.3</text>
+<rect x="680" y="640" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<circle cx="708" cy="668" r="15" fill="#0B1220" stroke="#38BDF8" stroke-width="1.5"/>
+<text x="708" y="673" font-size="14" fill="#38BDF8" font-weight="bold" text-anchor="middle">9</text>
+<text x="815.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">智能预警</text>
+<text x="805.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">6 类可读理由 · 7 天合并</text>
+<text x="805.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">站内 / 邮件 / Webhook</text>
+<line x1="698" y1="756" x2="912" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="805.0" y="782" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">281 条预警</text>
+<rect x="380" y="640" width="250" height="158" rx="14" fill="url(#card)" stroke="#38BDF8" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="505.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">研判人员</text>
+<text x="505.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">风险预警中心</text>
+<text x="505.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">研判档案 · 证据链</text>
+<line x1="398" y1="756" x2="612" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="505.0" y="782" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">一键导出 Word</text>
+<path d="M 1576 719.0 L 1536 719.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1276 719.0 L 1236 719.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 976 719.0 L 936 719.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 676 719.0 L 636 719.0" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="640" width="250" height="158" rx="14" fill="url(#card)" stroke="#34D399" stroke-width="1.7" stroke-opacity="0.9"/>
+<text x="205.0" y="676" font-size="21" fill="#E2E8F0" font-weight="bold" text-anchor="middle">研判助手 Agent</text>
+<text x="205.0" y="708" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">ReAct 多步查证 · 6 工具</text>
+<text x="205.0" y="730" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">句柄防编造 · SSE 流式</text>
+<line x1="98" y1="756" x2="312" y2="756" stroke="#1E2A44" stroke-width="1"/>
+<text x="205.0" y="782" font-size="15" fill="#7DD3FC" font-weight="bold" text-anchor="middle">每句带出处</text>
+<path d="M 376 719.0 L 336 719.0" fill="none" stroke="#34D399" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrowGreen)"/>
+<text x="355.0" y="705.0" font-size="14" fill="#34D399" font-weight="normal" text-anchor="middle">追问</text>
+<rect x="1430" y="864" width="400" height="120" rx="14" fill="url(#cardStar)" stroke="#F59E0B" stroke-width="1.7" stroke-opacity="0.9" filter="url(#soft)"/>
+<text x="1630.0" y="900" font-size="21" fill="#FBBF24" font-weight="bold" text-anchor="middle">★ 传播图谱与因果链</text>
+<text x="1630.0" y="932" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="middle">9 类传播边 · 独立信源 = 弱连通分量</text>
+<line x1="1448" y1="942" x2="1812" y2="942" stroke="#1E2A44" stroke-width="1"/>
+<text x="1630.0" y="968" font-size="15" fill="#FBBF24" font-weight="bold" text-anchor="middle">2,927 条边 · 1,401 个独立分量</text>
+<path d="M 1705 860 L 1705 804" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<rect x="1642.0" y="818.0" width="126" height="26" rx="13" fill="#0B1220" stroke="#F59E0B" stroke-width="1.2" /><text x="1705" y="835.68" font-size="13" fill="#F59E0B" font-weight="normal" text-anchor="middle">转载 / 改写边</text>
+<rect x="380" y="872" width="250" height="104" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="505.0" y="920.5" font-size="19" fill="#E2E8F0" font-weight="bold" text-anchor="middle">人工复核</text>
+<text x="505.0" y="947.5" font-size="14" fill="#94A3B8" font-weight="normal" text-anchor="middle">双人背靠背 · Cohen κ</text>
+<rect x="680" y="872" width="250" height="104" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="805.0" y="920.5" font-size="19" fill="#E2E8F0" font-weight="bold" text-anchor="middle">处置状态机</text>
+<text x="805.0" y="947.5" font-size="14" fill="#94A3B8" font-weight="normal" text-anchor="middle">待研判 → … → 已归档</text>
+<rect x="980" y="872" width="250" height="104" rx="12" fill="url(#card)" stroke="#38BDF8" stroke-width="1.6" stroke-opacity="0.85"/>
+<text x="1105.0" y="920.5" font-size="19" fill="#E2E8F0" font-weight="bold" text-anchor="middle">金标回流</text>
+<text x="1105.0" y="947.5" font-size="14" fill="#94A3B8" font-weight="normal" text-anchor="middle">标定阈值与权重</text>
+<path d="M 505.0 802 L 505.0 866" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="468.5" y="822.0" width="77" height="26" rx="13" fill="#0B1220" stroke="#38BDF8" stroke-width="1.2" /><text x="507.0" y="839.68" font-size="13" fill="#38BDF8" font-weight="normal" text-anchor="middle">人工定论</text>
+<path d="M 634 924 L 674 924" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 934 924 L 974 924" fill="none" stroke="#38BDF8" stroke-width="2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 1105.0 868 L 1105.0 804" fill="none" stroke="#F59E0B" stroke-width="2" stroke-dasharray="9 7" stroke-linejoin="round" marker-end="url(#arrowAmber)"/>
+<rect x="1007.0" y="822.0" width="200" height="26" rx="13" fill="#0B1220" stroke="#F59E0B" stroke-width="1.2" /><text x="1107.0" y="839.68" font-size="13" fill="#F59E0B" font-weight="normal" text-anchor="middle">持续迭代 · 标定阈值与系数</text>
+<line x1="80" y1="1046" x2="126" y2="1046" stroke="#38BDF8" stroke-width="2.2" marker-end="url(#arrow)"/>
+<text x="138" y="1051" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="start">主数据流</text>
+<line x1="240" y1="1046" x2="286" y2="1046" stroke="#34D399" stroke-width="2.2" marker-end="url(#arrowGreen)"/>
+<text x="298" y="1051" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="start">语义向量 / Agent</text>
+<line x1="450" y1="1046" x2="496" y2="1046" stroke="#F59E0B" stroke-width="2.2" stroke-dasharray="9 7" marker-end="url(#arrowAmber)"/>
+<text x="508" y="1051" font-size="15" fill="#94A3B8" font-weight="normal" text-anchor="start">迭代回流</text>
+<text x="640" y="1051" font-size="15" fill="#FBBF24" font-weight="normal" text-anchor="start">★ 差异化引擎</text>
+<text x="1840" y="1051" font-size="14" fill="#64748B" font-weight="normal" text-anchor="end">数字口径 2026-10-04</text>
+</g>
+</svg>

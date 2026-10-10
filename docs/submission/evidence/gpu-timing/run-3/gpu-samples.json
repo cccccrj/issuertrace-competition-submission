@@ -1,0 +1,1255 @@
+[
+  {
+    "monotonic_s": 37620769.85950007,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 251.74,
+    "temperature_c": 56.0
+  },
+  {
+    "monotonic_s": 37620770.2075298,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 128.86,
+    "temperature_c": 55.0
+  },
+  {
+    "monotonic_s": 37620770.52048797,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 95.24,
+    "temperature_c": 55.0
+  },
+  {
+    "monotonic_s": 37620770.83722765,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 95.24,
+    "temperature_c": 55.0
+  },
+  {
+    "monotonic_s": 37620771.155244224,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 113.06,
+    "temperature_c": 64.0
+  },
+  {
+    "monotonic_s": 37620771.48085725,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 235.81,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620771.82302905,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 296.51,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620772.15884497,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 436.2,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620772.47446797,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 429.53,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620772.81254048,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 426.49,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620773.139419615,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 422.75,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620773.45477256,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 422.68,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620773.80455886,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 426.28,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620774.108051546,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.16,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620774.4042715,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.02,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620774.74331178,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 425.18,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620775.040571645,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.54,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620775.3542894,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.63,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620775.698563635,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.78,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620776.03418075,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.39,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620776.37074049,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.44,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620776.70603539,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.71,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620777.043185234,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.77,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620777.37890237,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.0,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620777.7330943,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.21,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620778.06070321,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.37,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620778.39877033,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.37,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620778.69804972,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 425.13,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620778.99650347,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.7,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620779.29618635,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.77,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620779.62006691,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.89,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620779.96031837,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.69,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620780.26066767,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.12,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620780.57898498,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.56,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620780.89424214,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.15,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620781.230724834,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.09,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620781.56683063,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 423.47,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620781.90460476,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 422.9,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620782.22439664,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 423.4,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620782.52444295,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 424.73,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620782.84695227,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 422.86,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620783.14403579,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 424.07,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620783.483261816,
+    "resident_mib": 3493.0,
+    "utilization_pct": 91.0,
+    "power_w": 421.93,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620783.812202975,
+    "resident_mib": 3493.0,
+    "utilization_pct": 88.0,
+    "power_w": 421.83,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620784.112099946,
+    "resident_mib": 3493.0,
+    "utilization_pct": 78.0,
+    "power_w": 416.91,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620784.44668492,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 393.89,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620785.064549126,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 313.55,
+    "temperature_c": 56.0
+  },
+  {
+    "monotonic_s": 37620785.432851896,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 221.43,
+    "temperature_c": 55.0
+  },
+  {
+    "monotonic_s": 37620785.81977589,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 99.18,
+    "temperature_c": 54.0
+  },
+  {
+    "monotonic_s": 37620786.2039042,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 94.12,
+    "temperature_c": 54.0
+  },
+  {
+    "monotonic_s": 37620786.50339032,
+    "resident_mib": 3493.0,
+    "utilization_pct": 0.0,
+    "power_w": 94.12,
+    "temperature_c": 54.0
+  },
+  {
+    "monotonic_s": 37620786.85150526,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 120.34,
+    "temperature_c": 63.0
+  },
+  {
+    "monotonic_s": 37620787.16847246,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 234.28,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620787.470198914,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 277.92,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620787.80770974,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 434.13,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620788.12317528,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 431.29,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620788.42338871,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 427.4,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620788.78195546,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 422.77,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620789.090415895,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.57,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620789.3886004,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 426.5,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620789.72692708,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 422.87,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620790.06826759,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 424.63,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620790.41580807,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 426.85,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620790.71262772,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.36,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620791.0502029,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.1,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620791.35424724,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 426.24,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620791.69871522,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 423.58,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620792.006107464,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.88,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620792.34309055,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.96,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620792.64746747,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 423.8,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620792.970815,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 423.89,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620793.315826125,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 425.14,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620793.658852175,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.83,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620793.95676053,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 422.88,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620794.25640558,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.61,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620794.59456357,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 424.35,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620794.94189369,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.3,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620795.27935952,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 424.95,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620795.61481802,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.92,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620795.93519956,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.7,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620796.2351064,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.86,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620796.64266897,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 425.25,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620796.958157085,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.27,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620797.29482047,
+    "resident_mib": 3493.0,
+    "utilization_pct": 100.0,
+    "power_w": 424.85,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620797.61217324,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.36,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620797.94626874,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.3,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620798.27144926,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.34,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620798.60637946,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.2,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620798.90417793,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.43,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620799.20392314,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.42,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620799.51927841,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.6,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620799.84649569,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.47,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620800.17251323,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.45,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620800.48101364,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.52,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620800.78878981,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.25,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620801.10727581,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.58,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620801.442155056,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.32,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620801.763102934,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.37,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620802.08643866,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.24,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620802.422610946,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.46,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620802.72020019,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.26,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620803.03484559,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.0,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620803.375165366,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.14,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620803.75424052,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.91,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620804.03561436,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.4,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620804.33603806,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.29,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620804.67077097,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.81,
+    "temperature_c": 65.0
+  },
+  {
+    "monotonic_s": 37620805.005796865,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.23,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620805.28790653,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.01,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620805.607813984,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.48,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620805.946176,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.46,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620806.245902754,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.75,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620806.566633135,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.28,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620806.86596228,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.17,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620807.20447368,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.86,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620807.523339294,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.98,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620807.84267214,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.12,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620808.14025876,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 424.26,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620808.42122825,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.32,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620808.79760181,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.86,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620809.11434256,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.11,
+    "temperature_c": 66.0
+  },
+  {
+    "monotonic_s": 37620809.431034386,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.95,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620809.75097205,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.89,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620810.06719631,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.87,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620810.40288264,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.92,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620810.744224414,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.33,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620811.044765875,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.25,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620811.384188876,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.57,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620811.682974786,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.45,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620811.99892356,
+    "resident_mib": 3493.0,
+    "utilization_pct": 99.0,
+    "power_w": 423.49,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620812.31453924,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.36,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620812.63442166,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.25,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620812.95404217,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.43,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620813.25217555,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.23,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620813.59826949,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.11,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620813.91855619,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.66,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620814.21653501,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.33,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620814.49644016,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.26,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620814.80043082,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.91,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620815.13899646,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.48,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620815.47379256,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.6,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620815.776755475,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.92,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620816.11843284,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.21,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620816.443226494,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.33,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620816.782379046,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.5,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620817.08118545,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.2,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620817.37901504,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.08,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620817.67605584,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.95,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620818.015158184,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 424.21,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620818.35135051,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.82,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620818.69916332,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.97,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620819.035813496,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 423.94,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620819.33660528,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.1,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620819.61663414,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.2,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620819.91621091,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.7,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620820.25031365,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.04,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620820.593929015,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.75,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620820.93563727,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.52,
+    "temperature_c": 69.0
+  },
+  {
+    "monotonic_s": 37620821.25038876,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 424.91,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620821.548651375,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 423.45,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620821.88627156,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 422.82,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620822.20322274,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 424.42,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620822.52311824,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 424.28,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620822.85963667,
+    "resident_mib": 3493.0,
+    "utilization_pct": 96.0,
+    "power_w": 423.9,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620823.174351126,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 423.48,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620823.47263772,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 424.0,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620823.80282533,
+    "resident_mib": 3493.0,
+    "utilization_pct": 91.0,
+    "power_w": 422.35,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620824.0998262,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 421.91,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620824.41358382,
+    "resident_mib": 3493.0,
+    "utilization_pct": 95.0,
+    "power_w": 421.44,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620824.749599926,
+    "resident_mib": 3493.0,
+    "utilization_pct": 94.0,
+    "power_w": 420.07,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620825.066229865,
+    "resident_mib": 3493.0,
+    "utilization_pct": 90.0,
+    "power_w": 423.21,
+    "temperature_c": 69.0
+  },
+  {
+    "monotonic_s": 37620825.40263725,
+    "resident_mib": 3493.0,
+    "utilization_pct": 91.0,
+    "power_w": 422.69,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620825.73931776,
+    "resident_mib": 3493.0,
+    "utilization_pct": 80.0,
+    "power_w": 418.75,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620826.05310291,
+    "resident_mib": 3493.0,
+    "utilization_pct": 83.0,
+    "power_w": 407.39,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620826.38101093,
+    "resident_mib": 3493.0,
+    "utilization_pct": 3.0,
+    "power_w": 362.77,
+    "temperature_c": 59.0
+  },
+  {
+    "monotonic_s": 37620826.74320168,
+    "resident_mib": 3493.0,
+    "utilization_pct": 98.0,
+    "power_w": 355.38,
+    "temperature_c": 68.0
+  },
+  {
+    "monotonic_s": 37620827.078638405,
+    "resident_mib": 3493.0,
+    "utilization_pct": 97.0,
+    "power_w": 372.67,
+    "temperature_c": 69.0
+  },
+  {
+    "monotonic_s": 37620827.37695899,
+    "resident_mib": 3493.0,
+    "utilization_pct": 93.0,
+    "power_w": 393.4,
+    "temperature_c": 67.0
+  },
+  {
+    "monotonic_s": 37620827.90953536,
+    "resident_mib": 3493.0,
+    "utilization_pct": 2.0,
+    "power_w": 308.36,
+    "temperature_c": 56.0
+  }
+]

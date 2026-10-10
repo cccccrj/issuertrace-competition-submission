@@ -1,0 +1,240 @@
+{
+  "methods": [
+    "bm25",
+    "dense",
+    "hybrid",
+    "fallback"
+  ],
+  "sets": {
+    "any_language": {
+      "all": {
+        "claims": 1175,
+        "bm25": {
+          "recall@5": 0.8826,
+          "recall@20": 0.9404,
+          "recall@shown": 0.8826,
+          "mrr@20": 0.7245
+        },
+        "dense": {
+          "recall@5": 0.6689,
+          "recall@20": 0.8009,
+          "recall@shown": 0.6689,
+          "mrr@20": 0.5835
+        },
+        "hybrid": {
+          "recall@5": 0.8757,
+          "recall@20": 0.9413,
+          "recall@shown": 0.8757,
+          "mrr@20": 0.7268
+        },
+        "fallback": {
+          "recall@5": 0.8826,
+          "recall@20": 0.8936,
+          "recall@shown": 0.8936,
+          "mrr@20": 0.7201
+        }
+      },
+      "unverifiable": {
+        "claims": 213,
+        "bm25": {
+          "recall@5": 0.8592,
+          "recall@20": 0.9296,
+          "recall@shown": 0.8592,
+          "mrr@20": 0.787
+        },
+        "dense": {
+          "recall@5": 0.6854,
+          "recall@20": 0.7887,
+          "recall@shown": 0.6854,
+          "mrr@20": 0.6696
+        },
+        "hybrid": {
+          "recall@5": 0.8873,
+          "recall@20": 0.9296,
+          "recall@shown": 0.8873,
+          "mrr@20": 0.8117
+        },
+        "fallback": {
+          "recall@5": 0.8592,
+          "recall@20": 0.8685,
+          "recall@shown": 0.8685,
+          "mrr@20": 0.7818
+        }
+      }
+    },
+    "cross_lingual": {
+      "all": {
+        "claims": 195,
+        "bm25": {
+          "recall@5": 0.0615,
+          "recall@20": 0.1231,
+          "recall@shown": 0.0615,
+          "mrr@20": 0.0257
+        },
+        "dense": {
+          "recall@5": 0.0769,
+          "recall@20": 0.2308,
+          "recall@shown": 0.0769,
+          "mrr@20": 0.0528
+        },
+        "hybrid": {
+          "recall@5": 0.0667,
+          "recall@20": 0.2769,
+          "recall@shown": 0.0667,
+          "mrr@20": 0.0453
+        },
+        "fallback": {
+          "recall@5": 0.0615,
+          "recall@20": 0.1179,
+          "recall@shown": 0.1179,
+          "mrr@20": 0.029
+        }
+      },
+      "unverifiable": {
+        "claims": 10,
+        "bm25": {
+          "recall@5": 0.0,
+          "recall@20": 0.0,
+          "recall@shown": 0.0,
+          "mrr@20": 0.0
+        },
+        "dense": {
+          "recall@5": 0.0,
+          "recall@20": 0.2,
+          "recall@shown": 0.0,
+          "mrr@20": 0.015
+        },
+        "hybrid": {
+          "recall@5": 0.0,
+          "recall@20": 0.1,
+          "recall@shown": 0.0,
+          "mrr@20": 0.005
+        },
+        "fallback": {
+          "recall@5": 0.0,
+          "recall@20": 0.0,
+          "recall@shown": 0.0,
+          "mrr@20": 0.0
+        }
+      }
+    },
+    "numeric": {
+      "all": {
+        "claims": 357,
+        "bm25": {
+          "recall@5": 0.7339,
+          "recall@20": 0.8852,
+          "recall@shown": 0.7339,
+          "mrr@20": 0.6029
+        },
+        "dense": {
+          "recall@5": 0.5322,
+          "recall@20": 0.7255,
+          "recall@shown": 0.5322,
+          "mrr@20": 0.4243
+        },
+        "hybrid": {
+          "recall@5": 0.7507,
+          "recall@20": 0.8796,
+          "recall@shown": 0.7507,
+          "mrr@20": 0.5863
+        },
+        "fallback": {
+          "recall@5": 0.7339,
+          "recall@20": 0.7591,
+          "recall@shown": 0.7591,
+          "mrr@20": 0.5925
+        }
+      },
+      "unverifiable": {
+        "claims": 27,
+        "bm25": {
+          "recall@5": 0.1111,
+          "recall@20": 0.5556,
+          "recall@shown": 0.1111,
+          "mrr@20": 0.1248
+        },
+        "dense": {
+          "recall@5": 0.1111,
+          "recall@20": 0.4815,
+          "recall@shown": 0.1111,
+          "mrr@20": 0.1119
+        },
+        "hybrid": {
+          "recall@5": 0.4815,
+          "recall@20": 0.5926,
+          "recall@shown": 0.4815,
+          "mrr@20": 0.4153
+        },
+        "fallback": {
+          "recall@5": 0.1111,
+          "recall@20": 0.1852,
+          "recall@shown": 0.1852,
+          "mrr@20": 0.0957
+        }
+      }
+    },
+    "verbatim_en": {
+      "all": {
+        "claims": 842,
+        "bm25": {
+          "recall@5": 0.9442,
+          "recall@20": 0.9703,
+          "recall@shown": 0.9442,
+          "mrr@20": 0.7735
+        },
+        "dense": {
+          "recall@5": 0.7233,
+          "recall@20": 0.823,
+          "recall@shown": 0.7233,
+          "mrr@20": 0.6456
+        },
+        "hybrid": {
+          "recall@5": 0.9169,
+          "recall@20": 0.9703,
+          "recall@shown": 0.9169,
+          "mrr@20": 0.7796
+        },
+        "fallback": {
+          "recall@5": 0.9442,
+          "recall@20": 0.9477,
+          "recall@shown": 0.9477,
+          "mrr@20": 0.7706
+        }
+      },
+      "unverifiable": {
+        "claims": 186,
+        "bm25": {
+          "recall@5": 0.9731,
+          "recall@20": 0.9892,
+          "recall@shown": 0.9731,
+          "mrr@20": 0.8844
+        },
+        "dense": {
+          "recall@5": 0.7688,
+          "recall@20": 0.828,
+          "recall@shown": 0.7688,
+          "mrr@20": 0.75
+        },
+        "hybrid": {
+          "recall@5": 0.9462,
+          "recall@20": 0.9839,
+          "recall@shown": 0.9462,
+          "mrr@20": 0.8696
+        },
+        "fallback": {
+          "recall@5": 0.9731,
+          "recall@20": 0.9731,
+          "recall@shown": 0.9731,
+          "mrr@20": 0.8828
+        }
+      }
+    }
+  },
+  "decision": {
+    "cross_lingual_gain@5": 0.0052,
+    "verbatim_loss@5": 0.0273,
+    "rule": "gain ≥ 0.10 and loss ≤ 0.02",
+    "adopt_hybrid": false
+  }
+}

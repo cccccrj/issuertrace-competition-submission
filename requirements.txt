@@ -1,0 +1,14 @@
+PyYAML>=6.0,<7
+requests>=2.31,<3
+cryptography>=50.0.2,<51
+beautifulsoup4>=4.12,<5
+PyMuPDF>=1.24,<2
+openai>=2.0,<3
+jsonschema>=4.10,<5
+# 繁→简字形折叠，供证据检索用：港交所繁体公告与简体主张不共享任何二元组。
+zhconv>=1.4,<2
+
+# Read-only API over the analytical layer.
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+httpx>=0.27,<1

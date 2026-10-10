@@ -1,0 +1,329 @@
+{
+  "at": "2026-10-08T19:59:30.088043+00:00",
+  "base": "https://review-endpoint.example.invalid",
+  "isolated": false,
+  "checks": [
+    {
+      "name": "首页",
+      "path": "/",
+      "status": 200,
+      "passed": true,
+      "ms": 5611.27
+    },
+    {
+      "name": "健康检查",
+      "path": "/api/health",
+      "status": 200,
+      "passed": true,
+      "ms": 1206.19
+    },
+    {
+      "name": "未登录禁止读取",
+      "path": "/api/events",
+      "status": 401,
+      "passed": true,
+      "ms": 1191.16
+    },
+    {
+      "name": "未登录禁止助手",
+      "path": "/api/assistant/stream",
+      "status": 401,
+      "passed": true,
+      "ms": 1182.92
+    },
+    {
+      "name": "功能 /api/overview",
+      "path": "/api/overview",
+      "status": 200,
+      "passed": true,
+      "ms": 645.86
+    },
+    {
+      "name": "功能 /api/events?limit=25",
+      "path": "/api/events?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 145.04
+    },
+    {
+      "name": "功能 /api/claims?limit=25",
+      "path": "/api/claims?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 169.32
+    },
+    {
+      "name": "功能 /api/claims/stats",
+      "path": "/api/claims/stats",
+      "status": 200,
+      "passed": true,
+      "ms": 141.54
+    },
+    {
+      "name": "功能 /api/issues?limit=25",
+      "path": "/api/issues?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 119.59
+    },
+    {
+      "name": "功能 /api/timeline?limit=25",
+      "path": "/api/timeline?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 149.87
+    },
+    {
+      "name": "功能 /api/timeline/phases",
+      "path": "/api/timeline/phases",
+      "status": 200,
+      "passed": true,
+      "ms": 128.09
+    },
+    {
+      "name": "功能 /api/risks?limit=25",
+      "path": "/api/risks?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 132.46
+    },
+    {
+      "name": "功能 /api/risks/summary",
+      "path": "/api/risks/summary",
+      "status": 200,
+      "passed": true,
+      "ms": 150.61
+    },
+    {
+      "name": "功能 /api/alerts?limit=25",
+      "path": "/api/alerts?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 129.48
+    },
+    {
+      "name": "功能 /api/alerts/facets",
+      "path": "/api/alerts/facets",
+      "status": 200,
+      "passed": true,
+      "ms": 128.31
+    },
+    {
+      "name": "功能 /api/propagation?limit=25",
+      "path": "/api/propagation?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 123.16
+    },
+    {
+      "name": "功能 /api/duplicates?limit=25",
+      "path": "/api/duplicates?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 128.46
+    },
+    {
+      "name": "功能 /api/diffs?limit=25",
+      "path": "/api/diffs?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 125.73
+    },
+    {
+      "name": "功能 /api/elements?limit=25",
+      "path": "/api/elements?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 165.8
+    },
+    {
+      "name": "功能 /api/vocabularies",
+      "path": "/api/vocabularies",
+      "status": 200,
+      "passed": true,
+      "ms": 171.42
+    },
+    {
+      "name": "功能 /api/search?q=募集资金&limit=5",
+      "path": "/api/search?q=募集资金&limit=5",
+      "status": 200,
+      "passed": true,
+      "ms": 289.29
+    },
+    {
+      "name": "功能 /api/search?q=WuXi%20AppTec&limit=5",
+      "path": "/api/search?q=WuXi%20AppTec&limit=5",
+      "status": 200,
+      "passed": true,
+      "ms": 185.84
+    },
+    {
+      "name": "功能 /api/ingestion/funnel",
+      "path": "/api/ingestion/funnel",
+      "status": 200,
+      "passed": true,
+      "ms": 161.4
+    },
+    {
+      "name": "功能 /api/review/tasks?limit=20",
+      "path": "/api/review/tasks?limit=20",
+      "status": 200,
+      "passed": true,
+      "ms": 137.16
+    },
+    {
+      "name": "功能 /api/review/metrics",
+      "path": "/api/review/metrics",
+      "status": 200,
+      "passed": true,
+      "ms": 125.19
+    },
+    {
+      "name": "功能 /api/notifications?limit=25",
+      "path": "/api/notifications?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 137.38
+    },
+    {
+      "name": "功能 /api/notify/subscriptions",
+      "path": "/api/notify/subscriptions",
+      "status": 200,
+      "passed": true,
+      "ms": 126.6
+    },
+    {
+      "name": "功能 /api/notify/outbox",
+      "path": "/api/notify/outbox",
+      "status": 200,
+      "passed": true,
+      "ms": 120.51
+    },
+    {
+      "name": "功能 /api/audit/runs?limit=25",
+      "path": "/api/audit/runs?limit=25",
+      "status": 200,
+      "passed": true,
+      "ms": 123.54
+    },
+    {
+      "name": "功能 /api/benchmark/summary",
+      "path": "/api/benchmark/summary",
+      "status": 200,
+      "passed": true,
+      "ms": 121.02
+    },
+    {
+      "name": "events样例",
+      "path": "/api/events?limit=1",
+      "status": 200,
+      "passed": true,
+      "ms": 135.93
+    },
+    {
+      "name": "events详情",
+      "path": "/api/events/aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341",
+      "status": 200,
+      "passed": true,
+      "ms": 132.99
+    },
+    {
+      "name": "issues样例",
+      "path": "/api/issues?limit=1",
+      "status": 200,
+      "passed": true,
+      "ms": 119.95
+    },
+    {
+      "name": "issues详情",
+      "path": "/api/issues/52028b5d3e4d6a5bf0c1a769e6698b24c57b175723a17ef117885782f6d38270",
+      "status": 200,
+      "passed": true,
+      "ms": 174.21
+    },
+    {
+      "name": "risks样例",
+      "path": "/api/risks?limit=1",
+      "status": 200,
+      "passed": true,
+      "ms": 126.08
+    },
+    {
+      "name": "risks详情",
+      "path": "/api/risks/9cba9d7127b83a1b6492b6ec",
+      "status": 200,
+      "passed": true,
+      "ms": 134.8
+    },
+    {
+      "name": "events不存在",
+      "path": "/api/events/submission-missing",
+      "status": 404,
+      "passed": true,
+      "ms": 119.75
+    },
+    {
+      "name": "issues不存在",
+      "path": "/api/issues/submission-missing",
+      "status": 404,
+      "passed": true,
+      "ms": 119.99
+    },
+    {
+      "name": "risks不存在",
+      "path": "/api/risks/submission-missing",
+      "status": 404,
+      "passed": true,
+      "ms": 125.44
+    },
+    {
+      "name": "事件报告导出",
+      "path": "/api/reports/events/aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341.docx",
+      "status": 200,
+      "passed": true,
+      "ms": 137.21
+    },
+    {
+      "name": "典型事件输入输出",
+      "path": "/api/events/aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341",
+      "status": 200,
+      "passed": true,
+      "ms": 122.68
+    },
+    {
+      "name": "匿名环境文件保护",
+      "path": "/.env",
+      "status": 200,
+      "passed": true,
+      "ms": 1098.71
+    },
+    {
+      "name": "非法分页",
+      "path": "/api/events?limit=0",
+      "status": 422,
+      "passed": true,
+      "ms": 78.9
+    },
+    {
+      "name": "不存在API",
+      "path": "/api/submission-missing",
+      "status": 404,
+      "passed": true,
+      "ms": 131.2
+    },
+    {
+      "name": "助手输入验证",
+      "path": "/api/assistant/ask",
+      "status": 422,
+      "passed": true,
+      "ms": 122.54
+    }
+  ],
+  "passed": 45,
+  "failed": 0,
+  "cases": {
+    "events": "aaa3d97d8e8f78272bc7748191315b43459f5df567d346edda11170ddd1ce341",
+    "issues": "52028b5d3e4d6a5bf0c1a769e6698b24c57b175723a17ef117885782f6d38270",
+    "risks": "9cba9d7127b83a1b6492b6ec"
+  }
+}

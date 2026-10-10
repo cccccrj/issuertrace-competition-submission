@@ -1,0 +1,14 @@
+[Unit]
+Description=Listed company public-source collector
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/path/to/listed-company-event-intelligence
+EnvironmentFile=-/path/to/listed-company-event-intelligence/.env
+ExecStart=/path/to/listed-company-event-intelligence/scripts/run_scheduler.sh --daemon --priority ALL --max-sources 4 --max-pages 3 --discover --interval-seconds 300 --catch-up-interval-seconds 60 --sse-jobs-per-cycle 2
+Restart=on-failure
+RestartSec=60
+
+[Install]
+WantedBy=default.target
